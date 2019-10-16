@@ -1,2 +1,4 @@
 # Tanishq Kumar
-# tanishqkumar.github.io
+
+Welcome to my personal site. Enjoy reading about my background, thoughts, and projects!
+
