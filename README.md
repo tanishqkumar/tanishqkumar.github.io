@@ -1,2 +1,0 @@
-# Tanishq Kumar
-
