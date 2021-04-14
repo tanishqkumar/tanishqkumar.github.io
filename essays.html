@@ -117,6 +117,8 @@ If unsure what to read, try
   <p>Interesting how so much effort was put into products and systems we take for granted every day. This will be a short piece exploring some examples of innovations that 
     involve significant thinking behind the scenes but seem almost like "the natural way of things" from the outside. Examples include dynamic programming algorithms in text justification
     and extensive piping systems built inside newly created landfills to capture methane the trash gives out (then burn it for energy). 
+    <a href="#top">Back To Top</a>
+<br ><br />
   </p>
 </div>
 
@@ -128,6 +130,8 @@ If unsure what to read, try
     the confidence I have in their results (how much I would be willing to bet on them being reproduced on demand, tomorrow), and the limits of empiricism in complex, adaptive systems like economies. This 
     survey will involve everything from thinking about how much deviations from distributional independence affect predictions to whether use of p-values makes sense in context and reflects true 
     believability, in the Bayesian sense of the word, and more. It will also involve some allusions to, and analysis of, Nassim Taleb's critique of social scientists and their methods. 
+    <a href="#top">Back To Top</a>
+<br ><br />
   </p>
 </div>
 
@@ -142,13 +146,15 @@ If unsure what to read, try
   companies that will offer services to automate every step of your business: onboarding, analytics, payments, manufacturing, CRM, packaging, 
   delivery, does your service then merely reduce to solving an information problem for the consumer, to hitting 10 different APIs in succession?
   Do they then just pay you to move electrons along a wire?
+  <a href="#top">Back To Top</a>
+<br ><br />
 </p>
 
 </div>
 
-<button class="accordion"><h3>Technical Maturity, Fundamentals, and College</h3></button>
+<button class="accordion"><h3>College and Technical Maturity</h3></button>
 <div class="panel">
-  [TODO]
+  [TODO: This isn't very clear.]
   <p>
   When living in the Bay Area and seeing what people need to know to build interesting things in various fields, 
   I started to believe that most of what you learn in college is (for most people) useless, 
@@ -161,15 +167,15 @@ If unsure what to read, try
   <p>
     The initial premise of my argument was that learning new material is only useful insofar as it 
     does one or more of these things.  
-    <ul>
-      <li>Stretches your cognitive limits</li>
-      <li>Teaches you material you will use in your future vocation</li>
-      <li>Is fascinating enough that you would regret not studying it</li>
-    </ul>
+    <ol>
+      <li>Stretches your cognitive limits (eg. Galois theory)</li>
+      <li>Teaches you material you will directly use in the future (eg. intro CS)</li>
+      <li>Is fascinating enough that you would regret not studying it (eg. Quantum Mechanics)</li>
+    </ol>
     In fact, there's a fourth major 
     reason you'd benefit from a class: to build "technical maturity" in a specific field.
     </p>
-    <!-- <i>Technical Maturity, Defined</i>
+    <i>Technical Maturity, Defined</i>
     <p>
     This means understanding the foundational modes of thought of the field well enough that you 
     could easily teach yourself adjacent material in the field. The "in a specific field" caveat 
@@ -179,53 +185,100 @@ If unsure what to read, try
     across domains (even related ones) for that to happen. Instead, what I mean is that taking a grad 
     course on randomized algorithms <i>will </i> help you learn computational complexity theory, 
     algorithmic game theory, and probability theory. In other words, fields that have substantial overlap 
-    in content/keywords, and not just "modes of thinking."
+    in content/keywords, and not just "modes of thinking." I elaborate on this, analogizing it with graph theory
+    and giving examples, below. 
 </p>
-    [examples of technical maturity gains I wouldn't have had if I didnt' take 25a]
-    
-  <i>What Might This Look Like In Practise??</i>
+  <i>Knowledge as Graph Theory </i>
+  <br>
   <p>
-    And so if you see college mostly as I do -- a 4-year course on "learning to think like an X" 
+    To understand what I mean by "technical mastery," think of knowledge as comprised of nodes in a graph. 
+    Each tid-bit of knowledge constitutes a node, and the connections between them are the edges. For example, 
+    a class about line and surface integrals over vector fields would create a new node on the graph, linking it to,
+     say, electromagnetism from one's physics class, which are prime examples of line integrals 
+    that have physical meaning. That would be an edge between the two nodes. </p>
+<p>
+    Why is this relevant? The contention that many champions of the liberal arts have is that studying challenging topics in broad 
+    contexts makes one "generally smarter" and improve one's "ability to learn," in generality. This is NOT what I mean by technical maturity. 
+    This claim of theirs, in the context of our knowledge graph, is claiming that a node about commutative groups from abstract algebra, or 
+    the portrayal of feminism in Austen's <i>Pride and Prejudice</i> has edges 
+    going to things that people do on their jobs; say, writing code or hiring employees. I think there is a wealth of evidence supporting the 
+    fact that humans are very poor at transferring knowledge across domains, even closely related ones. Therefore, this "liberal arts as building critical thinking skills" school of thought,
+    I see as pretty much baloney. </p>
+    <p>
+    But they're on to something. Instead, I claim, knowing about, say, commutative groups is useful for 
+    learning molecular representations in chemistry (think of these topics as knowledge nodes, I'm claiming most people would be able to connect the two). Indeed, it's quite different from abstract algebra, 
+    but has clear and direct applications of group theory and so is <i>similar enough</i> for meaningful transfer to happen. 
+    In other words, not as different to abstract algebra as, say, doing corporate taxes in Excel. Just different enough. 
+    Similarly, knowing about the portrayal of feminism in Austen (again, think of this as a node) really could 
+    concievably be directly useful when studying the Suffragete movement because, again, they're different yet similar <i> enough</i>. 
+    </p>
+    <p>
+    Therefore what I mean for technical maturity is comfort around a set of keywords. In abstract algebra, one keyword might be "symmetric structure" and in feminist studies one might be 
+    "intersectional theory." Having heard these words in other contexts -- even very different ones -- adds value and builds "technical maturity." However, groups and feminist theory is too 
+    far from writing code or drafting speeches to reasonably possibly have any keyword overlap. </p>
+    <i>A Concrete Example</i>
+    <p>
+    In the fall of my freshman year, I took my first rigorous math class. It studied linear algebra from an abstract perspective. One of the things we learned about were 
+    unitary operators, which are linear transformations that preserve inner product structure. During the winter break 
+    after that semester, I perused a textbook on quantum computation. And in quantum computing, the unit of logic/computation is the idea of a quantum 
+    gate, itself a linear transformtion that takes some input and maps it to some output. Being a linear transformation, we represent such logic gates as matrices, 
+    and they operate on vector inputs. 
+    </p>
+    <p>
+    One thing that the author of the textbook really emphasized and spent a good amount of time explaining was why we used
+    unitary operators for our logic gates. Evidently, he thought most people reading the book would find that unmotivated. But because I was lucky to take a relatively abstract linear 
+    algebra course <i> and had taken a class on probability </i> beforehand, it didn't need any explanation: unitary operators preserve inner products, and random variables are vectors. 
+    If you want to ensure the probabilities in the vectors coming in AND leaving the linear transformation (quantum logic gate),
+  using a unitary operator is the obvious choice, since they preserve the inner product (sum of probabilities) of their input. This is the key point: taking the class on abstract linear algebra
+  and one on probability firmly planted nodes (unitary operators, random variables as vectors), and the new topic I was learning (quantum logic gates) had <i> enough keywords in common that I could 
+    reasonably create new edges between these knowledge nodes, on the fly.</i> This is the crux of technical maturity: increasing your threshold for what is "obvious". </p>
+    
+  <i>What Might This Look Like In Practise?</i>
+  <p>
+    If you see college mostly as I do -- a 4-year course on "learning to think like an X" 
      for many different X (mathematician, programmer, 
      physicist, economist, statistician, historian, psychologist), you should optimize for taking 
      difficult, foundational courses in many fields. It's important to emphasize that by 
      "foundational" I don't mean introductory. For example, I do not think 
      taking an introductory CS course or two suffices to "learn to think like a computer scientist."
-     Instead, take intermediate/advanced courses in operating systems and algorithms to get those 
+     Instead, take intermediate/advanced courses in algorithm design and operating systems to get those 
      gains. 
      </p>
-     Similarly, taking an introductory class on probability is not enough to learn to think 
-     like a statistician: take intermediate classes on inference, stochastic processes, 
-     linear models, at the very least. And even more: taking "introduction to microeconomics" does not 
-     suffice under this framework; to learn to approximate the thinking of an economist, 
-     you'd want to take advanced courses in, yes, microeconomics, but also game theory, 
-     economic history, political economy. Overall, the threshold I have for "foundational" is 
-     enough to enable you to read and understand some fraction of current research or 
-     feel at home in graduate courses in that field. 
 
 <p>
-     More concretely, you need to take 12-16 courses in a field and 32 courses overall to graduate with 
-     a degree in that field at Harvard. What if, instead, you took 
-     the hardest/meatiest 6/12 in several fields? In math, perhaps that includes 
+     At Harvard, you need to take 12-16 courses in a field and 32 courses overall to graduate with 
+     a degree in that field. What if, instead, you took 
+     the hardest/meatiest 6/12 in a several related fields? In math, perhaps that includes 
       group theory, rings and fields, real and complex analysis, differential geometry. In physics 
       perhaps classical and quantum mechanics, electrodynamics and thermodynamics?
        In economics, maybe the intermediate micro/macro sequence 
       alongside game theory, economic history, political economy. In CS, 
       algorithms and operating systems, programming paradigms, complexity theory and 
-      compilers. 
+      compilers. You'd get 80% of the value of 3-4 different undergraduate degrees, and more importantly be equipped to at least understand parts 
+      of the research frontier in each field. Teaching yourself would become much easier, and you wouldn't really be an outsider to any of the fields. 
 </p>
-    <i>Why Would One Do This?</i>
+<p> The obvious caveat here is if you're set on spending your life exploring and deepening a specific field. If you want to be a mathematical physicist, ignore my advice. Go ahead and 
+  take quantum field theory and Lie algebra at the expense of understanding how economists or computer scientists think. That is the price you pay for mastery. And that's fine. But 
+  most people are quite as pointed in their goals, and so my thoughts are probably more relevant for them (and myself). 
+</p>
 
-    Many might be thinking at this point; surely, you can't take advanced courses in ALL those 
-    fields during an undergraduate degree. My thoughts are split: I agree that there is a limit on 
-    how many fields you can "learn the thought process of," but I think if you're willing to work 
-    hard and stay open-minded, taking the foundational courses in 4-5 different fields 
-    (for me: math, statistics, physics, economics, computer science) is eminently possible. 
+    <p>
+To summarize, I think that building technical maturity in multiple fields equips you with the ability to learn new things <i>in those
+  specific fields</i> (unlike the claims of the pure-liberal-arts charlatans, who claim it builds critical thinking in general). And this manifests itself as 
+  deep comfort in novel sitatuations (again, in the fields you've cultivated maturity in only) which leads to very fast learning and growth of knowledge graphs. 
+  Ultimately, the point of college is to set down as many nodes as you can in as many diverse fields, constrainted by the fact that you want node density within any specific field 
+  (ie. part of your knowledge graph) to be high enough that they roughly approximate/sample the entire space so you can learn new things in new fields and slot them into the context
+  of existing knowledge. 
+  </p>
+  <p>
+  This mostly explains the big difference I saw between technical college graduates and high-school dropouts in the Valley -- the college graduates felt 
+  comfortable in novel situations because they knew their graphs were wide and dense. The high-school dropouts mostly had no nodes to use as reference points from which to grow their graph, 
+  and so struggled to keep up with new material. Of course, this does not always hold; you can create these graphs outside of the academy and most people in the academy fail to 
+  do a good job at creating these graphs at all. But for me, school seems to work well for this, so I'm happy I'm here, for now. 
+    </p>
 
-    Another way to put this is aiming for a level of depth that is half-way between a generalist 
-    and subject expert. 
-     -->
-
+  <a href="#top">Back To Top</a>
+<br ><br />
 
   
 </div>
