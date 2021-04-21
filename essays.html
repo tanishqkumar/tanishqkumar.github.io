@@ -81,7 +81,7 @@ strikes. As always, disagreements and opinions <a href="mailto:thetanishq@gmail.
 </a>  
 <br><br>
 If unsure what to read, try 
-<i>War and Business, Clusters, Falsifiability, </i> or <i>Welcome to the Future.</i>
+<i>War and Business, Falsifiability, </i> or <i>Welcome to the Future.</i>
     </p>
 
 <!-- <button class="accordion"><h3>Flow</h3></button>
@@ -111,12 +111,31 @@ If unsure what to read, try
 
 </div> -->
 
+<!-- <button class="accordion"><h3>Topological Continuity, Open Sets, and Compactness*</h3></button>
+<div class="panel">
+  <p>An intuition-dump from my time trying to understand the idea of compactness and open sets, in context of real analysis and naive 
+    metric spaces, but more importantly, in context of abstract topological spaces.</p>
+    <br>
+    <br>
+    Here is the topological definition of continuity. Note the fact that metrics are nowhere to be seen. 
+    <br>
+    <br>
+    <strong>Definition.</strong><i>Let $A, B$ be topological spaces. Then $f: A \to B$ is a continuous function if for all open subspaces of the co-domain, $Z \subset B$, the pre-image of that subspace, $Y  = f^{-1}(Z)$, is also an open subspace of $A$</i>
+
+
+    
+    <br>
+    <a href="#top">Back To Top</a>
+
+</div> -->
+
 <button class="accordion"><h3>Silent and Subtle</h3></button>
 <div class="panel">
   [TODO]
   <p>Interesting how so much effort was put into products and systems we take for granted every day. This will be a short piece exploring some examples of innovations that 
     involve significant thinking behind the scenes but seem almost like "the natural way of things" from the outside. Examples include dynamic programming algorithms in text justification
     and extensive piping systems built inside newly created landfills to capture methane the trash gives out (then burn it for energy). 
+    <br>
     <a href="#top">Back To Top</a>
 <br ><br />
   </p>
@@ -130,6 +149,7 @@ If unsure what to read, try
     the confidence I have in their results (how much I would be willing to bet on them being reproduced on demand, tomorrow), and the limits of empiricism in complex, adaptive systems like economies. This 
     survey will involve everything from thinking about how much deviations from distributional independence affect predictions to whether use of p-values makes sense in context and reflects true 
     believability, in the Bayesian sense of the word, and more. It will also involve some allusions to, and analysis of, Nassim Taleb's critique of social scientists and their methods. 
+    <br>
     <a href="#top">Back To Top</a>
 <br ><br />
   </p>
@@ -146,6 +166,7 @@ If unsure what to read, try
   companies that will offer services to automate every step of your business: onboarding, analytics, payments, manufacturing, CRM, packaging, 
   delivery, does your service then merely reduce to solving an information problem for the consumer, to hitting 10 different APIs in succession?
   Do they then just pay you to move electrons along a wire?
+  <br>
   <a href="#top">Back To Top</a>
 <br ><br />
 </p>
@@ -299,12 +320,68 @@ To summarize, I think that building technical maturity in multiple fields equips
 
 <button class="accordion"><h3>Fast Matrix Multiplication, Deep Dive*</h3></button>
 <div class="panel">
-  <p>[TODO]</p>
+  <br>
+  <br>
+  [TODO]
+  <br>
+  <br>
+  <p>Finding algorithms for fast matrix multiplication is one of those rare problems that
+     both 1) doesn't require advanced material to have a go at, and is therefore amenable to attack by measly 
+    undergraduates (though the research frontier makes heavy use of sophisticated ideas from abstract algebra), and 2) is <i>vitally</i>
+    important for myriad applications, from machine learning to computer graphics. This piece is my attempt at 
+    outlining the current state of the art. 
+  <br>
+  <br>  
+    We begin with naive multiplication and make some systems optimizations to see 
+    how fast we can make it, then try Strassen's algorithm -- the most commonly used algorithm in practise -- and then 
+    try to understand, and implement, more esoteric algorithms like the Coppersmith-Winograd algorithm. We finish off by 
+    thinking about what approaches are likely to work, and even trying to come up with heuristics ourselves and seeing how well 
+    they do compared to the current state-of-the-art. 
+  </p>
+  <i>Naive</i>
+  <br>
+  <br>
+  <i>Strassen</i>
+  <br>
+  <br>
+  <i>Coppersmith-Winograd</i>
+  <br>
+  <br>
+  <i>First Principles</i>
+
+  <br>
+  <br>
+  <a href="#top">Back To Top</a>
+  <br>
+  <br>
 </div>
+
 
 <button class="accordion"><h3>AlexNet, Deep Dive*</h3></button>
 <div class="panel">
-  <p>[TODO]</p>
+  <p>The 2012 paper by Alex Krizhevsky et al. in which he implements a deep convolutional neural network for 
+    image recognition, is perhaps the most seminal academic paper that has been writtein in the last few decades, full stop. 
+    It started the "deep learning revolution." Despite this, it's interesting to note that most of it's contributions are not novel. 
+</p>
+<p>
+    It was not the first paper to show how deep networks can significantly outperform traditional neural nets for tasks like image recognition. A paper by 
+    Ciresan et al. (2011) had already done that. It was not the first paper to show how GPUs can used to train nets much faster than CPUs. Ciresan's paper 
+    also was written in CUDA to exploit GPU support. And of course neither has a claim to originality as far as the concept of convolution in image 
+    recognition is concerned; Yann Lecun (2018 Turing) came up with the idea of a CNN in 1989! I AlexNet's success is an example of 
+    "incrementalism as discontinuity" innovations. By this, I mean that it has no substantive novel contribution as far as theory is concerned, 
+    but makes incremental improvements on existing ideas, combining several important existing ideas (depth, GPUs, dropout regularization)
+    in a way that makes it pass an important threshold. The fact that AlexNet classified over 10% <i>more </i> images in the ImageNet
+    challenge than the runner up is key because that meant it passed the "threshold" for computer vision being practicable. 
+    Being the first to cross that threshold (via a well placed incremental improvement), its architecture became ubiquitous, instantly. 
+    Alex Krizhevsky is now immortal because of this. 
+    </p>
+    <p>
+    In this piece, we're going to pore over every page of the paper and see how the authors might 
+    have come up with the ideas, and what goes into leaps of technical innovation that are so great that other innovations in the future 
+    become analogized to them. For example, when DeepMind's AlphaFold 2 surpassed the 90% protein classification threshold in 2021, it was called the 
+    "ImageNet/AlexNet moment of biology." That's high praise. With that, we begin. 
+</p> 
+  <br>
 </div>
 
 <button class="accordion"><h3>Hesitations on Economics: Falsifiability</h3></button>
