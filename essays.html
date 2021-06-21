@@ -15,13 +15,13 @@
 
 <style>
 .accordion {
-  background-color: #fff;
-  color: #000;
+  background-color: #000;
+  color: #fff;
   cursor: pointer;
   padding: 18px;
   width: 100%;
-  border: none;
-  border-top: 0.1px solid black;
+  border: 1px solid white;
+  /* border-top: 0.1px solid black; */
   text-align: left;
   outline: none;
   font-size: 15px;
@@ -29,18 +29,13 @@
 }
 
 .active, .accordion:hover {
-  background-color: #ccc; 
+  background-color: #000; 
 }
 
-.panel {
-  padding: 0 18px;
-  display: none;
-  background-color: white;
-  overflow: hidden;
-}
+/* panel css and js at bottom */
 
 li.sick {
-  color: blue;
+  color: rgb(38, 150, 255);
 }
 
 li.audited {
@@ -84,30 +79,105 @@ If unsure what to read, try
 <i>War and Business, Falsifiability, </i> or <i>Welcome to the Future.</i>
     </p>
 
-<!-- <button class="accordion"><h3>Flow</h3></button>
+<!-- <button class="accordion"><h3>Is Psychology Legit?* (II)</h3></button>
 <div class="panel">
-  <p>
-    [TODO]
-    <br><br>
-    My metric for a good day is usually number of hours focused, but I'm always blown away by 
-    how much of a multiplier you can have on your output by simply entering "flow" state. Sometimes I waste a morning, 
-    go out for a kayak or workout, and come back, sit down, and get 11 hours worth of work done in one 3-hour sitting. And then 
-    kick myself for not being able to replicate that on demand. 
-    <br><br>
-    I noticed this recently when I'd read a stat chapter on MLE twice without really understanding much 
-    of it at all, and then came back to it a few days later and finding that it had suddenly become as clear as if god himself had come down 
-    and delivered it to me in a dream. In short, something just clicked, and I'm not sure why. I don't think it was "time spent mulling over it,"
-    as some may suggest. 
-    <br><br>
-    I'm also consistently blown away by anecdotes of flow state from the world's best: Picasso forgetting to drink water for two days because he's in a rush 
-    to finish a painting, or Newton so puzzled by the problem of gravitational mechanics that he "forgets" to sleep. Though almost surely exaggerated, 
-    it makes one wonder what is possible. 
+  <p> This piece continues from the previous one. In this sequence, we review a bunch of (randomly selected) top psychology papers and see how much they 
+    really have to contribute along three dimensions: 1) believability, 2) unexpectedness, 3) applicability. We do this to see 
+    whether the disparaging claims of many hard scientists against psychology and similar social sciences are merited, as well as to 
+    feel out what the state of the art in the field looks like. With that, let's begin our first paper review, keeping in mind that even a few papers from a top journal cannot represent the 
+      diversity of any field, so any judgements we make may be more specific to the paper or the sub-field than relevant to 
+      psychology at large. 
+      </p>  
+  
+  <i>People systematically overlook subtractive changes.<br><br>
+      Adams, G.S., Converse, B.A., Hales, A.H. et al. <br>
+      Nature 592, 258–261 (2021). </i>
     
-    <br><br>
-    I'd love to hear anything people have to say about flow state, how to replicate it more often (it doesn't seem like 
-   one could <it>will</it> it into existence). I think professional writers may have something interesting to say about this 
-   since their productivity so starkly depends on being "in the zone," and surmounting writer's block. 
-  </p>
+
+
+      <p>
+      <i>Summary.</i>        
+
+      </p>
+
+</div>
+
+<button class="accordion"><h3>Is Psychology Legit?* (I)</h3></button>
+<div class="panel">
+  <p>While reading a book about the Vienna Circle, I became intruiged by the prodigious reputation surrounding Sigmund Freud as a 
+    legendary historical figure. Since I know very little about psychology and Harvard has a strong presence in the field, I thought I'd 
+    go through the introductory psychology course, taught by none other than Steven Pinker (whose work I, broadly, respect). 
+    </p>
+    <p>
+      Just two lectures in, I felt like puking. I generally have a rule that I see these sorts of things through to some sort of conclusion -- 
+      reasoning that many (seemingly) smart people make this field their life's work, so their must be something to it, right? 
+      And most of the time one has a knee-jerk reaction like this, it's typically incomplete and immature. I came away from my little foray 
+      with a bitter taste in my mouth, feeling like the course was entirely devoid
+      of thick intellectual meat. 
+<p>
+      For example, discussions around the visual system typically involve a bit of philosophy (eg. dualism as a past theory of sight), 
+      a bit of neuroscience (rods, cones, and optic nerve and retina anatomy/mechanisms), a bit of machine learning (edge detection 
+  similarities in CNNs as well as the retina, GPU vs visual cortex analogies). It's exactly this sort of broad shallowness endemic in 
+  undergraduate psychology courses, coupled with the 
+  intellectual smugness of psychologists in their books, and their <a href="https://en.wikipedia.org/wiki/Replication_crisis">abuse of statistics</a>
+  that is offputting to me. While some social scientists (eg. great economists) seem to reasonably be jack of all trades, much of the 
+  (admittedly, little) psychology I've read presents even the best psychologists as instead masters of none. 
+</p>
+      <p>
+      A reasonable counterpoint: "but Tanishq, you've got it all backwards! Many of the advances made in fields like ML have come from psychologists! Consider McCulloch and Pitts, 
+      who virtually pioneered the notion of convolution in the visual system long before Yann LeCun came up with the idea of a neural network!" This 
+      is a fair point. Let's put aside the fact that Pitts was a logician and this was published in a journal of biophysics and 
+      not psychology, and pretend it's a typical psychology paper. My response is two-fold. Primo, my criticism isn't really of psychology as an entire field. I think any criticism of 
+      something so broad is bound to be missing something. My criticism is directed toward undergraduate level courses in psychology. Secundo, 
+      and more importantly, these important contributions were made when psychologists acted like experimental biologists.
+       And I sure love and respect biology, since it's a falsifiable natural science that is both beautiful and useful. 
+      </p>
+<p>
+      To see if my initial impression was because I just surveyed an introductory course, I looked at the material taught in graduate courses, only to 
+      find that they had more jargon, that, once unpacked, was equally devoid of nuance. Much of the prose hid behind the august reputation 
+      of the human mind. Indeed, the human mind is fascinating, but I left with a feeling that I'd be better off studying it in the statistics, CS,  
+      physics departments or at the medical school across the river, rather than in the psychology department. 
+    </p>
+    <p>
+      One big motivation I had for taking the course was in hoping for a better understanding of human nature on the level of individuals. I 
+      envisioned clinical psychologists making heavy use of their psychological training to read people like one turns through the pages of a 
+      book. Instead, much of even relatively advanced courses in what seems to be the strongest psychology department on Earth seems to reduce to 
+      giving names to experimental findings that can be understood by anyone who understands the scientific method and high school biology. Instead, 
+      as Taleb puts it, the way to learn to "read people like books" is through, as he says, "working as a bouncer at a club, bartender, getting in street fights, 
+      trying your hand at seduction, and at stand up comedy." 
+      </p>
+      <p>
+      Another primary motivation for taking the course was to lay a foundation for more advanced courses that would allow me to read and understand 
+      recent findings in the literature. And so in this series of pieces we examine some of the most recent papers in <i>Nature Psychology</i>; quite literally, a random 
+      sample of the top papers that came up in the (top) journal when I looked it up. I'm going to walk through the experimental methods and findings 
+      of each paper, rating them on a few dimensions: 1) believability (how much money I would bet that they can be reproduced, on demand, and reflect 
+      some actual invariant truth about the world), 2) unexpectedness (good science uses experiments to infer mechanisms and 
+      make surprising predictions using that understanding), and 3) applicability (could 
+      a real life practitioner of uncertainty -- say, a mafia boss, software entrepreneur, or hot dog stand owner -- use any of these insights). 
+      If a paper majorly lacks in more than one of these dimensions, I don't think it makes a real scholarly contribution. 
+      </p>
+      <p>
+      Moreover, as we'll see, 
+      pretty much all the literature is accessible to someone who knows very little about psychology, 
+      but has a strong understanding of the scientific 
+      method and statistical inference, as well as the fundamentals of biology. In this sense, most undergraduate psychology courses have turned out useless to 
+      the end of reading and understanding the scholarly frontier of the field. Yes, yes, knowing about the Id and Superego may
+      perhaps (if you squint sideways while standing on one leg under a full moon) serve as vital "broader context"
+      to a paper even if it has nothing to do with psychoanalysis, but if I can grasp 95% of the contribution and limitations of a paper, I am content. 
+
+      Note that this is not the same with other fields. You cannot understand the frontier and future of algorithmic game theory, operating systems, algebraic 
+      number theory, or cosmology, without a strong understanding of the undergraduate fundamentals. In that sense, those courses have some 
+      payoff downstream (as well as being generally more convincing along the aforementioned dimensions). 
+      </p>
+      <p>
+      With that, we begin -- with a genuinely 
+      open mind, hoping to see psychology at its best and have our prior biases proved wrong, as many knee-jerk reactions are. Each part of this 
+      sequence will go through a top psychology paper in reasonable detail, seeking answers to some of these questions.  
+  </p>      
+      
+    <a href="#top">Back To Top</a>
+    <br>
+    <br>
 
 </div> -->
 
@@ -259,7 +329,7 @@ If unsure what to read, try
   <i>Knowledge as Graph Theory </i>
   <br>
   <p>
-    To understand what I mean by "technical mastery," think of knowledge as comprised of nodes in a graph. 
+    To understand what I mean by "technical maturity," think of knowledge as comprised of nodes in a graph. 
     Each tid-bit of knowledge constitutes a node, and the connections between them are the edges. For example, 
     a class about line and surface integrals over vector fields would create a new node on the graph, linking it to,
      say, electromagnetism from one's physics class, which are prime examples of line integrals 
@@ -365,7 +435,7 @@ To summarize, I think that building technical maturity in multiple fields equips
   </p>
 </div> -->
 
-<button class="accordion"><h3>Fast Matrix Multiplication, Deep Dive*</h3></button>
+<button class="accordion"><h3>Fast Matrix Multiplication From First Principles*</h3></button>
 <div class="panel">
   <br>
   [TODO]
@@ -402,7 +472,7 @@ To summarize, I think that building technical maturity in multiple fields equips
 </div>
 
 
-<button class="accordion"><h3>AlexNet, Deep Dive*</h3></button>
+<button class="accordion"><h3>AlexNet: The Innards of a Revolution*</h3></button>
 <div class="panel">
   <p>The 2012 paper by Alex Krizhevsky et al. in which he implements a deep convolutional neural network for 
     image recognition, is perhaps the most seminal academic paper that has been writtein in the last few decades, full stop. 
@@ -659,7 +729,7 @@ and then draft a letter ordering bushels of grain for his oxen on the other side
 <!-- <button class="accordion"><h3>Reviews for Harvard Classes</h3></button>
 <div class="panel">
   <p>
-  My thoughts on the classes I've taken at college, or will take in the near future. Courses I've found the most rewarding are given in <i style="color:blue">blue </i> and those that I've audited/self-studied
+  My thoughts on the classes I've taken at college, or will take in the near future. Courses I've found the most rewarding are given in <i style="color:rgb(38, 150, 255)">rgb(38, 150, 255) </i> and those that I've audited/self-studied
   are given in <i style="color: rgb(52,168,83)">green</i>. 
   <ul>
 
@@ -1262,7 +1332,7 @@ help me "see the world through a different lens" made me cringe. Mulling over it
 when I was given the autonomy to make decisions about what <i>I thought </i>I should learn or try, and how I should learn it. And when asking myself why I wasn't taking a gap year
 in the first place, the only compelling answer I could conjure up was the "it wasn't the beaten path". Not very convincing.
 <br><br>
-Before I knew it, I was curled up in my bed like a hot dog in a big ol' bun, furiously shaking the last few drops of ink out of a dark blue ball point, biting at it's
+Before I knew it, I was curled up in my bed like a hot dog in a big ol' bun, furiously shaking the last few drops of ink out of a dark rgb(38, 150, 255) ball point, biting at it's
 top as I grappled with what I'd make of the year ahead. I felt like an artist lost in thought, paralysed the myriad stories he might tell
 through the medium of his starchy white canvas. A good starting point was to see what others did during their gap years.
 <br><br>I was disappointed.
@@ -1743,7 +1813,8 @@ for (i = 0; i < acc.length; i++) {
 <style>
 .panel {
   padding: 0 18px;
-  background-color: white;
+  background-color: black;
+  color: white;
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
