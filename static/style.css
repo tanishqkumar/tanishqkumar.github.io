@@ -1,4 +1,6 @@
 body {
+  background-color: black; 
+  color: white; 
   font-family: Helvetica;
   font-size: 13px;
 }
@@ -57,7 +59,7 @@ body {
 }
 
 #content p, #content ul {
-  color: #333;
+  color: white;
   line-height: 18px;
 }
 
@@ -76,11 +78,9 @@ body {
   border-top: 1px solid #eee;
   margin-bottom: 4em;
   font-size: smaller;
-  color: #777;
 }
 
 #content .thanks a {
-  color: #777;
 }
 
 #content li {
