@@ -5,6 +5,10 @@ body {
   font-size: 13px;
 }
 
+a{
+  color: rgb(52,168,83); 
+}
+
 #menu {
   float: right;
   margin-top: 30px;
