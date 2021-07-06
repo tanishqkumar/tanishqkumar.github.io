@@ -72,12 +72,177 @@ li.audited {
     <p >
 It's in those moments when you're walking down the street, finishing up the last set of a workout, or taking a dump, that brilliance
 strikes. As always, disagreements and opinions <a href="mailto:thetanishq@gmail.com"> are very welcome.</a> Essays marked with 
-  an asterisk (*) are technical, often analyses of scientific papers I've found interesting. 
+  an asterisk (*) are technical. 
 </a>  
 <br><br>
 If unsure what to read, try 
 <i>War and Business, Falsifiability, </i> or <i>Welcome to the Future.</i>
     </p>
+
+<button class="accordion"><h3>Uniqueness and Leverage</h3></button>
+<div class="panel">
+
+  <p>
+    In the Valley, it is common to hear people deliberating making life and career decisions through the framework of leverage. 
+    People decide to found company X or work at company Y because "it's the highest leverage choice." That is to say, it's the position from which 
+    they can exert the biggest raw impact on the world from their current place in life. High leverage choices have many multipliers between 
+    actors and the effects of their actions. Being the engineering lead for Google's search team is high leverage work, being a lone engineer on that 
+    team of 100 engineers is not. Leverage is purely about the scale of impact a single person can exert as a result of intentful choices that 
+    multiply the effects of their actions (thereby acting as a "lever" on those actions). 
+</p><p>
+    One thing that I've found disturbing about this philosophy is that it completely omits the notion of uniqueness in one's work. 
+    Let's caveat this with the fact that everyone share's different worldviews, and this is merely my own, etc etc. When thinking about 
+    what you could do that has a highest leverage, you forget to think about what <i>only</i> you could do. To see how different uniqueness and leverage 
+    can be, consider being an engineering lead at Facebook. Your team manages ad placement, which is business critical on the order of billions of dollars. This is 
+    enormous leverage. However, if you weren't doing it, some other commodotized MIT-CS-PhD type (call them Dr Nurd) would be doing it instead of you. Now consider the scope of work for 
+    an engineering lead: choosing a technology stack, architecturing an app or feature, recruiting new engineers onto the team, amongst other things. At most times there 
+    exists a clear state of the art and standard practise on doing the first two things, and individual junior engineers you recruit onto the team are unlikely to 
+    utterly transform its direction and atmosphere. That is to say, Dr Nurd and yourself have significant decision overlap -- the ad placements on Facebook would look mostly 
+    the same under both of you, especially since the major product decisions are made by executives. 
+    
+  </p><p>
+    And so on some level, there is very little fundamentally new 
+    (where new means doing things very differently to how someone similar to you would do them) you add to the world by being in it. Conversely, 
+    a mediocre writer with an audience of even a few thousand people is doing something that <i>could not</i> have existed without them. The books pumped out 
+    by two similar writers can be vastly different. A good heuristic: would the world have lost something, subtle but fundamental and substantive, if you, 
+    in particular, hadn't existed? 
+</p><p>
+  And so we must consider both uniqueness and leverage: the number of "forks in the road" -- 
+  that is, opportunities to make a unique decision very different to what someone else would have made in your position -- presented to you per unit time 
+  (say, per day), <i>and</i> how different the product/service you provide looks to the end consumer as a consequences of those decisions. For instance, 
+  if you have an eclectic taste in coffee, and use your clout at work to get an obscure brand of coffee maker brought into work, you've contributed something 
+  new to the world, but it has no meaningful impact for the consumer of the end product of the company (uniqueness but not leverage). In contrast, if you're choosing
+  between two recently published sublinear network routing algorithms 
+  for the streaming service on Netflix as an engineering lead there and you choose the one that is more amenable to systems optimizations, you're not making 
+  any decisions unique to you (Dr Nurd would have done the same) but that choice (the packet transmission speed induced by the resulting systems optimizations) 
+  is having a huge effect on the user experience (lag, loading times) for the consumer
+  (thus, leverage but not uniqueness). 
+</p><p>
+  In general, work that has high uniqueness is that which presents many forks, as described above. And so intensely creative work -- from theoretical physics 
+  to playwriting to architecture -- has high uniqueness because it represents the will and vision of its creator, manifest in the flesh. And two otherwise 
+  similar people can produce vastly different pieces of prose, since the possibility space for different types of prose or plays is much, much bigger than the possible 
+  decisions two engineering leads could make about choosing a technology stack (where there exists best practices for the most part). But there are other types of work
+   that have high uniquness, work that you think is important but that almost everyone else doesn't. For a pedestrian example, consider 
+  a YouTube channel on Russian stamp collection. Because nothing like this exists, if you were to start one and get even a few thousand subscribers, you would have 
+  brought into the universe something fundamentally fresh and new, something that wouldn't exist without you. The universe would be a little worse off without you. 
+  The same cannot be said for, say, college admission reaction videos that go viral on YouTube (if it wasn't yours, it'd be someone else's). For something a little grander, 
+  consider entrepreneurship; because starting a company involves thousands of little decisions that two similar people may disagree on (eg. product features), two similar founders 
+  can create two enormously different companies. Consider Brian Chesky and AirBnB -- one of the few examples of a truly contrarian bet. Everybody thought the idea was moronic, 
+  as well as hundreds of investors they first pitched to, and, importantly, <i>no-one else was working on anything like it</i>. Therefore, AirBnB (or anything like it)
+  would likely not exist if Brian Chesky didn't, and we'd all be worse off because of it. 
+</p><p>
+  Before people accuse me of criticising "conventional" jobs, I should note that the thing that matters in the end is not just uniqueness or just leverage, but the 
+  product of the two. And so if I had to choose between an obscure stamp collecting channel and being an engineering lead at a big tech company, I'd probably choose the latter 
+  (begrudgingly). But if I had to choose between being a niche writer with a few thousand (dedicated) readers, barely making a frugal living but getting by, 
+  and an engineering lead, I'd choose the former in a heartbeat. As caveated at the beginning, this is predicated on the fact that something resembling uniqueness matters to you 
+  at all. I think it intuitively does to most people, but I hadn't seen anyone quite articulate it in the way that made sense to me. 
+</p>
+
+<a href="#top">Back To Top</a>
+    <br>
+    <br>
+
+</div>
+
+<button class="accordion"><h3>The Butcher and the Brain Surgeon</h3></button>
+<div class="panel">
+
+  <p>
+    When I took my first class on machine learning, one of the things that struck me was how "hand-wavey" most of the methods 
+    presented were. By that, I mean that most methods at the state of the art are pretty crude, and worked out by trial and error as opposed to 
+    clinical theorizing. Instead of deriving a general mathematical theory of neural network performance, machine learning journals are ripe with 
+    people suggesting slightly tweaked architectures for some special case that have marginally better performance than the previous best. Machine learning 
+    is not the only field that operates this way. Being the son of a vascular surgeon, being showed a picture of a partially amputated limb is more likely to 
+    evoke curiosity than disgust. I've witnessed how even the most staggeringly intricate 
+    surgeries are really nothing more than glorified butchery, and how surgeons are really nothing more than glorified butchers. And "butchery," here, 
+    is both not a pejorative (as we will see), and far more than just a metaphor. 
+    </p><p>
+    Furthering this analogy, observe that when butchers meet (at some vegan restaurant, I presume), they discuss 
+    the tricks of the trade; where to source the best meat, what makes for a good knife that delivers the cleanest cuts, and more. And when Papa Butcher 
+    is teaching his daughter how good butchery is done, it's done by guiding her hand as she makes her first cut into that slab of beef and giving 
+    her general heuristics on how to spot good meat from bad. Notably, it is not done by examining her on Dad's Grand Unified Equations Of 
+    Incision Angles For Day-Old Chicken Breast. And it's by refining this word-of-mouth knowledge over generations and through the filters of 
+    communities that it asymptotes to something optimal. Let's call this informal, word-of-mouth, heuristic based knowledge "process knowledge,"
+   and its more formal, mathematical counterpart "theorizing."
+</p><p>
+   Both the butcher and brain surgeon have skin in the game, and the 
+    heuristic (pragmatic and non-theorizing) approaches they take to decision-making under uncertainty refect the real-world risk they bear for their actions. If he 
+    delivers bad mean consistently, the butcher loses his family establishment, and if she egregiously screws up a lobotomy, the neurosurgeon could lose her license 
+    and means to make a living. 
+    The fact that the frontiers of machine learning research, brain surgery, and butchery alike are all characterized by process knowledge as opposed to 
+    theorizing is telling. This is true of other fields, too. Consider the humble cobbler that has worked the streets of Old Delhi for twenty years, 
+    the young boulanger who left high school to apprentice the trade of bakery in the quiet town of Montpellier. Or consider the veteran A380 pilot who knows 
+    everything about an airplane but fluid dynamics and kinematics. Or the solitary sculptor in renaissance Florence, tinkering to see how the 
+    thickness of a chisel's head affects ease of sculpting. 
+</p><p>
+    The fundamental character of all these vocations stands as a stark contrast to grand theorists, most of whom walk the hallowed halls of the academy. 
+    It's with elegant derivations and compelling prose that the daughter of the butcher (first in her family to go to college) sees her peers and convinces herself 
+    that by immersing herself in this 
+    brave new world, thereby distancing herself from that of her father, she is being educated. Over time, trained as a mathematician, she comes to harbor contempt
+    against those that propose advances without fully justifying and proving them, dismissing them as "non-rigorous." She laments the state of the art in machine learning, 
+    hoping to formalize the methods therein and obviate the need for tinkering by bringing the theory of neural networks 
+    under a single mathematical umbrella in one fell swoop. She applies for a theoretical statistics PhD, waiting eagarly for that day when we "really understand machine learning
+    and lay out its statistical foundations in full."
+</p>
+
+<p>
+  TODO: Finish (maybe with inspo from GitHub copilot?)
+</p>
+
+<a href="#top">Back To Top</a>
+    <br>
+    <br>
+
+</div>
+
+
+     <button class="accordion"><h3>Grandfather Ideas</h3></button>
+<div class="panel">
+
+  <p>
+    There exist a certain class of ideas in technology that feel so inevitable and transformative in hindsight that you can 
+    imagine your grandkids sitting around you in 60 years time, starry eyed, and asking you how things could ever have been done 
+    differently? Here are some examples. 
+</p><p>
+    Consider that once, not so long ago, software used to be sold in stores, on shelves, in physical boxes. You would go to a store, buy a box, 
+    keep the receipt in case the software isn't compatible with your computer or some such thing, put the CD into your computer, and so forth. 
+    And, now, it's easy to think: did we ever really live that way? Of course this was inevitable, and I'm sure people knew that even back then. The heart of 
+    a "grandfather idea," though, is that -- post-facto -- we wonder how we could ever have lived that way. 
+</p><p>
+  Another example is paper money. The fact that we trade with sheets of paper with some guy's smiling face on them is a bit absurd. A more ambiguous example is 
+  centralized fiscale policy. On one hand, it does seem crazy that a few old white guys do some hand-wavey calculations every year and use that to decide on 
+  fiscal and monetary policy, as opposed to a more decentralized paradigm championed by cryptocurrency. On the other hand, it also seems plausible that 
+  unforseen issues mean decentralization doesn't work as well as expected, and some novel implementation of centralization is what we asymptote towards as a society. 
+</p><p>
+    And now of course one could say: well, Tanishq, doesn't any major innovation like toilet paper or the AC qualify? Well sure, but that misses the point -- 
+    grandfather ideas are in spirit meant to be those that one could have seen coming in advance, as well as ideas that changed the way things are done in a matter of 
+    years. As it began to take off (and not before), the rapid growth of the internet, and the ensuing movement to digital software/downloads over networks was 
+    not something too radical to envision. I don't think many people think building the AC was obvious immediately before it was built, hence it's not a grandfather idea. 
+    But, really, I hope you get the spirit as we're playing fast and loose with definitions. Imagining your grandkids on your lap asking you these questions is, I think, a good 
+    heuristic. 
+</p><p>
+    AWS & Cloud Compute [TODO]
+</p><p>
+    Netflix [TODO]
+</p><p>
+    Of course, many grandfather ideas are not just inevitable in hindsight, but in foresight as well. This means that the reason that any such ideas 
+    do not exist is <i>not</i> because nobody has given them a good go, but instead because many people are bringing competing models to market, and one just 
+    hasn't won out yet. That is to say, the bottleneck for these ideas is not conviction of founders in the face of rejection 
+    and disbelief (like AirBnB), but instead just the fact that no-one has quite executed right as of yet, though lots of people are surely trying. 
+    And the kicker is that many things that look like grandfather are ideas are not. They're just bad ideas. The difference is a few trillion dollars, 
+    and a few lines in history textbooks. 
+</p>
+
+<p>
+  TODO: Finish
+</p>
+
+<a href="#top">Back To Top</a>
+    <br>
+    <br>
+
+</div>
+
 
      <button class="accordion"><h3>Opacity Bias</h3></button>
 <div class="panel">
@@ -586,7 +751,7 @@ To summarize, I think that building technical maturity in multiple fields equips
   </p>
 </div> -->
 
-<button class="accordion"><h3>Fast Matrix Multiplication From First Principles*</h3></button>
+<!-- <button class="accordion"><h3>Fast Matrix Multiplication From First Principles*</h3></button>
 <div class="panel">
   <br>
   [TODO]
@@ -620,7 +785,7 @@ To summarize, I think that building technical maturity in multiple fields equips
   <a href="#top">Back To Top</a>
   <br>
   <br>
-</div>
+</div> -->
 
 
 <button class="accordion"><h3>AlexNet: The Innards of a Revolution*</h3></button>
