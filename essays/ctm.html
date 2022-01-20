@@ -68,14 +68,13 @@ li.audited {
 <div id="content">
 
     <h3>College and Technical Maturity</h3>
-[TODO: This isn't very clear.]
   <p>
-  When living in the Bay Area and seeing what people need to know to build interesting things in various fields, 
-  I started to believe that most of what you learn in college is (for most people) useless, 
+  When living in the Bay Area and seeing what people needed to know to build interesting things in various fields, 
+  I started to believe that most of what you learn in college is (for most people) useless (or can be learned in one's own time), 
   and that if you purely optimizing for 
   vocational expertise you're better off taking the foundational courses in your field and then leaving school. 
   My attitude on this has shifted slightly. I maintain that the above stance is, as stated, 
-  probably accurate, but I also now appreciate where this thesis is incomplete. 
+  probably accurate, but I also now appreciate that this thesis is incomplete. 
 </p>
     <i>Where I Was Wrong</i>
   <p>
@@ -108,27 +107,36 @@ li.audited {
     To understand what I mean by "technical maturity," think of knowledge as comprised of nodes in a graph. 
     Each tid-bit of knowledge constitutes a node, and the connections between them are the edges. For example, 
     a class about line and surface integrals over vector fields would create a new node on the graph, linking it to,
-     say, electromagnetism from one's physics class, which are prime examples of line integrals 
-    that have physical meaning. That would be an edge between the two nodes. </p>
+     say, electromagnetism from one's physics class, where studying electric fields gives rise to line integrals 
+    that have physical meaning. That would be an edge between the two nodes, since the two topics are closely related. </p>
 <p>
-    Why is this relevant? The contention that many champions of the liberal arts have is that studying challenging topics in broad 
-    contexts makes one "generally smarter" and improve one's "ability to learn," in generality. This is NOT what I mean by technical maturity. 
-    This claim of theirs, in the context of our knowledge graph, is claiming that a node about commutative groups from abstract algebra, or 
+    Why is this relevant? The contention that many champions of the 
+    liberal arts have is that studying challenging topics in broad 
+    contexts makes one "generally smarter" and improve one's "ability to learn," in generality. 
+    This is NOT what I mean by technical maturity. 
+    This claim of theirs, in the context of our knowledge graph, is claiming that a
+     node about, say, group theory or 
     the portrayal of feminism in Austen's <i>Pride and Prejudice</i> has edges 
-    going to things that people do on their jobs; say, writing code or hiring employees. I think there is a wealth of evidence supporting the 
-    fact that humans are very poor at transferring knowledge across domains, even closely related ones. Therefore, this "liberal arts as building critical thinking skills" school of thought,
+    going to things that people do on their jobs; say, writing code or hiring employees. 
+    I think there is a wealth of evidence supporting the 
+    fact that humans are very poor at transferring knowledge across domains, even closely related ones. 
+    Therefore, this "liberal arts as building critical thinking skills" school of thought,
     I see as pretty much baloney. </p>
     <p>
-    But they're on to something. Instead, I claim, knowing about, say, commutative groups is useful for 
-    learning molecular representations in chemistry (think of these topics as knowledge nodes, I'm claiming most people would be able to connect the two). Indeed, it's quite different from abstract algebra, 
+    But they're on to something. Instead, I claim, knowing about, say, group theory is useful for 
+    learning molecular representations in chemistry, where understanding the symmetric structure of molecules is 
+    important to understand their behavior.
+      Indeed, molecular chemistry quite different from abstract algebra, 
     but has clear and direct applications of group theory and so is <i>similar enough</i> for meaningful transfer to happen. 
     In other words, not as different to abstract algebra as, say, doing corporate taxes in Excel. Just different enough. 
     Similarly, knowing about the portrayal of feminism in Austen (again, think of this as a node) really could 
     concievably be directly useful when studying the Suffragete movement because, again, they're different yet similar <i> enough</i>. 
     </p>
     <p>
-    Therefore what I mean for technical maturity is comfort around a set of keywords. In abstract algebra, one keyword might be "symmetric structure" and in feminist studies one might be 
-    "intersectional theory." Having heard these words in other contexts -- even very different ones -- adds value and builds "technical maturity." However, groups and feminist theory is too 
+    Therefore what I mean for technical maturity is comfort around a set of keywords. 
+    In abstract algebra, one keyword might be "symmetric structure" and in feminist studies one might be 
+    "intersectional theory." Having heard these words in other contexts -- even very different ones -- 
+    adds value and builds "technical maturity." However, groups and feminist theory is too 
     far from writing code or drafting speeches to reasonably possibly have any keyword overlap. </p>
     <i>A Concrete Example</i>
     <p>
@@ -146,19 +154,36 @@ li.audited {
   using a unitary operator is the obvious choice, since they preserve the inner product (sum of probabilities) of their input. This is the key point: taking the class on abstract linear algebra
   and one on probability firmly planted nodes (unitary operators, random variables as vectors), and the new topic I was learning (quantum logic gates) had <i> enough keywords in common that I could 
     reasonably create new edges between these knowledge nodes, on the fly.</i> This is the crux of technical maturity: increasing your threshold for what is "obvious". </p>
-    
+    <p>
+    Another example of this "threshold increasing" is found in mathematical economics, as studied by John von Neumann. 
+    When he was doing his studies on game theory, he met with George Dantzig who was studying linear programming, a method 
+    to optimize high-dimensional functions. Dantzig explained his simplex method, a particular algorithm using for such 
+    optimization, to von Neumann. <i>Immediately,</i> von Neumann conjectured his now-famous theorem of LP duality by 
+    realizing the problem he was working on in game theory was equivalent. On the surface, they look nothing alike, but 
+    von Neumann had a deep enough understanding of both game theory and high dimensional optimization to be able to see that 
+    this equivalence between the two was "obvious," even though it had never been obvious to Dantzig or other mathematicians. 
+    Von Neumann had built enough technical maturity in those two fields for him to find connections between the two "obvious."
+</p>
+
   <i>What Might This Look Like In Practise?</i>
   <p>
     If you see college mostly as I do -- a 4-year course on "learning to think like an X" 
      for many different X (mathematician, programmer, 
-     physicist, economist, statistician, historian, psychologist), you should optimize for taking 
+     physicist, economist, statistician), you should optimize for taking 
      difficult, foundational courses in many fields. It's important to emphasize that by 
      "foundational" I don't mean introductory. For example, I do not think 
      taking an introductory CS course or two suffices to "learn to think like a computer scientist."
-     Instead, take intermediate/advanced courses in algorithm design and operating systems to get those 
-     gains. 
+     Instead, take advanced courses in algorithm design and operating systems to get those 
+     gains. You might say that this requires several introductory courses as pre-requisite. I mostly disagree: 
+     I think if you have enough mathematical maturity, pre-requisites in most technical fields become a social construct. 
+     That is, if you are good at math, you can pick up pre-requisites for most technical classes as they're needed 
+     (an aside: this is part of the reason I'm a math major -- it's strictly more foundational, abstract and harder than 
+     most technical fields, 
+     and can even trivialize them if you are sufficiently good at it.
+      My freshman math professor went through 2 semesters of 
+     theoretical CS on a weekend because he was good enough at math that once he'd read the first half of a chapter
+     in a textbook, the results in the second half became obvious to him!). 
      </p>
-
 <p>
      At Harvard, you need to take 12-16 courses in a field and 32 courses overall to graduate with 
      a degree in that field. What if, instead, you took 
@@ -170,7 +195,7 @@ li.audited {
       algorithms and operating systems, programming paradigms, complexity theory and 
       compilers. You'd get 80% of the value of 3-4 different undergraduate degrees, and more importantly be equipped to at least understand parts 
       of the research frontier in each field. Teaching yourself would become much easier, and you wouldn't really be an outsider to any of the fields. 
-      They emphasis here is on seeing college as the <i>starting point</i> for life-long learning, and not the <i>terminal stage</i> in education. 
+      The emphasis here is on seeing college as the <i>starting point</i> for life-long learning, and not the <i>terminal stage</i> in education. 
 </p>
 <p> The obvious caveat here is if you're set on spending your life exploring and deepening a specific field. If you want to be a mathematical physicist, ignore my advice. Go ahead and 
   take quantum field theory and Lie algebra at the expense of understanding how economists or computer scientists think. That is the price you pay for mastery. And that's fine. But 

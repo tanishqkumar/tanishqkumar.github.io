@@ -1,0 +1,175 @@
+<html>
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-153791322-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-153791322-1');
+  </script>
+    <!-- endof Global site tag (gtag.js) - Google Analytics -->
+
+
+
+<style>
+.accordion {
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: 1px solid white;
+  /* border-top: 0.1px solid black; */
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+.active, .accordion:hover {
+  background-color: #000; 
+}
+
+/* panel css and js at bottom */
+
+li.sick {
+  color: rgb(38, 150, 255);
+}
+
+li.audited {
+  color: rgb(52,168,83);
+}
+
+</style>
+
+
+  <link rel="stylesheet" href="/static/style.css">
+  <meta charset="utf-8">
+  <title>The Butcher and the Brain Surgeon · Tanishq Kumar</title>
+</head>
+<body>
+<div id="menu">
+<span class="title">Tanishq Kumar</span>
+<ul>
+  <li><a href="/index.html">Home</a></li>
+  <li><a href="/about.html">About</a></li>
+  <!-- <li><a href="/culture">Culture</a></li> -->
+  <li><a href="/books.html">Bookshelf</a></li>
+  <li><a href="/essays.html">Essays</a></li>
+    <!-- <li><a href="/notes.html">Notes</a></li> -->
+    <!-- <li><a href="/articles.html">Articles</a></li> -->
+      <li><a href="/courses.html">Coursework</a>
+        <!-- <li><a href="/papers.html">Papers</a> -->
+</ul>
+</div>
+<div id="left"></div>
+<div id="content">
+
+<h3>The Butcher and the Brain Surgeon, Or Theory and Practice</h3>
+
+  <p>
+    When I took my first class on machine learning, one of the things that struck me was how "hand-wavey" most of the methods 
+    presented were. By that, I mean that most methods at the state of the art are pretty crude, and worked out by trial and error as opposed to 
+    clinical theorizing from first principles. Instead of deriving a general
+     mathematical theory of neural network performance, machine learning journals are ripe with 
+    people suggesting slightly tweaked architectures for some special case 
+    that have marginally better performance than the previous best. Machine learning 
+    is not the only field that operates this way. Even the most staggeringly intricate 
+    medical surgeries are really nothing more than glorified butchery, in the sense that they are really 
+    just crude procedures that seem to have worked well in the past, 
+    post-facto justified by our middling understanding of anatomy coupled with various biochemical 
+    heuristics. That is to say, surgeons are really nothing more than glorified butchers. And "butchery," here, 
+    is not a pejorative (as we will see), but really quite high praise. 
+    </p><p>
+    The key distinction I'm trying to make here is between fields that are tied to a central and objective source of truth, 
+    and concerned with performance relative to that source of truth, and fields that are broad oceans of intellectual inquiry with 
+    no clear goal in mind. Machine learning, butchery, and brain surgery are all examples of the first type -- 
+    machine learning architectures are judged by their performance on real datasets (eg. classification results on ImageNet), 
+    butchers by the quality of their meat as judged by customers, and brain surgeons by their clinical outcomes (morbidity and 
+    complication numbers of their patients). Examples of the latter type of field include mathematics (abstractly playing with 
+    number-theoretic ideas without regard for where they may lead), the hard humanities (critiquing an obscure passage 
+    by some obscure ancient philosopher for no clear reason), etc. I don't mean to draw the line based on "pragmatism" or 
+    "applicability," to be clear. I'm just drawing a distinction between "guild-like" fields where people are looking to improve 
+    performance of something at the end, and more "theorizing-like" fields that involve toying with ideas in the abstract. 
+    Another example of the "guild-like" is renaissance painting: the old masters like Alberti and Boticelli used to correspond 
+    by mail, commenting on novel techniques for mixing paint to get more realistic shadows, and such things. Their goal was to 
+    produce more lifelike paintings, not to understand the chemical nature of paint from first principles. 
+        </p><p>
+
+        Having made this distinction, the point I'm trying to make is that many theorists look down upon the 
+        "guild-like" fields for having a lack of rigor. Case in point: talk to any theoretical statistician, and they will 
+        wax endlessly about how the lack of foundations in machine learning, and how poorly estimators produced by 
+        ML methods are understood or are intepretable. Of course, this criticism is valid: we don't currently understand 
+        (mathematically) why certain networks perform better than others, or the limits of performance of various networks. 
+        However, it also misses the point. I came into school being taught by many such theorists (I am a math major) and 
+        being told to believe it is misguided to approaching thinking in this goal-oriented trial-and-error sort of way 
+        that is endemic in the "guild-like" subjects. Now, I've come to think that this manner of thinking is not only 
+        more likely to lead to progress, but is in some sense more humble and honorable as a stark contrast to post-facto 
+        theorizing of the kind common in, say, economics. 
+
+    </p><p>
+        And this is really the crux of what I'm trying to get at: the despicable post-facto justification. I think the "guild-like"
+        thinking is more moral because of its epistemic humility. ML practitioners trying to improve image classification 
+        performance will not pretend that they understand what's happening inside a neural network, but theoretical statisticians will, 
+        even though they don't! Similarly, journals in surgery are ripe with lists of procedures and interventions that seem to 
+        have worked OK in practice, with no shame in not justifying why this is the case, 
+        whereas biochemists and other such life scientists co-authoring with surgeons will come around 
+        and try to come up with 
+        justifications for such practises post-facto, making it seem as if they knew this would be the outcome all along. 
+        </p><p>
+        The point 
+        of the scientific method is to make <i>a priori</i> predictions that can be tested, and not to "explain" outcomes 
+    <i>post-facto</i>. This is especially egregious in economics, where theories have no predictive power, and instead are used to 
+    "explain" phenomena like financial crises or business cycles after the fact. The lack of epistemic humility in scenarios like these 
+    can have real consequences, like misguided government monetary policy based on the thinking of said economists, that leads to 
+    economic hardship for millions of people. 
+    Of course theory is a useful tool -- I am a theorist-in-training, after all -- 
+    but it's soul is found when it's used to study conundrums and make a priori predictions that help practitioners, 
+    and not to belittle them or hide under the pretense of knowing why everything that works a certain way does so. 
+
+    </p>
+
+
+    <!-- Furthering this analogy, observe that when butchers meet (at some vegan restaurant, I presume), they discuss 
+    the tricks of the trade; where to source the best meat, what makes for a good knife that delivers the cleanest cuts, and more. And when Papa Butcher 
+    is teaching his daughter how good butchery is done, it's done by guiding her hand as she makes her first cut into that slab of beef and giving 
+    her general heuristics on how to spot good meat from bad. Notably, it is not done by examining her on Dad's Grand Unified Equations Of 
+    Incision Angles For Day-Old Chicken Breast. And it's by refining this word-of-mouth knowledge over generations and through the filters of 
+    communities that it asymptotes to something optimal. Let's call this informal, word-of-mouth, heuristic based knowledge "process knowledge,"
+   and its more formal, mathematical counterpart "theorizing."
+</p><p>
+   Both the butcher and brain surgeon have skin in the game, and the 
+    heuristic (pragmatic and non-theorizing) approaches they take to decision-making under uncertainty refect the real-world risk they bear for their actions. If he 
+    delivers bad mean consistently, the butcher loses his family establishment, and if she egregiously screws up a lobotomy, the neurosurgeon could lose her license 
+    and means to make a living. 
+    The fact that the frontiers of machine learning research, brain surgery, and butchery alike are all characterized by process knowledge as opposed to 
+    theorizing is telling. This is true of other fields, too. Consider the humble cobbler that has worked the streets of Old Delhi for twenty years, 
+    the young boulanger who left high school to apprentice the trade of bakery in the quiet town of Montpellier. Or consider the veteran A380 pilot who knows 
+    everything about an airplane but fluid dynamics and kinematics. Or the solitary sculptor in renaissance Florence, tinkering to see how the 
+    thickness of a chisel's head affects ease of sculpting.  -->
+<!-- </p><p>
+    The fundamental character of all these vocations stands as a stark contrast to grand theorists, most of whom walk the hallowed halls of the academy. 
+    It's with elegant derivations and compelling prose that the daughter of the butcher (first in her family to go to college) sees her peers and convinces herself 
+    that by immersing herself in this 
+    brave new world, thereby distancing herself from that of her father, she is being educated. Over time, trained as a mathematician, she comes to harbor contempt
+    against those that propose advances without fully justifying and proving them, dismissing them as "non-rigorous." She laments the state of the art in machine learning, 
+    hoping to formalize the methods therein and obviate the need for tinkering by bringing the theory of neural networks 
+    under a single mathematical umbrella in one fell swoop. She applies for a theoretical statistics PhD, waiting eagarly for that day when we "really understand machine learning
+    and lay out its statistical foundations in full." -->
+</p>
+
+
+
+
+
+
+
+
+
+
+
+</p>
+
+</div>
