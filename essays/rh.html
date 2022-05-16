@@ -1,0 +1,117 @@
+
+<html>
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-153791322-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-153791322-1');
+  </script>
+    <!-- endof Global site tag (gtag.js) - Google Analytics -->
+
+
+
+<style>
+.accordion {
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: 1px solid white;
+  /* border-top: 0.1px solid black; */
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+.active, .accordion:hover {
+  background-color: #000; 
+}
+
+/* panel css and js at bottom */
+
+li.sick {
+  color: rgb(38, 150, 255);
+}
+
+li.audited {
+  color: rgb(52,168,83);
+}
+
+</style>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <link rel="stylesheet" href="/static/style.css">
+  <meta charset="utf-8">
+  <title>Motivating the Riemann Hypothesis· Tanishq Kumar</title>
+</head>
+<body>
+<div id="menu">
+<span class="title">Tanishq Kumar</span>
+<ul>
+  <li><a href="/index.html">Home</a></li>
+  <li><a href="/about.html">About</a></li>
+  <li><a href="/books.html">Bookshelf</a></li>
+  <li><a href="/essays.html">Essays</a></li>
+      <li><a href="/courses.html">Coursework</a>
+</ul>
+</div>
+<div id="left"></div>
+<div id="content">
+
+<h3>Motivating the Riemann Hypothesis</h3>
+
+<p>
+  <h4>Short Version (high school math)</h4> <p>
+    We care about prime numbers because many questions about natural numbers can be 
+  easily answered using prime factorization, and primes are the "atoms" of natural numbers. A natural question 
+  is how many primes there are below a given magnitude. Various functions -- the most obvious one being \( x \over \ln x \) -- 
+  seem to approximate this "prime counting function", which we call \( \pi (x) \). It turns out that you can combine many such simple functions to asymptotically reach a curve that perfectly fits the prime counting function, \( \pi (x) \). 
+  The key idea is that the Riemann Zeta Function \( \zeta(s) \) <i>quantifies the error in our approximations of 
+    \( \pi (x) \)</i>. Thus, knowing its behavior, particularly its zeros, tells us a lot about the distribution of the prime numbers. 
+    If we solve the Riemann hypothesis, we can explitly write a formula for \( \pi (x) \), and thereby perfectly predict 
+    the number of primes below any given magnitude. That is, we achieve mastery over the primes and, in doing so, 
+    we achieve mastery over the natural numbers themselves. That's a big deal. 
+  </p>
+  
+<br><br>
+    <h4>Longer Version (college level math)</h4>
+    <p>Here, we don't motivate RH so much as generally introduce the relevant technical context that 
+clarifies and elaborates the 
+      qualitative motivation given above. We assume an undertsanding of some basic complex analysis:
+     Cauchy's and the Residue theorems, infinite and canonical products, analytic continuation of complex functions, 
+    and exposure to Fourier series. This explanation is basically a TL;DR of Mazur and Stein's 
+    excellent exposition of RH <a href="http://www.iakovlev.org/zip/gr1.pdf">here</a>. 
+    Here's a formal statement. 
+
+    \[ \text{(Riemann Hypothesis.)} \ \ \forall z \in \mathbb{C}\setminus \{ -2\mathbb{N} \}, \zeta(z) = 0 \implies \text{Re}(z) = {1\over 2} \]
+
+    More informally, it claims that all nontrivial zeros of the Riemann zeta function live on a vertical line of the complex
+    plane defined by numbers with real part one half, where this line is often referred to as the "critical line." </p>
+
+      [IN PROGRESS]
+
+    <i>What does complex analysis have to do with primes?</i>
+    <br><br>
+    <i>The Riemann spectrum and fourier series.</i>
+  <br><br>
+    <i>Distributions</i>
+    <br><br>
+
+    <i>The Prime Number Theorem</i>
+    <br><br>
+
+
+    
+
+</p>
+
+</div>
+
