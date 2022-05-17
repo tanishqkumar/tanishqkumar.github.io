@@ -68,45 +68,59 @@ li.audited {
 
 <h3>Motivating the Riemann Hypothesis</h3>
 
+This is a short introduction to the Riemann hypothesis and associated technical background for college math majors or advanced high school students. 
+I use it to chronicle my own (limited) understanding of this important unsolved problem, because I am probably not going to be able to fit proper courses on 
+analytic number theory or advanced complex analysis into my college coursework. 
+
 <p>
-  <h4>Short Version (high school math)</h4> <p>
+  <h4>Short Version </h4> <p>
     We care about prime numbers because many questions about natural numbers can be 
-  easily answered using prime factorization, and primes are the "atoms" of natural numbers. A natural question 
-  is how many primes there are below a given magnitude. Various functions -- the most obvious one being \( x \over \ln x \) -- 
-  seem to approximate this "prime counting function", which we call \( \pi (x) \). It turns out that you can combine many such simple functions to asymptotically reach a curve that perfectly fits the prime counting function, \( \pi (x) \). 
-  The key idea is that the Riemann Zeta Function \( \zeta(s) \) <i>quantifies the error in our approximations of 
+  easily answered using their prime factorization. The obvious first question 
+  about primes is about how they're distributed; in particular, how many there are up to some natural number \(x\). Various functions -- the most obvious one being \( x \over \ln x \) -- 
+  seem to approximate this "prime counting function", which we call \( \pi (x) \).
+  The key idea is that a complex-valued function called the Riemann Zeta Function \( \zeta(s) \) <i>quantifies the error in our approximations of 
     \( \pi (x) \)</i>. Thus, knowing its behavior, particularly its zeros, tells us a lot about the distribution of the prime numbers. 
-    If we solve the Riemann hypothesis, we can explitly write a formula for \( \pi (x) \), and thereby perfectly predict 
-    the number of primes below any given magnitude. That is, we achieve mastery over the primes and, in doing so, 
-    we achieve mastery over the natural numbers themselves. That's a big deal. 
+    If we prove the Riemann hypothesis, we can perfectly predict 
+    the number of primes below any given magnitude, and, in doing so, achieve
+    some semblance of mastery over the natural numbers. That's a big deal. 
   </p>
   
-<br><br>
-    <h4>Longer Version (college level math)</h4>
-    <p>Here, we don't motivate RH so much as generally introduce the relevant technical context that 
-clarifies and elaborates the 
-      qualitative motivation given above. We assume an undertsanding of some basic complex analysis:
+    <h4>Longer Version </h4>
+    <p>Here, we introduce the relevant technical context that elaborates the 
+      qualitative motivation given above. We assume an understanding of some basic complex analysis:
      Cauchy's and the Residue theorems, infinite and canonical products, analytic continuation of complex functions, 
-    and exposure to Fourier series. This explanation is basically a TL;DR of Mazur and Stein's 
-    excellent exposition of RH <a href="http://www.iakovlev.org/zip/gr1.pdf">here</a>. 
-    Here's a formal statement. 
+    and exposure to Fourier series. We begin with a formal statement of the main result, for \( z \in \mathbb{C} \) 
+    a nontrivial zero (ie. \(z \not\in \mathbb{C}\setminus\{ -2\mathbb{N}\} \)   ). 
 
-    \[ \text{(Riemann Hypothesis.)} \ \ \forall z \in \mathbb{C}\setminus \{ -2\mathbb{N} \}, \zeta(z) = 0 \implies \text{Re}(z) = {1\over 2} \]
+    \[ \text{(Riemann Hypothesis.)} \ \ \zeta(z) = 0 \implies \text{Re}(z) = {1\over 2} \]
 
     More informally, it claims that all nontrivial zeros of the Riemann zeta function live on a vertical line of the complex
     plane defined by numbers with real part one half, where this line is often referred to as the "critical line." </p>
 
+    <br>
       [IN PROGRESS]
+      <br>
 
-    <i>What does complex analysis have to do with primes?</i>
-    <br><br>
-    <i>The Riemann spectrum and fourier series.</i>
-  <br><br>
-    <i>Distributions</i>
+      <br>
+      qs. 
+        - why is Li(x) sqrt accurate?
+<br>
+        
+    <i>The Prime Number Theorem.</i>
     <br><br>
 
-    <i>The Prime Number Theorem</i>
+    <i>Infinite products link complex analysis to primes.</i>
     <br><br>
+
+    <i>Zeta function basics.</i>
+    <br><br>
+
+    <i>Distributions.</i>
+    <br><br>
+    
+    <i>Fourier series and the Riemann spectrum.</i>
+    <br><br>
+
 
 
     
