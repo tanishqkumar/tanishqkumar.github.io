@@ -1,0 +1,103 @@
+
+<html>
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-153791322-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-153791322-1');
+  </script>
+    <!-- endof Global site tag (gtag.js) - Google Analytics -->
+
+
+
+<style>
+.accordion {
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: 1px solid white;
+  /* border-top: 0.1px solid black; */
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+.active, .accordion:hover {
+  background-color: #000; 
+}
+
+/* panel css and js at bottom */
+
+li.sick {
+  color: rgb(38, 150, 255);
+}
+
+li.audited {
+  color: rgb(52,168,83);
+}
+
+</style>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <link rel="stylesheet" href="/static/style.css">
+  <meta charset="utf-8">
+  <title>Transformer attention, a short introduction · Tanishq Kumar</title>
+</head>
+<body>
+<div id="menu">
+<span class="title">Tanishq Kumar</span>
+<ul>
+  <li><a href="/index.html">Home</a></li>
+  <li><a href="/about.html">About</a></li>
+  <li><a href="/books.html">Bookshelf</a></li>
+  <li><a href="/essays.html">Essays</a></li>
+      <li><a href="/courses.html">Coursework</a>
+</ul>
+</div>
+<div id="left"></div>
+<div id="content">
+
+<h3>Transformer Attention, a short introduction</h3>
+
+<p>Here, we present a short introduction to the attention mechanism and transformer model that have taken over NLP in recent years. 
+We assume a working understanding of the fundamentals of machine learning, including what recurrent neural nets (RNNs) are and how they work, 
+because the transformer architecture essentially seeks to improve on these for the purposes of language translation. We note that the attention mechanism 
+is much more general than just the multi-head attention blocks used in the transformers, and can indeed be applied to tasks like vision, as we emphasize in reviewing 
+more recent works (on visual transformers) at the end of this essay. 
+</p>
+
+<p><i>Drawbacks of vanilla RNNs</i></p>
+
+Vanishing gradient means vRNN only learns local effects and never learns to incorporate context (motivating LSTM and, later, attention)
+
+covered in lec1: recap RNNs, motivating LSTM through vanishing gradient, bidirectionality to capture more context (eg. for sentiment analysis)
+
+<p><i>Immediate questions</i></p>
+  <ul>
+    <li>Attention vs self-attention vs cross-attention</li>
+    <li>Why does taking adding an attention vector similar to hidden state \( h_i\) (because of dot product weighting) 
+      in the decoder add expressive power to the decoder?</li>
+    <li>What is the difference between fully connected vanilla feedforward NNs vs fully connected attention layers?</li>
+    <li>Why scale dot-product attention if we will LayerNorm anyway?</li>
+  </ul>
+
+Potential research questions
+  LSTM was motivated by having an extra memory that functions as RAM (the cell memory) to be able to remember longer-term dependencies 
+    can this be linked to SDM ? could we use SDM as LSTM cell memory to match transformer performance ? 
+<p><i>The attention mechanism</i></p>
+
+<p><i>The Transformer architecture</i></p>
+
+<p><i>Recent work</i></p>
+   (multi-head attention, visual transformers)
+
+</div>
+
