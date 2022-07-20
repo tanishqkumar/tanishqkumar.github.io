@@ -1,0 +1,181 @@
+
+<html>
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-153791322-1"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-153791322-1');
+  </script>
+    <!-- endof Global site tag (gtag.js) - Google Analytics -->
+
+
+
+<style>
+.accordion {
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: 1px solid white;
+  /* border-top: 0.1px solid black; */
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+.active, .accordion:hover {
+  background-color: #000; 
+}
+
+/* panel css and js at bottom */
+
+li.sick {
+  color: rgb(38, 150, 255);
+}
+
+li.audited {
+  color: rgb(52,168,83);
+}
+
+</style>
+
+
+  <link rel="stylesheet" href="/static/style.css">
+  <meta charset="utf-8">
+  <title>Congestion games, optimal transport and basic algorithmic game theory· Tanishq Kumar</title>
+</head>
+<body>
+<div id="menu">
+<span class="title">Tanishq Kumar</span>
+<ul>
+  <li><a href="/index.html">Home</a></li>
+  <li><a href="/about.html">About</a></li>
+  <!-- <li><a href="/culture">Culture</a></li> -->
+  <li><a href="/books.html">Bookshelf</a></li>
+  <li><a href="/essays.html">Essays</a></li>
+    <!-- <li><a href="/notes.html">Notes</a></li> -->
+    <!-- <li><a href="/articles.html">Articles</a></li> -->
+      <li><a href="/courses.html">Coursework</a>
+        <!-- <li><a href="/papers.html">Papers</a> -->
+</ul>
+</div>
+<div id="left"></div>
+<div id="content">
+
+<h3>Congestion games, optimal transport and basic algorithmic game theory</h3>
+
+<p>
+  These are some notes from my time teaching myself some algorithmic game theory, 
+  since it came up in my research and is something I knew very little about at the time. 
+  In particular, I'm interested in the state of the art in modelling traffic flow in graph-theoretic terms. 
+Here, I write down 
+my internal intuition for basic ideas in mechanism design, selfish routing, congestion games, as well as 
+survey one or two important papers in the field. For the first three sections here, 
+we work through some parts of Tim Roughgarden's 
+<em>Twenty Lectures on Algorithmic Game Theory</em>, and accordingly, my solutions to <a href="https://timroughgarden.org/f13/f13.html">
+  the problem sets</a> are given alongside some of these ramblings. 
+</p>
+
+<strong>Core ideas and introduction to mechanism design</strong>
+
+
+<p></p>
+
+Solutions to (selected) <a href="https://timroughgarden.org/f13/e/e1.pdf">exercises</a>.
+<p><em>1. Give at least two suggestions for how to modify the Olympic badminton tournament format to reduce or
+eliminate the incentive for teams to intentionally lose a match.</em><br><br>
+<em>Solution.</em> Either randomize the knockout match pairings to eliminate the incentive to lose -- so that 
+the outcome of the final match between first and second seed in a group no longer determines anything -- 
+or, better yet, incentivize teams to win by allowing the first seed in the group to choose who they play in the 
+next round of the knockout phase. 
+</p>
+
+<p>
+  <p><em>2. Clarify how the movie "A Beautiful Mind" misrepresents what a Nash Equilibrium is.</em><br><br>
+<em>Solution.</em>
+</p>
+
+<p>
+<em>3. Prove that there is a unique (mixed-strategy) Nash equilibrium in the Rock-Paper-Scissors game described
+in class.</em><br><br>
+
+<em>Solution.</em> We offer a constructive proof: consider a uniform randomization over the possible actions, with 
+probability \( \frac{1}{3} \) each. Call this strategy \(U\). To see this is a Nash Equilibrium just observe that 
+the expected value of perturbing any of the probabilities is zero, by a symmetry argument. It remains to show 
+that this Nash equilibrium is <em>unique</em>. 
+
+Therefore, fix your opponents' strategies, and assume there exists some strategy \( U' \neq U\) that would 
+yield a higher probability of winning on your behalf. We will derive a contradiction, implying that 
+no such \( U'\) can exist. To see this, observe that since \(U\) is the unique strategy that places equal probability 
+on all three actions "rock-paper-scissors." Therefore, strategy \(U'\) 
+must have an action \(a \in \{ R, P, S\}\) for which the probability of being played if greater than \( \frac{1}{3}\). 
+<br><br>
+Then see that there exists an opposing action \( \lnot a \) (eg. rock for scissors) that the opponent can play with 
+probability one once they identify you are playing \( a\) with high probabilitiy. In this scenario, they win in expectation, 
+and so have incentive to shift their strategy towards doing that, and therefore than can be no equilibrium. Then see 
+that in the case you play symmetrically randomly using strategy \(U\), there can be no such opposing action \( \lnot a \), 
+and thus no incentive for the opposition to deviate, establishing the Nash equilibrium we found at the beginning, 
+as required. 
+</p>
+
+<p>
+  <em>5. Consider a single-item auction with at least three bidders. Prove that awarding the item to the highest
+bidder, at a price equal to the third-highest bid, yields an auction that is not dominant-strategy incentive
+compatible (DSIC).</em><br><br>
+<em>Solution.</em>It suffices to show either bidders do not 1) have a dominant strategy, or 2) guaranteed 
+non-negative utility (in a quasilinear setting) for playing their dominant strategy. 
+
+</p>
+
+<p>
+  <em>6. Suppose there are k identical copies of a good and n > k bidders. Suppose also that each bidder can receive
+at most one good. What is the analog of the second-price auction? Prove that your auction is DSIC.</em><br><br>
+<em>Solution.</em>
+</p>
+
+<p>
+  <em>7. Suppose you want to hire a contractor to perform some task, like remodeling a house. Each contractor has
+a private cost for performing the task. Give an analog of the Vickrey auction in which contractors report
+their costs and the auction chooses a contractor and a payment. Truthful reporting should be a dominant
+strategy in your auction and, assuming truthful bids, your auction should select the contractor with the
+smallest private cost.</em><br><br>
+<em>Solution.</em>
+</p>
+
+<p>
+  <em>8. Recall the sponsored search setting, in which bidder i has a valuation vi per click. There are k slots with
+click-through-rates (CTRs) α1 ≥ α2 ≥ · · · ≥ αk. Recall that the social surplus of an assignment of bidders
+to slots is Pn
+i=1 vixi, where xi equals the CTR of the slot to which i is assigned (or 0 if bidder i is not
+assigned to any slot).
+Prove that the social surplus is maximized by assigning the bidder with the jth highest valuation to the
+jth slot for j = 1, 2, . . . , k</em><br><br>
+<em>Solution.</em>
+</p>
+
+
+<strong>Selfish routing, PoA, network over-provisioning</strong>
+<p></p>
+<strong>Equilibrium heirarchies and smooth games</strong>
+<p></p>
+<strong>An introduction to congestion games</strong>
+<p></p>
+<strong>The Cell Transmission Model</strong>
+<p></p>
+<strong>Search Frictions and Efficiency in Decentralized Transport Markets</strong>
+<p></p>
+<strong>Next steps</strong>
+<p></p>
+
+
+
+
+</div>
+
