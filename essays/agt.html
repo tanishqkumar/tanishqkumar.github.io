@@ -99,7 +99,20 @@ next round of the knockout phase.
 
 <p>
   <p><em>2. Clarify how the movie "A Beautiful Mind" misrepresents what a Nash Equilibrium is.</em><br><br>
-<em>Solution.</em>
+<em>Solution.</em> Ironically, the movie has it <em>exactly</em> wrong. It describes a scenario where 
+5 girls walk into a bar where John Nash and 3 of his friends are. There are four brunettes, and a blonde. 
+The men are all attracted to the blonde more than the brunettes,
+ but care above all else with having someone at the end of the day, even 
+if it's one of the brunettes. Nash -- in the movie -- posits that if they all go for the blonde, she rejects them all, 
+and then so do her friends (the brunettes) since they don't want to be second choice. Instead, he proposes they go 
+for the brunettes -- one each -- from the outset, to maximize "social surplus," in economics-lingo, and have someone 
+at the end of it all. <br><br> 
+
+In reality, Nash Equilibria (NE) describe scenarios where no agent has incentive to deviate. In this setup, if all 
+your competitors are going for a brunette, you <em>do</em> have incentive to deviate/change your behavior
+(pursue the blonde), since then you're 
+likely to get her since there is no competition. This is an example of a situation that is categorically 
+<em>not</em> a Nash Equilibrium -- as many movie critics (nerds) are quick to point out. 
 </p>
 
 <p>
@@ -129,13 +142,17 @@ as required.
   <em>5. Consider a single-item auction with at least three bidders. Prove that awarding the item to the highest
 bidder, at a price equal to the third-highest bid, yields an auction that is not dominant-strategy incentive
 compatible (DSIC).</em><br><br>
-<em>Solution.</em>It suffices to show either bidders do not 1) have a dominant strategy, or 2) guaranteed 
-non-negative utility (in a quasilinear setting) for playing their dominant strategy. 
-
+<em>Solution.</em> It suffices to construct a scenario in which a bidder has incentive (or is indifferent) to 
+lie -- or at least not be truthful about their true preference. Let the two highest bids for a good so far 
+be \( B_1 = 200, B_2 = 10\), and let the private valuation of an agent considering bidding be \( v = 100 \). 
+Assume quasilinear utility, as is standard. The agent knows bidding \( b > 200\) will get him the item for \( $10\), 
+resulting in \( 100 - 10 = 90\) utils, and he therefore does so. Since \( b > v \) strictly, he gains 
+positive utility from lying, and therefore a third-item auction does not always incentive agents to 
+set their bids equal to their valuations, as required. 
 </p>
 
 <p>
-  <em>6. Suppose there are k identical copies of a good and n > k bidders. Suppose also that each bidder can receive
+  <em>6. Suppose there are \( k \) identical copies of a good and \( n>k \) bidders. Suppose also that each bidder can receive
 at most one good. What is the analog of the second-price auction? Prove that your auction is DSIC.</em><br><br>
 <em>Solution.</em>
 </p>

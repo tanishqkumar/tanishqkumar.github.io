@@ -89,7 +89,7 @@ Then we can let \( \delta = \text{max}(d, \epsilon)+1   \) to get that
 \(p_i \in B_\delta(p) \) for all \( p_i \in (p_n) \), as required. 
 
 <br><br>
-(9) This is really the monotone convergence theorem, whose proof goes as follows. Consider, WLOG
+(10) Consider, WLOG
 (the same idea goes for decreasing sequences) an increasing sequence, \( (p_n) \in \mathbb{R} \).
 Assume it is bounded. Then by the LUB property of the real numbers, it has a supremum, call it 
 \( p \). To see this is in fact the limit of the sequence, fix an \( \epsilon > 0 \) and see that eventually 
@@ -100,13 +100,35 @@ find a tighter upper bound, \( p' \), for the sequence. This would contradict th
 
 
 <br><br>
-(10)
+(11)(a) Let \( (x_n) \in \mathbb{R} \) be a sequence, and we seek to find a monotone subsequence. Call a natural number 
+\( x_n \) "nice" if \(m > n \implies x_m > x_n \). That is, if every number after \( x_n \) is strictly 
+larger than it. Then see that either our sequence \( (x_n) \) has finitely many "nice" numbers or not. 
+<br><br>
+If it does, take some \( x_k, k > n \) for \(x_n \) the final "nice" number. Then we are guaranteed that there exists some 
+\( x_{k+1} \) that is smaller than or equal to \( x_k \) because \( x_k \) is not nice. And same with \( x_{k+1} \) 
+inductively, to generate an infinite sequence of non-increasing numbers. 
+<br><br>
+If \( (x_n) \) has infinitely many "nice" numbers, then those form a non-decreasing sequence since each is 
+greater than the last, by definition of "nice." Therefore, either way, our sequence \( (x_n) \) has 
+a monotone subsequence, as required. <br><br>
+
+(b) Every subsequence of a bounded sequence is also bounded, and so if we take a subsequence of \( (x_n) \)
+that is monotone, we can use (10) to see that subsequence converges, and thus \( (x_n) \) has a convergent 
+subsequence. <br><br>
+
+(c) The fact that every bounded sequence has a convergent subsequence that we just proved above is exactly equivalent to 
+Bolzano-Weierstrass for \( n=1 \). <br><br> 
+
+(d) Heine-Borel states that sequentially compact \( \iff \) closed and bounded. A metric space \( (X, d) \) is 
+sequentially compact if every sequence within it converges to a limit <em>in the same metric space</em>. BW
+just gives that every bounded sequence in the reals has a convergent subsequence, which isn't enough to 
+establish sequential compactness of the reals due to the boundedness condition (in fact, the reals do 
+not comprise a compact set), so this does not help us get a proof of Heine-Borel. 
+
 
 <br><br>
-(11)
-
-<br><br>
-(13)
+(13) Fix arbitrary \( \epsilon > 0 \) and \( x_0 \in M \). We seek a \( \delta \) such that 
+\(|x-x_0| &lt; \delta \implies |f| &lt; \epsilon \)
 
 <br><br>
 (19)
@@ -127,6 +149,9 @@ find a tighter upper bound, \( p' \), for the sequence. This would contradict th
 (40)
 
 <br><br>[TODO. The Riemann Integral and its limitations]
+
+<br><br>[TODO. Theorems to recap: Rolle, Darboux, IVT, EVT, MVT, Bolzano-Weierstrass, Heine-Borel, Arzela-Ascoli, 
+Inverse Function Theorem, Implicit Function Theorem]
 
 </div>
 
