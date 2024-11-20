@@ -1,0 +1,186 @@
+
+<html>
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-153791322-1"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-153791322-1');
+  </script>
+    <!-- endof Global site tag (gtag.js) - Google Analytics -->
+
+
+
+<style>
+.accordion {
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: 1px solid white;
+  /* border-top: 0.1px solid black; */
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+.active, .accordion:hover {
+  background-color: #000; 
+}
+
+/* panel css and js at bottom */
+
+li.sick {
+  color: rgb(38, 150, 255);
+}
+
+li.audited {
+  color: rgb(52,168,83);
+}
+
+</style>
+
+
+  <link rel="stylesheet" href="/static/style.css">
+  <meta charset="utf-8">
+  <title>Things I've changed my mind about in deep learning· Tanishq Kumar</title>
+</head>
+<body>
+<div id="menu">
+<span class="title">Tanishq Kumar</span>
+<ul>
+  <li><a href="/index.html">Home</a></li>
+  <li><a href="/about.html">About</a></li>
+  <!-- <li><a href="/culture">Culture</a></li> -->
+  <!-- <li><a href="/books.html">Bookshelf</a></li> -->
+  <!-- <li><a href="/essays.html">Writing</a></li> -->
+    <!-- <li><a href="/notes.html">Notes</a></li> -->
+    <!-- <li><a href="/articles.html">Articles</a></li> -->
+      <li><a href="/courses.html">Courses</a>
+        <li><a href="/papers.html">Research</a>
+</ul>
+</div>
+<div id="left"></div>
+<div id="content">
+
+<h3>Some things I've changed my mind about recently</h3>
+
+As of November 2024. 
+
+<ul>
+  <li>The role of knowledge vs reasoning in LMs</li>
+  <ul>
+      <li>I used to think knowledge, ie. facts that foundation models can recall, was a bug, not a feature</li>
+      <li>We have databases for that, surely we want FMs to be big-brain reasoning machines instead?</li>
+      <li>Then I started paying attention to how I use LMs myself on a day to day basis</li>
+      <li>And realized that I mostly use them as a soft interpolants of internet content, ie. an even softer version of search than keyword/semantic web search</li>
+      <li>Also, MMLU (knowledge) seems to be the major axis that determines general capabilities, including reasoning</li>
+    </ul>
+  <li>Architecture vs data
+    <ul>
+      <li>Used to think architecture was the first order concern, now I think it's the data</li>
+      <li>In some sense this is obvious in hindsight because in an estimation problem, the target function usually affects the 
+        learned function more than choice of estimator
+      </li>
+      <li>Have started some work on synthetic data; mixtures of real-synthetic usually outperform real on most metrics</li>
+      <li>This means there are some statistical properties the models "want" in their data that web text doesn't fully have</li>
+      <li>What is the platonic data distribution models "want" to learn world representations on?</li>
+      <li>Does quality of synthetic data (as measured by downstream data scaling exponents on evals wrt tokens) increase 
+        with compute per token used to generate it (however you want to use this compute)?
+      </li>
+      <li>Lesson from the end of pretraining is that compute is still the key driver, but now we want other avenues to pour it into 
+        (eg. inference-time). Can data be such an avenue?
+      </li>
+      <li>Unrelated, but web scrapes are hilarious. I've spent >10h reading C4 over the last few weeks, and I'm amazing LMs learn anything at all. 
+        One document is gangster rap, the next is Galois theory, and the next is an incomplete snippet from divorce proceedings. What 
+        are we teaching our models?
+      </li>
+    </ul>
+  </li>
+  <li>Neuro vs cognitive level of abstraction in both brains and machines
+    <ul>
+      <li>Years ago when I became interested in brains I felt like "only neurons are real" and this word "mind" is just one used by armchair philosophers</li>
+      <li>Over the last few years I've mostly worked at the "neuroscience" level of abstraction with both literal brains and artificial networks</li>
+      <li>This is beautiful and interesting but I think it's probably more important to understand FMs' "minds" instead now</li>
+      <li>Okay, these computations lead to some behavior by these foundation models. What are the tendencies? How can we make this next-token prediction 
+          map into a joyful experience for billions of people that will have their next token predicted? What are the "personalities" of these models
+          and why are they the same or different across labs? What are the invariants?
+        </li>
+        <li>These are all questions at the cognitive, not neuro, level of abstraction (Marr Level 3, not 1&2, is where to be in 2025)</li>
+      </li>
+    </ul>
+  </li>
+  <!-- cultures use these models differently. converge on base frntir practices, deploy extremely diffrently -->
+  <li>I really want (need) to learn about 1) distributed systems and 2) HCI
+    <ul>
+      <li>The fact I don't know what this NCCL/Infiniband/NVlink jargon means or how it works under the hood annoys me</li>
+      <li>HCI because I'm starting to realize that how models are post and thus pretrained is determined by how consumers and enterprises find it 
+        most intuitive to interact with them 
+      </li>
+      <li>The "GUI moment" for FMs still hasn't happened</li>
+      <li>Maybe it's agents, maybe that's the wrong mental model? I'm sure they will play a role but I don't think it's the full story</li>
+      <li>Will voice/language models become the primary medium through which we interface with computation of any sort (e.g., like the desktop of a home computer is for many now)</li>
+      <li>I should go to an elementary school and see how kids interact with these models. Alan Kay wanted the GUI so kids could interact with computation. 
+        Everyone is so obsessed with automating the enterprise. What about automating the elementary school? (this is satire) 
+      </li>
+    </ul>
+  </li>
+  <li>Hardware, not math, should dictate mental model of e.g., a forward pass</li>
+  <ul>
+    <li>Over the last year my mental model of what a neural network *is* (like, in its bones) has oscillated between "parametric function class" to "spicy matmuls on tensor cores"</li>
+    <li>Learning about GPUs, performance engineering, CUDA, and more from an awesome collaborator (shoutout BFS) as a reformed theory person has been revelatory</li>
+    <li>I feel like my undergraduate machine learning classes, and especially my theory classes, kind of lied to me? The object that runs on GPUs has qualitatively different texture from one that was taught to me as a "parameterized function class"</li>
+    <li>I don't know the right language to express this sentiment yet, but the taste of neural networks has changed as I learned more about hardware and systems. They are not what I was taught they are</li>
+</ul>
+  <li>More confused about optimization than ever before - how do we get anything done here?</li>
+  <ul>
+    <li>Does anybody alive understand high-dimensional non-convex optimization?</li>
+    <li>How do optimizers for pretraining keep improving if we don't? (Adam -> Shampoo -> SOAP, etc)</li>
+    <li>Do adaptive/preconditioned methods really even share the texture of vanilla gradient descent? Are they even phenomenologically the same class of 
+        object?
+    </li>
+    <li>Are second-order methods inevitable? Is it clear they must win in the fullness of time? Not clear to me, but probably?
+    </li>
+  </ul>
+  <li>Will SSMs win? From no way to probably yes
+    <ul>
+      <li>Inference really matters, and constant factor improvements/just making ASICs cannot be the end of the story</li>
+      <li>If O(1) inference speed is possible, then it is inevitable</li>
+      <li>Inference is the speed of thought for agentic workflows and reasoning with LMs</li>
+      <li>When something is important, constant factors are optimized; when something is really, really important, asymptotics matter most</li>
+    </ul>
+  </li>
+  <li>This is a less sciency comment, but the fact that different cultures use deep learning very differently is exciting to me</li>
+  <ul>
+    <li>For instance, China has a huge on-demand delivery market, and robust last-mile robotics and mobile app infrastructure built around this. A Chinese friend
+        described the process of coming to America and using DoorDash as "moving to a third world country." When he explained some of the features (powered by AI)
+        that exist on online shopping apps in China, I found it so fascinating that the same technologies (frontier foundation models) are deployed behind the scenes 
+        for such different uses cases across cultures. 
+    </li>
+    <li>This makes me optimistic every culture will make AI its own. It's kind of like how Uber Eats often loses to local food delivery apps (Grab, Talabat, Rappi, etc)
+        when it sets up shop in a new region. 
+        People (consumers) care about products and interfaces that respect small cultural details. These things matter and people vote with their feet. And the idea that 
+        AI can be useful to small companies aiming to build "culture-aware" products and win market share this way is amazing to me. It means AI is accelerating 
+        heterogeneity of preferences and products instead of the opposite. I think this is a very good thing. 
+    </li>
+    <li>Maybe the key use case for FMs will be agentic language models automating the enterprise in the US. Maybe this will also be the case in China, maybe not -- 
+        maybe a common use case there is media companies using huge diffusion models to let consumers make personalized episodes of their favorite shows. Maybe the 
+        cultural zeitgeist is such that there is no market for this in the US. 
+        I find it wonderful that different countries and cultures will build around their cultural traditions and preferences, so that there is no single "AI future" 
+        for society, but instead a "postmodern Shenzhen" or "cyberpunk Sao Paolo" etc etc. I can't wait to see what Mumbai looks like in 2050. 
+    </li>
+  </ul>
+
+</ul>
+
+
+
+
+</div>
+
