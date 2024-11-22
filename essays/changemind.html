@@ -69,45 +69,38 @@ li.audited {
 <div id="left"></div>
 <div id="content">
 
-<h3>Some things I've changed my mind about recently</h3>
+<h3>Coming up for air: some things I've changed my mind about in deep learning</h3>
 
-As of November 2024. 
+<p>
+I've been underwater, focused myopically on my research over the last several months. Now I want to come up for air and reflect a bit as I 
+wrangle with my statement of purpose. A lot of these are opinions I've revised over the last ~6 months, and most are things I can't put into an SOP since I'm told they will make me look too scatterbrained.
+And yes, the title is also a reference to one of my favorite novels. 
+LM = language model; FM = foundation model. 
+</p>
 
 <ul>
   <li>The role of knowledge vs reasoning in LMs</li>
   <ul>
-      <li>I used to think knowledge, ie. facts that foundation models can recall, was a bug, not a feature</li>
-      <li>We have databases for that, surely we want FMs to be big-brain reasoning machines instead?</li>
-      <li>Then I started paying attention to how I use LMs myself on a day to day basis</li>
-      <li>And realized that I mostly use them as a soft interpolants of internet content, ie. an even softer version of search than keyword/semantic web search</li>
-      <li>Also, MMLU (knowledge) seems to be the major axis that determines general capabilities, including reasoning</li>
+      <li>I used to think the storage of knowledge in model weights (subject-relation-fact) was a bug, not a feature</li>
+      <li>We have databases for keys and values, surely we want FMs to be big-brain reasoning machines instead? My naïve dream was a ~1b model that can reason and plan like GPT4 and just use the internet/RAG for knowledge</li>
+      <li>Then I started paying attention to how I use LMs myself on a day to day basis and realized that I mostly use them as a soft interpolants of internet content, ie. an even softer version of search than keyword/semantic web search</li>
+      <li>Also, MMLU (knowledge) seems to be the major axis that determines general capabilities, including reasoning. For some reason I don't fully understand, 
+        knowledge and reasoning seem intertwined and interdependent in FMs, unlike in humans where for instance people who can memorize a lot may not be the best at hard math problems. 
+      </li>
     </ul>
   <li>Architecture vs data
     <ul>
-      <li>Used to think architecture was the first order concern, now I think it's the data</li>
-      <li>In some sense this is obvious in hindsight because in an estimation problem, the target function usually affects the 
-        learned function more than choice of estimator
-      </li>
-      <li>Have started some work on synthetic data; mixtures of real-synthetic usually outperform real on most metrics</li>
-      <li>This means there are some statistical properties the models "want" in their data that web text doesn't fully have</li>
-      <li>What is the platonic data distribution models "want" to learn world representations on?</li>
-      <li>Does quality of synthetic data (as measured by downstream data scaling exponents on evals wrt tokens) increase 
-        with compute per token used to generate it (however you want to use this compute)?
-      </li>
-      <li>Lesson from the end of pretraining is that compute is still the key driver, but now we want other avenues to pour it into 
-        (eg. inference-time). Can data be such an avenue?
-      </li>
-      <li>Unrelated, but web scrapes are hilarious. I've spent >10h reading C4 over the last few weeks, and I'm amazed that LMs learn anything at all. 
-        One document is gangster rap, the next is Galois theory, and the next is an incomplete snippet from divorce proceedings. What 
-        are we teaching our models?
-      </li>
+      <li>Used to think architecture was the first order concern, now I think it's the data. In some sense this is obvious in hindsight because in an estimation problem, the target function usually affects the 
+        learned function more than choice of estimator</li>
+      <li>Have started some work on synthetic data; mixtures of real-synthetic usually outperform real on most metrics. This means there are some statistical properties the models "want" in their data that web text doesn't fully have</li>
+      <li>What is the platonic data distribution models "want" to learn world representations on? Is there any definition for "quality" and "compute" such that the statement "the quality per token of synthetic data improves predictably with compute used to generate it" is true?</li>
     </ul>
   </li>
-  <li>Neuro vs cognitive level of abstraction in both brains and machines
+  
+  <!-- <li>Neuro vs cognitive level of abstraction in both brains and machines
     <ul>
       <li>Years ago when I became interested in brains I felt like "only neurons are real" and this word "mind" is just one used by armchair philosophers</li>
-      <li>Over the last few years I've mostly worked at the "neuroscience" level of abstraction with both literal brains and artificial networks</li>
-      <li>This is beautiful and interesting but I think it's probably more important to understand FMs' "minds" instead now</li>
+      <li>Over the last few years I've mostly worked at the "neuroscience" level of abstraction with both literal brains and artificial networks. I think now it's probably more important to understand FMs' "minds" instead.</li>
       <li>Okay, these computations lead to some behavior by these foundation models. What are the tendencies? How can we make this next-token prediction 
           map into a joyful experience for billions of people that will have their next token predicted? What are the "personalities" of these models
           and why are they the same or different across labs? What are the invariants?
@@ -115,48 +108,80 @@ As of November 2024.
         <li>These are all questions at the cognitive, not neuro, level of abstraction (Marr Level 3, not 1&2, is where to be in 2025)</li>
       </li>
     </ul>
-  </li>
+  </li> -->
+
+
   <!-- cultures use these models differently. converge on base frntir practices, deploy extremely diffrently -->
-  <li>I really want (need) to learn about 1) distributed systems and 2) HCI
+  <li>I really want to learn about HCI in the few weeks after grad school apps. 
     <ul>
-      <li>The fact I don't know what this NCCL/Infiniband/NVlink jargon means or how it works under the hood annoys me</li>
-      <li>HCI because I'm starting to realize that how models are post and thus pretrained is determined by how consumers and enterprises find it 
-        most intuitive to interact with them 
+      <li>How models are post and thus pretrained -- and thus what is most important scientifically for me to work on in the next few years -- 
+        is determined by how consumers and enterprises find it 
+        most intuitive to interact with them. The "GUI moment" for FMs still hasn't happened and I really wonder what it will be. 
       </li>
-      <li>The "GUI moment" for FMs still hasn't happened</li>
-      <li>Maybe it's agents, maybe that's the wrong mental model? I'm sure they will play a role but I don't think it's the full story</li>
-      <li>Will voice/language models become the primary medium through which we interface with computation of any sort (e.g., like the desktop of a home computer is for many now)</li>
+      <li>Maybe it's agents, maybe that's the wrong mental model? I'm sure they will play a role but I don't think it's the full story, or at least specific enough for what I'm looking for.</li>
+      <li>I think the design space for FM interfaces is extremely underexplored. But I also know nothing about HCI, so who am I to say. Some things that might be extremal points of this space:</li>
+      <ul>
+        <li>Will websites reduce to being just endpoints that can be hit by agentic API calls, and will humans stop interfacing directly with the web via URLs as a result?</li>
+        <li>Will voice/language models become the primary medium through which we interface with computation of any sort (e.g., like the desktop of a home computer is for many now)?
+          Many revolutions in interface design came from one thing doing many things (eg. iPhone). 
+        </li>
+        <li>Will the startups that have the best models package them into "superapps" that are not just 
+          models and search engines, but companions and agents? For instance, in China, billions of users do literally 
+          everything online (shopping, food, bookings, communication, etc) through a few "superapps" like WeChat. </li>
+        <li>Will we ever interact with single language model forward passes like we do now, or will each response be a sort of ensembled output from the deliberation of a committee of models?
+          If inference-time compute truly works, I see no reason most outputs shown to a user will not be the result of lots of low-latency MCTS/repeated sampling/multi-agent debate. 
+        </li>
+        <li>Will we have dashboards on the models we interact with, telling us real-time information about how honest or sycophantic they are being by monitoring their internals, like we have for 
+          cars or stoves?
+        </li>
+      </ul>      
       <li>I should go to an elementary school and see how kids interact with these models. Alan Kay wanted the GUI so kids could interact with computation. 
         Everyone is so obsessed with automating the enterprise. What about automating the elementary school? (this is satire) 
       </li>
     </ul>
   </li>
-  <li>Hardware, not math, should dictate mental model of e.g., a forward pass</li>
+  <li>I also really want learn about distributed systems</li>
   <ul>
-    <li>Over the last year my mental model of what a neural network *is* (like, in its bones) has oscillated between "parametric function class" to "spicy matmuls on tensor cores"</li>
+    <li>The fact I don't know what this NCCL/Infiniband/NVlink bullshit means or how it works under the hood annoys me. Apparently the software 
+      "discovers the topology of the cluster and optimizes for it"? No clue what that means but it sounds cool.  
+    </li>
+    <li>Understanding (computer) networks and data centers seems like an evergreen skill that will never go out of style.</li>
+    <li>For reasons I cannot explain, I feel a moral duty to do this if I want to call myself a deep learning researcher.</li>
+  </ul>
+
+<!-- <li></li>
+      <li>It feels like things get qualitatively much more annoying/complicated as you scale from single to multi GPU, and a significant portion of folks employed by frontier labs are put to work 
+        making sure this orchestra of hardware/software operates seamlessly under the hood. I feel a moral duty to share in their suffering 
+        if I am to call myself a deep learning person. 
+      </li> -->
+
+  <li>Hardware vs math for mental models of what neural networks actually are</li>
+  <ul>
+    <li>Over the last year my mental model of what a neural network *is* (like, in its bones) has oscillated between "parametric function class" and "spicy matmuls on tensor cores"</li>
     <li>Learning about GPUs, performance engineering, CUDA, and more from an awesome collaborator (shoutout BFS) as a reformed theory person has been revelatory</li>
-    <li>I feel like my undergraduate machine learning classes, and especially my theory classes, kind of lied to me? The object that runs on GPUs has qualitatively different texture from one that was taught to me as a "parameterized function class"</li>
-    <li>I don't know the right language to express this sentiment yet, but the taste of neural networks has changed as I learned more about hardware and systems. They are not what I was taught they are</li>
+    <li>I feel like my undergraduate machine learning classes kind of lied to me? Neural networks do not have the flavor I thought they did after I've learned a bit about how GPUs work</li>
+    <li>"Deep learning theory" sometimes feels like a mirror where you get out (theorems) a slightly transformed version of what you put in (assumptions you deliberately made to be able to prove things). </li>
 </ul>
   <li>More confused about optimization than ever before - how do we get anything done here?</li>
   <ul>
-    <li>Does anybody alive understand high-dimensional non-convex optimization?</li>
-    <li>How do optimizers for pretraining keep improving if we don't? (Adam -> Shampoo -> SOAP, etc)</li>
+    <li>Does anybody alive understand high-dimensional non-convex optimization? How do optimizers for pretraining keep improving if we don't? (Adam -> Shampoo -> SOAP, etc)</li>
+    <li>What's even more perplexing is often the theory used to motivate these new optimizers (that do work!) is from <i>convex optimization</i> even though as I understand it, 
+    these loss landscapes are not even locally quadratic!</li>
     <li>Do adaptive/preconditioned methods really even share the texture of vanilla gradient descent? Are they even phenomenologically the same class of 
-        object?
-    </li>
-    <li>Are second-order methods inevitable? Is it clear they must win in the fullness of time? Not clear to me, but probably?
+        object? Are second-order methods inevitable? I am a curious and naïve tourist in the wonderland of optimization
     </li>
   </ul>
-  <li>Will SSMs win? From no way to probably yes
+  <li>Will SSMs win? From no to probably yes
     <ul>
       <li>Inference really matters, and constant factor improvements/just making ASICs cannot be the end of the story</li>
-      <li>If O(1) inference speed is possible, then it is inevitable</li>
-      <li>Inference is the speed of thought for agentic workflows and reasoning with LMs</li>
-      <li>When something is important, constant factors are optimized; when something is really, really important, asymptotics matter most</li>
+      <li>If O(1) inference is possible, then it feels inevitable, even if only on the order of decades</li>
+      <li>Inference is the speed of thought for agentic workflows and reasoning with LMs. If inference-time compute gains are loglinear and inference speed goes up by 100x overnight
+         when we switch to SSMs, eval performance within a fixed wall clock inference time will shoot up out of nowhere. 
+      </li>
+      <li>When something is quite important, constant factors are optimized (ASICs, etc); when something is really, really important, the asymptotics will win</li>
     </ul>
   </li>
-  <li>This is a less sciency comment, but the fact that different cultures use deep learning very differently is exciting to me</li>
+  <!-- <li>This is a less sciency comment, but the fact that different cultures use deep learning very differently is exciting to me</li>
   <ul>
     <li>For instance, China has a huge on-demand delivery market, and robust last-mile robotics and mobile app infrastructure built around this. A Chinese friend
         described the process of coming to America and using DoorDash as "moving to a third world country." When he explained some of the features (powered by AI)
@@ -175,7 +200,7 @@ As of November 2024.
         I find it wonderful that different countries and cultures will build around their cultural traditions and preferences, so that there is no single "AI future" 
         for society, but instead a "postmodern Shenzhen" or "cyberpunk Sao Paolo" etc etc. I can't wait to see what Mumbai looks like in 2050. 
     </li>
-  </ul>
+  </ul> -->
 
 </ul>
 
