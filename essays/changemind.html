@@ -74,11 +74,7 @@ li.audited {
 <p>
 I've been underwater, focused myopically on my research over the last several months. Now I want to come up for air and reflect a bit as I 
 dilly-dally with my statement of purpose. A lot of these are opinions I've revised over the last ~6 months, others are things I'm curious about,
- and most are things I can't put into an SOP since I'm told they will make me look too scatterbrained.
- Also, I used to write a lot when I was younger then I stopped a couple of years ago as I started consuming and producing only theorems and code and taking myself too seriously. 
- Thankfully, I think I've outgrown my serious phase, so I'm back to writing soon. And yes, the title is also a reference to one of my favorite novels. 
-
-<br>
+ and most are things I can't put into an SOP since I'm told they will make me look too scatterbrained. And yes, the title is also a reference to one of my favorite novels. 
 LM = language model; FM = foundation model. 
 </p>
 
@@ -164,7 +160,18 @@ LM = language model; FM = foundation model.
     <li>Over the last year my mental model of what a neural network *is* (like, in its bones) has oscillated between "parametric function class" and "spicy matmuls on tensor cores"</li>
     <li>Learning about GPUs, performance engineering, CUDA, and more from an awesome collaborator (shoutout BFS) as a reformed theory person has been revelatory</li>
     <li>I feel like my undergraduate machine learning classes kind of lied to me? Neural networks do not have the flavor I thought they did after I've learned a bit about how GPUs work</li>
-    <li>"Deep learning theory" sometimes feels like a mirror where you get out (theorems) a slightly transformed version of what you put in (assumptions you deliberately made to be able to prove things). </li>
+    <li>"Deep learning theory" sometimes feels like a mirror where you get out (theorems) a slightly transformed version of what you put in (assumptions you deliberately made to be able to prove things). 
+      I'm more than happy to use my own work as an example:
+    </li>
+    <ul>
+        <li>In <i>No Free Prune</i>, we used arguments from high-dimensional probability to reason about why pruning networks at initialization is doomed. 
+          I think it contains a cute and interesting mathematical result, but -- since it relies on overparameterization -- says nothing about FMs, which are underparameterized. 
+           Also, over time, I have come to feel that negative/pessimistic results of this form are spiritually not the kind of work I want to do long-term. 
+        </li>
+
+
+    </ul>
+    
 </ul>
   <li>More confused about optimization than ever before - how do we get anything done here?</li>
   <ul>
