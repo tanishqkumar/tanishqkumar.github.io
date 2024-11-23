@@ -59,7 +59,7 @@ li.audited {
   <li><a href="/about.html">About</a></li>
   <!-- <li><a href="/culture">Culture</a></li> -->
   <!-- <li><a href="/books.html">Bookshelf</a></li> -->
-  <!-- <li><a href="/essays.html">Writing</a></li> -->
+  <li><a href="/essays.html">Writing</a></li>
     <!-- <li><a href="/notes.html">Notes</a></li> -->
     <!-- <li><a href="/articles.html">Articles</a></li> -->
       <li><a href="/courses.html">Courses</a>
@@ -69,11 +69,11 @@ li.audited {
 <div id="left"></div>
 <div id="content">
 
-<h3>Coming up for air: some things I've changed my mind about in deep learning</h3>
+<h3>Coming up for air</h3>
 
 <p>
-I've been underwater, focused myopically on my research over the last several months. Now I want to come up for air and reflect a bit. 
-These are some things I've revised my opinions on over the last several months, others are just things on my mind. 
+I've been underwater, focused myopically on my research, over the last several months. Now I want to come up for air and reflect a bit on the lay of the land in deep learning 
+as I think about what's most important to work on. Below are some things I've changed my mind about over the last several months, others are just things I've been thinking about over the last week. 
 Most are things I can't put into an SOP since they will make me look too scatterbrained. And yes, the title is a reference to one of my favorite novels. 
 <br>
 LM = language model; FM = foundation model. 
@@ -85,9 +85,9 @@ LM = language model; FM = foundation model.
       <li>I used to think the storage of knowledge in model weights (subject-relation-fact) was a bug, not a feature</li>
       <li>We have databases for keys and values, surely we want FMs to be big-brain reasoning machines instead? My naïve dream was a ~1b model that can reason and plan like GPT4 and just use the internet/RAG for knowledge</li>
       <li>Then I started paying attention to how I use LMs myself on a day to day basis and realized that I mostly use them as a soft interpolants of internet content, ie. an even softer version of search than keyword/semantic web search</li>
-      <li>Also, MMLU (knowledge) seems to be the major axis that determines general capabilities, including reasoning. For some reason I don't fully understand, 
-        knowledge and reasoning seem intertwined and interdependent in FMs, unlike in humans where for instance people who can memorize a lot may not be the best at hard math problems. 
+      <li>Also, MMLU (knowledge) seems to be the major axis that determines general capabilities, including reasoning. Knowledge and reasoning seem intertwined in FMs, unlike in humans where for instance people who can memorize a lot may not be the best at hard math problems. 
       </li>
+      <!-- <li>The long tail of the data distribution is interesting: </li> -->
     </ul>
   <li>Architecture vs data
     <ul>
@@ -95,6 +95,8 @@ LM = language model; FM = foundation model.
         learned function more than choice of estimator</li>
       <li>Have started some work on synthetic data; mixtures of real-synthetic usually outperform real on most metrics. This means there are some statistical properties the models "want" in their data that web text doesn't fully have</li>
       <li>What is the platonic data distribution models "want" to learn world representations on? Is there any definition for "quality" and "compute" such that the statement "the quality per token of synthetic data improves predictably with compute used to generate it" is true?</li>
+      <li>In some sense, model distillation is a trivial example where bigger generators are better, but this is less interesting to me because you can't distill your way to a frontier model. 
+        I think the most interesting synthetic corpora are comprised of less invasive "rephrases" or augmentations of real seed text by a generative model.</li>
     </ul>
   </li>
   
@@ -143,11 +145,9 @@ LM = language model; FM = foundation model.
   </li>
   <li>I also really want learn about distributed systems</li>
   <ul>
-    <li>The fact I don't know what this NCCL/Infiniband/NVlink bullshit means or how it works under the hood annoys me. Apparently the software 
-      "discovers the topology of the cluster and optimizes for it"? No clue what that means but it sounds cool.  
-    </li>
+    <li>The fact I don't know what this NCCL etc jargon means or how it works under the hood annoys me.</li>
     <li>Understanding (computer) networks and data centers seems like an evergreen skill that will never go out of style.</li>
-    <li>For reasons I cannot explain, I feel a moral duty to do this if I want to call myself a deep learning researcher.</li>
+    <!-- <li>For reasons I cannot explain, I feel a moral duty to do this if I want to call myself a deep learning researcher.</li> -->
   </ul>
 
 <!-- <li></li>
@@ -160,7 +160,7 @@ LM = language model; FM = foundation model.
   <ul>
     <li>Over the last year my mental model of what a neural network *is* (like, in its bones) has oscillated between "parametric function class" and "spicy matmuls on tensor cores"</li>
     <li>Learning about GPUs, performance engineering, CUDA, and more from an awesome collaborator (shoutout BFS) as a reformed theory person has been revelatory</li>
-    <li>I feel like my undergraduate machine learning classes kind of lied to me? Neural networks do not have the flavor I thought they did after I've learned a bit about how GPUs work</li>
+    <!-- <li>I feel like my undergraduate machine learning classes kind of lied to me? Neural networks do not have the flavor I thought they did after I've learned a bit about how GPUs work</li> -->
     <li>"Deep learning theory" sometimes feels like a mirror where you get out (theorems) a slightly transformed version of what you put in (assumptions you deliberately made to be able to prove things). 
       I'm more than happy to use my own work as an example:
     </li>
@@ -180,39 +180,38 @@ LM = language model; FM = foundation model.
     <li>What's even more perplexing is often the theory used to motivate these new optimizers (that do work!) is from <i>convex optimization</i> even though as I understand it, 
     these loss landscapes are not even locally quadratic!</li>
     <li>Do adaptive/preconditioned methods really even share the texture of vanilla gradient descent? Are they even phenomenologically the same class of 
-        object? Are second-order methods inevitable? I am a curious and naïve tourist in the wonderland of optimization
+        object? Are second-order methods inevitable? I am a naïve tourist in the wonderland of optimization
     </li>
   </ul>
-  <li>Will SSMs win? From no to probably yes
+  <li>Will SSMs win? From no chance to maybe
     <ul>
       <li>Inference really matters, and constant factor improvements/just making ASICs cannot be the end of the story</li>
       <li>If O(1) inference is possible, then it feels inevitable, even if only on the order of decades</li>
+      <li>Even if traditional SSMs (LTI) don't win, I think hybrid models have a real chance. The notion of clamping n-gram heads into an SSM in the ICLL paper was hilarious and brilliant.</li>
       <li>Inference is the speed of thought for agentic workflows and reasoning with LMs. If inference-time compute gains are loglinear and inference speed goes up by 100x overnight
          when we switch to SSMs, eval performance within a fixed wall clock inference time will shoot up out of nowhere. 
       </li>
-      <li>When something is quite important, constant factors are optimized (ASICs, etc); when something is really, really important, the asymptotics will win</li>
+      <!-- <li>When something is quite important, constant factors are optimized (ASICs, etc); when something is really, really important, the asymptotics will win</li> -->
     </ul>
   </li>
-  <!-- <li>This is a less sciency comment, but the fact that different cultures use deep learning very differently is exciting to me</li>
+  <li>This is a less sciency comment, but the fact that different cultures use deep learning very differently is exciting to me</li>
   <ul>
-    <li>For instance, China has a huge on-demand delivery market, and robust last-mile robotics and mobile app infrastructure built around this. A Chinese friend
-        described the process of coming to America and using DoorDash as "moving to a third world country." When he explained some of the features (powered by AI)
-        that exist on online shopping apps in China, I found it so fascinating that the same technologies (frontier foundation models) are deployed behind the scenes 
-        for such different uses cases across cultures. 
+    <li>For instance, China has a huge on-demand delivery market, and robust last-mile robotics and mobile app infrastructure built around this. 
+      A key use case of AI there is powering this flourishing ecosystem of food delivery and shopping apps. 
     </li>
-    <li>This makes me optimistic every culture will make AI its own. It's kind of like how Uber Eats often loses to local food delivery apps (Grab, Talabat, Rappi, etc)
-        when it sets up shop in a new region. 
-        People (consumers) care about products and interfaces that respect small cultural details. These things matter and people vote with their feet. And the idea that 
+    <li>I think video models will be huge in India, maybe even uniquely so; the culture is enormously reliant on video and film and TV as a focal point of communication 
+      and there's a lot of latent creative energy I suspect can be released. I can't wait for slum teenagers to be making viral clips and 
+      short movies that genuinely compete with Bollywood when diffusion models become open and cheap for all. 
+    </li>
+    <li>Japan has really bought into AI as an emotional companian. I would hear my Japanese friends swear by their pet chatbots on Character.ai and wax lyrical about 
+      their intimate bonds. I know Japan historically has a culture of framing AI as by defult helpful and human-like in contrast to the typical depiction in 
+      Western sci-fi, maybe this made adoption easier. 
+    </li>
+    <li>This makes me optimistic every culture will make AI its own. The idea that 
         AI can be useful to small companies aiming to build "culture-aware" products and win market share this way is amazing to me. It means AI is accelerating 
         heterogeneity of preferences and products instead of the opposite. I think this is a very good thing. 
     </li>
-    <li>Maybe the key use case for FMs will be agentic language models automating the enterprise in the US. Maybe this will also be the case in China, maybe not -- 
-        maybe a common use case there is media companies using huge diffusion models to let consumers make personalized episodes of their favorite shows. Maybe the 
-        cultural zeitgeist is such that there is no market for this in the US. 
-        I find it wonderful that different countries and cultures will build around their cultural traditions and preferences, so that there is no single "AI future" 
-        for society, but instead a "postmodern Shenzhen" or "cyberpunk Sao Paolo" etc etc. I can't wait to see what Mumbai looks like in 2050. 
-    </li>
-  </ul> -->
+  </ul>
 
 </ul>
 
