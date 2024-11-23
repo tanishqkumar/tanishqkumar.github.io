@@ -49,7 +49,7 @@ li.audited {
 
   <link rel="stylesheet" href="/static/style.css">
   <meta charset="utf-8">
-  <title>Things I've changed my mind about in deep learning· Tanishq Kumar</title>
+  <title>Coming up for air· Tanishq Kumar</title>
 </head>
 <body>
 <div id="menu">
@@ -72,9 +72,11 @@ li.audited {
 <h3>Coming up for air</h3>
 
 <p>
-I've been underwater, focused myopically on my research, over the last several months. Now I want to come up for air and reflect a bit on the lay of the land in deep learning 
-as I think about what's most important to work on. Below are some things I've changed my mind about over the last several months, others are just things I've been thinking about over the last week. 
-Most are things I can't put into an SOP since they will make me look too scatterbrained. And yes, the title is a reference to one of my favorite novels. 
+I've been underwater, focused myopically on my research, over the last few months. Now I want to catch my breath and reflect a bit on the lay of the land in deep learning. 
+Here, I reconsider some opinions I had early on this year, and generally think about what feels important 
+or interesting to me to work on in the coming months and years. Most of these I 
+can't put into an SOP since they will make me look too scatterbrained. 
+And yes, the title is a reference to one of my favorite novels. 
 <br>
 LM = language model; FM = foundation model. 
 </p>
@@ -93,10 +95,10 @@ LM = language model; FM = foundation model.
     <ul>
       <li>Used to think architecture was the first order concern, now I think it's the data. In some sense this is obvious in hindsight because in an estimation problem, the target function usually affects the 
         learned function more than choice of estimator</li>
-      <li>Have started some work on synthetic data; mixtures of real-synthetic usually outperform real on most metrics. This means there are some statistical properties the models "want" in their data that web text doesn't fully have</li>
+      <li>Have started some work on synthetic data; mixtures of real-synthetic usually outperform real on most downstream evals. This means there are some statistical properties the models "want" in their data that web text doesn't fully have</li>
       <li>What is the platonic data distribution models "want" to learn world representations on? Is there any definition for "quality" and "compute" such that the statement "the quality per token of synthetic data improves predictably with compute used to generate it" is true?</li>
       <li>In some sense, model distillation is a trivial example where bigger generators are better, but this is less interesting to me because you can't distill your way to a frontier model. 
-        I think the most interesting synthetic corpora are comprised of less invasive "rephrases" or augmentations of real seed text by a generative model.</li>
+        I think the most interesting synthetic corpora are "rephrases" or augmentations of real seed text (see eg. the WRAP paper).</li>
     </ul>
   </li>
   
@@ -145,8 +147,10 @@ LM = language model; FM = foundation model.
   </li>
   <li>I also really want learn about distributed systems</li>
   <ul>
-    <li>The fact I don't know what this NCCL etc jargon means or how it works under the hood annoys me.</li>
-    <li>Understanding (computer) networks and data centers seems like an evergreen skill that will never go out of style.</li>
+    <li>The fact I don't know what this NCCL bullshit means or how it works under the hood annoys me.</li>
+    <li>Despite the fact I've done multi-node pretraining many times by now, I still don't think I fully understand all the details of FSDP. I really
+        should read the source code/try implementing a simple version from scratch, it seems important to master.</li>
+    <!-- <li>Understanding (computer) networks and data centers seems like an evergreen skill that will never go out of style.</li> -->
     <!-- <li>For reasons I cannot explain, I feel a moral duty to do this if I want to call myself a deep learning researcher.</li> -->
   </ul>
 
@@ -166,8 +170,9 @@ LM = language model; FM = foundation model.
     </li>
     <ul>
         <li>In <i>No Free Prune</i>, we used arguments from high-dimensional probability to reason about why pruning networks at initialization is doomed. 
-          I think it contains a cute and interesting mathematical result, but -- since it relies on overparameterization -- says nothing about FMs, which are underparameterized. 
-           Also, over time, I have come to feel that negative/pessimistic results of this form are spiritually not the kind of work I want to do long-term. 
+          I think it contains clean and cool theorems, but -- since it relies on overparameterization and isoperimetric data distributions 
+          -- what it says about FMs is unclear. 
+           <!-- Also, over time, I have come to feel that negative/pessimistic results of this form are spiritually not the kind of work I want to do long-term.  -->
         </li>
 
 
@@ -177,20 +182,32 @@ LM = language model; FM = foundation model.
   <li>More confused about optimization than ever before - how do we get anything done here?</li>
   <ul>
     <li>Does anybody alive understand high-dimensional non-convex optimization? How do optimizers for pretraining keep improving if we don't? (Adam -> Shampoo -> SOAP, etc)</li>
-    <li>What's even more perplexing is often the theory used to motivate these new optimizers (that do work!) is from <i>convex optimization</i> even though as I understand it, 
-    these loss landscapes are not even locally quadratic!</li>
     <li>Do adaptive/preconditioned methods really even share the texture of vanilla gradient descent? Are they even phenomenologically the same class of 
         object? Are second-order methods inevitable? I am a naïve tourist in the wonderland of optimization
     </li>
   </ul>
-  <!-- <li>One thing that is amazing about deep learning is how unusually tighly new research techniques are with products they enable</li> -->
-   <!-- spin glasses, neuroscience, etc -->
+  <li>One thing that is amazing about deep learning is how unusually tight the link is between new research techniques and downstream products they enable</li>
+  <ul>
+    <li>Often, scientific breakthroughs are touted to the general public as "potentially enabling world-changing technologies in just a few decades"</li>
+    <li>With deep learning, as soon as a new technique is invented in a preprint, startups start build products around it if it's important enough</li>
+    <li>After the TRAK paper came out, some folks I know started to work on a data attribution company</li>
+    <li>The literal day after the ReFT finetuning paper came out, friends at agentic startups were trying to see if it could be useful as a method to finetune agentic pipelines</li>
+    <li>When super long context started to get really good with the state space line of work, audio companies started cropping up</li>
+    <li>Quantum mechanics was cool because it shook the foundations of a scientific field, then over a span of decades enabled a ton of cool products 
+        build using our understanding of it (electronics, lasers, GPS, MRI, etc). Deep learning is the same, except the products 
+        built around it crystallize on the timescale of <i>weeks to months</i> after a discovery! It is as if the double slit experiment 
+        and invention of the iPhone happened within the same year!
+    </li>
+  </ul>
+   
+  
+  <!-- spin glasses, neuroscience, etc -->
 
 
   <li>Will SSMs win? From no chance to maybe
     <ul>
       <li>Inference really matters, and constant factor improvements/just making ASICs cannot be the end of the story</li>
-      <li>If O(1) inference is possible, then it feels inevitable, even if only on the order of decades</li>
+      <!-- <li>If O(1) inference is possible, then it feels inevitable, even if only on the order of decades</li> -->
       <li>Even if traditional SSMs (LTI) don't win, I think hybrid models have a real chance. The notion of clamping n-gram heads into an SSM in the ICLL paper was hilarious and brilliant.</li>
       <li>Inference is the speed of thought for agentic workflows and reasoning with LMs. If inference-time compute gains are loglinear and inference speed goes up by 100x overnight
          when we switch to SSMs, eval performance within a fixed wall clock inference time will shoot up out of nowhere. 
@@ -202,17 +219,40 @@ LM = language model; FM = foundation model.
       <!-- <li>When something is quite important, constant factors are optimized (ASICs, etc); when something is really, really important, the asymptotics will win</li> -->
     </ul>
   </li>
+
+  <li>I'm starting to believe some of the cool phenomena theorists reason about in toy models may actually sometimes be similar what is driving similar phenomena in frontier models</li>
+  <ul>
+    <li>I wrote my lazy to rich grokking paper last year in part to try show interpretability people it wasn't that complicated
+    </li>
+    <li>In particular, the use of the phrase "phase transition" to describe grokking had annoyed me, because it has a very specific meaning in math/physics (the free energy of a system, or its derivatives,
+        being non-analytic) and I felt it was being abused by many interp folks for ideological reasons to make these toy mathematical models look like sentient beings or what-not. 
+    </li>
+    <li>But over time, some work has accumulated showing that grokking may on some level be a genuine phase transition (Noa Rubin's excellent paper, etc). 
+        This, coupled with my own recent work showing evidence for similar phenomena in cortex raises the extremely tantalizing prospect that "eureka moments"
+        humans may be driven by dynamics similar to those at play when we see phase transitions in test loss/accuracy in these toy models. 
+        I still don't take this literally, but I do take it slightly more literally than I did a year ago. 
+    </li>
+    <li>I suspect (hope?) that in my grandchildren's generation, the subfield that sits at the nexus of 
+        statistical inference, statistical physics and spin glass theory, deep learning and neural networks, and information theory, 
+        will be unified into some of the most beautiful ideas to ever grace the human mind. I think 
+        Andrea Montanari's work is a key first step in this direction. 
+    </li>
+    <li>But this is obviously not a productive way to think about deep learning (engineering discipline) to push SOTA today, so 
+        I usually don't on a day to day level. 
+    </li>
+  </ul>
+
   <li>This is a less sciency comment, but the fact that different cultures use deep learning very differently is exciting to me</li>
   <ul>
     <li>For instance, China has a huge on-demand delivery market, and robust last-mile robotics and mobile app infrastructure built around this. 
       A key use case of AI there is powering this flourishing ecosystem of food delivery and shopping apps. 
     </li>
     <li>I think video models will be huge in India, maybe even uniquely so; the culture is enormously reliant on video and film and TV as a focal point of communication 
-      and there's a lot of latent creative energy I suspect can be released. I can't wait for slum teenagers to be making viral clips and 
+      and there's a lot of latent creative energy I suspect can be released. I can't wait for kids messing around after school in a slum playground to be making viral clips and 
       short movies that genuinely compete with Bollywood when diffusion models become open and cheap for all. 
     </li>
-    <li>Japan has really bought into AI as an emotional companian. I would hear my Japanese friends swear by their pet chatbots on Character.ai and wax lyrical about 
-      their intimate bonds. I know Japan historically has a culture of framing AI as by defult helpful and human-like in contrast to the typical depiction in 
+    <li>Japan has really bought into AI as an emotional companion. I would hear my Japanese friends swear by their pet chatbots on Character.ai and wax lyrical about 
+      their intimate bonds. I know Japan historically has a culture of framing AI as by default helpful and human-like in contrast to the typical depiction in 
       Western sci-fi, maybe this made adoption easier. 
     </li>
     <li>This makes me optimistic every culture will make AI its own. The idea that 
