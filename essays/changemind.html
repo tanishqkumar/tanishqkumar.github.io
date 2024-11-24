@@ -74,10 +74,10 @@ li.audited {
 <p>
 I've been underwater, focused myopically on my research, over the last few months. Now I want to catch my breath and reflect a bit on the lay of the land in deep learning. 
 Here, I reconsider some opinions I had early on this year, and generally think about what feels important 
-or interesting to me to work on in the coming months and years. Most of these I 
-can't put into an SOP since they will make me look too scatterbrained. 
+ to work on in the coming months and years. Most of these I 
+can't put into an SOP since they will make me look too scatterbrained (which I am). 
 And yes, the title is a reference to one of my favorite novels. 
-<br>
+<br><br>
 LM = language model; FM = foundation model. 
 </p>
 
@@ -89,7 +89,10 @@ LM = language model; FM = foundation model.
       <li>Then I started paying attention to how I use LMs myself on a day to day basis and realized that I mostly use them as a soft interpolants of internet content, ie. an even softer version of search than keyword/semantic web search</li>
       <li>Also, MMLU (knowledge) seems to be the major axis that determines general capabilities, including reasoning. Knowledge and reasoning seem intertwined in FMs, unlike in humans where for instance people who can memorize a lot may not be the best at hard math problems. 
       </li>
-      <!-- <li>The long tail of the data distribution is interesting: </li> -->
+      <li>The long tail of the data distribution is interesting. The Allen-Zhu line of work shows exposure to a fact O(10) times isn't enough for a LM to be able to reason about it. 
+        One way to get around this is to synthetically amplify documents with long-tail facts during pretraining time so models see those facts thousands of times. But this feels too bashy to me.   
+        How can we do better?
+      </li>
     </ul>
   <li>Architecture vs data
     <ul>
@@ -97,8 +100,8 @@ LM = language model; FM = foundation model.
         learned function more than choice of estimator</li>
       <li>Have started some work on synthetic data; mixtures of real-synthetic usually outperform real on most downstream evals. This means there are some statistical properties the models "want" in their data that web text doesn't fully have</li>
       <li>What is the platonic data distribution models "want" to learn world representations on? Is there any definition for "quality" and "compute" such that the statement "the quality per token of synthetic data improves predictably with compute used to generate it" is true?</li>
-      <li>In some sense, model distillation is a trivial example where bigger generators are better, but this is less interesting to me because you can't distill your way to a frontier model. 
-        I think the most interesting synthetic corpora are "rephrases" or augmentations of real seed text (see eg. the WRAP paper).</li>
+      <ul><li>In some sense, model distillation is a trivial example where bigger generators are better, but this is less interesting to me because you can't distill your way to a frontier model. 
+        I think the most interesting synthetic corpora are those that are "rephrases" or augmentations of real seed text (see eg. the WRAP paper).</li></ul>
     </ul>
   </li>
   
@@ -192,11 +195,14 @@ LM = language model; FM = foundation model.
     <li>With deep learning, as soon as a new technique is invented in a preprint, startups start build products around it if it's important enough</li>
     <li>After the TRAK paper came out, some folks I know started to work on a data attribution company</li>
     <li>The literal day after the ReFT finetuning paper came out, friends at agentic startups were trying to see if it could be useful as a method to finetune agentic pipelines</li>
-    <li>When super long context started to get really good with the state space line of work, audio companies started cropping up</li>
+    <li>When super long context started to finally work, audio companies started quickly cropping up using state space techniques to power voice apps</li>
     <li>Quantum mechanics was cool because it shook the foundations of a scientific field, then over a span of decades enabled a ton of cool products 
-        to be built using our newfoudn understanding (electronics, lasers, MRI, etc). Deep learning is the same, except the products 
+        to be built using our newfound understanding (electronics, lasers, MRI, etc). 
+        <ul>
+          <li>Deep learning is the same, except the products 
         built around it crystallize on the timescale of <i>weeks to months</i> after a discovery! It is as if the double slit experiment 
-        and invention of the iPhone happened within the same year!
+        and invention of the iPhone happened within the same year!</li>
+        </ul>
     </li>
   </ul>
    
@@ -222,23 +228,22 @@ LM = language model; FM = foundation model.
 
   <li>I'm starting to believe some of the cool phenomena theorists reason about in toy models may actually sometimes be similar what is driving similar phenomena in frontier models</li>
   <ul>
-    <li>I wrote my lazy to rich grokking paper last year in part to try show interpretability people it wasn't that complicated
+    <li>I wrote my lazy to rich grokking paper last year in part to try show mech interp people it wasn't that complicated
     </li>
-    <li>In particular, the use of the phrase "phase transition" to describe grokking had annoyed me, because it has a very specific meaning in math/physics (the free energy of a system, or its derivatives,
-        being non-analytic) and I felt it was being abused by many interp folks for ideological reasons to make these toy mathematical models look like sentient beings or what-not. 
+    <li>In particular, the use of the phrase "phase transition" to describe grokking felt misguided to me, because it has a very specific meaning in math/physics (the free energy of a system, or its derivatives,
+        being non-analytic) and I felt it was being abused for ideological reasons to make these toy mathematical models look like sentient beings or what-not. 
     </li>
     <li>But over time, some work has accumulated showing that grokking may on some level be a genuine phase transition (Noa Rubin's excellent paper, etc). 
         This, coupled with my own recent work showing evidence for similar phenomena in cortex raises the extremely tantalizing prospect that "eureka moments" in 
         humans may be driven by similar dynamics. I still don't take this literally, but I'm more open to it than before. 
     </li>
-    <li>I suspect that in my grandchildren's generation, the subfield that sits at the nexus of 
-        { inference, statistical physics and spin glass theory, deep learning and neural networks }
-        will be unified into some of the most beautiful ideas to ever grace the human mind. I think 
-        Andrea Montanari's work is a key first step in this direction. 
+    <!-- <li>I suspect that in my grandchildren's generation, canonical textbooks on neural networks and their theory 
+      will rely on ideas at the nexus of the fields we currently call { statistical inference, statistical physics, deep learning, information theory }. 
+        I think/hope by then these ideas will be unified into a subtle, complete, and breathtaking theory, much like general relativity is now. 
     </li>
-    <li>But this is obviously not a productive way to think about deep learning (engineering discipline) to push SOTA today, so 
-        I usually don't on a day to day level. 
-    </li>
+    <li>But this is not a productive way to think about deep learning (engineering discipline) to push SOTA today, so 
+        I usually don't on a day to day level. Today is the time for thorough empirics. 
+    </li> -->
   </ul>
 
   <li>This is a less sciency comment, but the fact that different cultures use deep learning very differently is exciting to me</li>
@@ -246,11 +251,12 @@ LM = language model; FM = foundation model.
     <li>For instance, China has a huge on-demand delivery market, and robust last-mile robotics and mobile app infrastructure built around this. 
       A key use case of AI there is powering this flourishing ecosystem of food delivery and shopping apps. 
     </li>
-    <li>I think video models will be huge in India, maybe even uniquely so; the culture is enormously reliant on video and film and TV as a focal point of communication 
-      and there's a lot of latent creative energy I suspect can be released. I can't wait for kids messing around after school in a slum playground to be making viral clips and 
+    <li>I think generative video models will be huge in India, maybe even uniquely so; 
+      the culture is enormously reliant on video and film and TV as a focal point of communication 
+      and there's a lot of latent creative energy I suspect can be released. I can't wait for kids messing around after school in a dhaba to be making viral clips and 
       short movies that genuinely compete with Bollywood when diffusion models become open and cheap for all. 
     </li>
-    <li>Japan has really bought into AI as an emotional companion. I would hear my Japanese friends swear by their pet chatbots on Character.ai and wax lyrical about 
+    <li>Japan has really bought into AI as an emotional companion. My Japanese friends tell me people there swear by their pet chatbots on Character.ai and wax lyrical about 
       their intimate bonds. I know Japan historically has a culture of framing AI as by default helpful and human-like in contrast to the typical depiction in 
       Western sci-fi, maybe this made adoption easier. 
     </li>
@@ -262,7 +268,7 @@ LM = language model; FM = foundation model.
 
 </ul>
 
-<i>Many thanks to Kenneth Li and Ben Spector for discussions on these topics.</i><br><br>
+<!-- <i>Many thanks to Kenneth Li and Ben Spector for discussions on these topics.</i><br><br> -->
 
 
 </div>
