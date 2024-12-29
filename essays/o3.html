@@ -1,0 +1,290 @@
+<html>
+<head>
+    <!-- Global site tag (gtag.js) -- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-153791322-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-153791322-1');
+  </script>
+    <!-- endof Global site tag (gtag.js) -- Google Analytics -->
+
+<style>
+.accordion {
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: 1px solid white;
+  /* border-top: 0.1px solid black; */
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+.active, .accordion:hover {
+  background-color: #000; 
+}
+
+/* panel css and js at bottom */
+
+li.sick {
+  color: rgb(38, 150, 255);
+}
+
+li.audited {
+  color: rgb(52,168,83);
+}
+
+</style>
+
+  <link rel="stylesheet" href="/static/style.css">
+  <meta charset="utf-8">
+  <title>Basis Pursuit · Tanishq Kumar</title>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<div id="menu">
+<span class="title">Tanishq Kumar</span>
+<ul>
+  <li><a href="/index.html">Home</a></li>
+  <li><a href="/about.html">About</a></li>
+  <!-- <li><a href="/culture">Culture</a></li> -->
+  <!-- <li><a href="/books.html">Bookshelf</a></li> -->
+  <li><a href="/essays.html">Writing</a></li>
+    <!-- <li><a href="/notes.html">Notes</a></li> -->
+    <!-- <li><a href="/articles.html">Articles</a></li> -->
+      <li><a href="/courses.html">Courses</a>
+        <li><a href="/papers.html">Research</a>
+</ul>
+</div>
+<div id="left"></div>
+<div id="content">
+
+    <h3>Basis Pursuit</h3>
+
+    <h4>1. Introduction</h4>
+    <p>
+    The release of the o3 model series by OpenAI has garnered much attention, deservedly. 
+    This essay will center around two questions:
+    <ol>
+        <li>What does OpenAI understand that we outsiders don't?</li>
+        <li>What does the word "scaling" really mean? How should we interpret it? Is it fundamentally about having a large compute budget?</li>
+    </ol>
+    </p>
+    <p>
+    I argue here that the answer to Question (1) is that <i>the story of modern deep learning is one of basis pursuit</i>. 
+    That is, modern deep learning is fundamentally about finding the 
+     approaches that allow for <i>predictable</i> scaling with compute. The claim of my answer to Question (2) is that "predictable," not "compute,"
+     is the operative word in a good modern definition of scaling. Building and using large compute clusters 
+    is the <i>easiest</i> part of scaling. I will present and flesh out some examples from the past, 
+    and consider what this means for what is important to work on in the near future. 
+    </p>
+    
+    <h4>What Does this Mean?</h4>
+    
+    <p>
+    I have seen three types of takeaways from the announcement: 
+
+    <ul>
+        <li><strong>Copy</strong>: "the community needs an open reproduction of o3"</li>
+        <li><strong>Compete</strong>: "we should shift our research focus entirely to inference-time methods"</li>
+        <li><strong>Ignore</strong>: "academia is the place for independent thinking -- let's keep working on what we were working on a year ago"</li>
+    </ul>
+    </p>
+    
+    <p>I am not convinced any of these is quite right. 
+    I think the correct takeaway is at a more abstract level: 
+    pretraining is not the only basis in which scaling works. 
+    The response to this is <i>not</i> to try "beat" OpenAI at scaling their current basis 
+    (inference-time compute, ITC), but rather find the basis they will seek to scale
+    <i>after</i> gains from inference-time search begin to diminish.
+ </p>
+
+    <h4>Basis Pursuit: The Matrix Multiplication Analogy</h4>
+    
+    <p>
+    I mean "basis" in the sense of linear algebra. Let me make this concrete with matrix multiplication.
+    Consider multiplying matrices \(A\) and \(B\). Via singular value decomposition, we can write:
+    </p>
+
+    <p>
+    \[A = U\Sigma V^* \text{ and } B = W\Lambda Z^*\]
+    </p>
+
+    <p>
+    where \(U\),\(V\),\(W\),\(Z\) are unitary matrices (the basis changes) and \(\Sigma,\Lambda\) are diagonal matrices of singular values.
+    The multiplication \(AB\) then becomes:
+    </p>
+
+    <p>
+    \[AB = (U\Sigma V^*)(W\Lambda Z^*)\]
+    </p>
+
+    <p>
+    If \(V^*\) and \(W\) align well (\(V^*W \approx I\)), this simplifies to:
+    </p>
+
+    <p>
+    \[AB \approx U(\Sigma\Lambda)Z^*\]
+    </p>
+
+    <p>
+    The middle part \(\Sigma\Lambda\) is just scaling -- multiplying diagonal entries. This is the "easy" part, analogous 
+    to throwing compute at training. 
+    The hard part is finding good basis matrices \(\mathbf{U}\),\(\mathbf{V}\),\(\mathbf{W}\),\(\mathbf{Z}\) that make the 
+    multiplication simple.
+    </p>
+
+    <p>
+    I sense many believe deep learning is about having the biggest clusters. 
+    I think this is necessary but far from sufficient. 
+    In the matrix multiplication analogy, it's just the "rescale singular values" -- the least interesting 
+    or conceptually difficult part!
+    The hard part is finding <i>the right basis transformations</i> -- the architectures and training 
+    methods that make scaling <i>predictable</i>. 
+    Just like finding \(U\), \(V\), \(W\), \(Z\) that diagonalize the matrices 
+    is the key to efficient matrix multiplication.
+    </p>
+
+    <p>
+    The word "predictable" is central because most ways of throwing compute 
+    at deep learning systems actually <i>do not improve them</i>:
+    </p>
+
+    <ul>
+        <li>Making a convNet 100x larger <i>does not make it much better</i> on ImageNet</li>
+            <ul>
+                <li>However, making a pretrained Transformer 100x larger <i>does make it much better</i> on C4</li>
+            </ul>
+        <li>Adding more layers to a GAN <i>does not improve</i> sample quality much</li>
+            <ul>
+                <li>But scaling up diffusion model size and compute <i>can reliably improve</i> generation quality</li>
+            </ul>
+        <li>Scaling network width to infinity naively <i>makes your model performance worse</i> by converging to a kernel method</li>
+            <ul>
+                <li>Scaling width and updates in a way that ensures that hidden representations evolve O(1)
+                    every training step independent of network width 
+                    (muP) lead to <i>predictable</i> performance improvements with size. </li>
+            </ul>
+    </ul>
+    </p>
+
+    <h4>3. Historical Examples of Successful Basis Pursuit</h4>
+
+    <p>
+    Some examples of successful basis pursuit in deep learning:
+    </p>
+
+    <ul>
+        <li><b>Scaling pretraining</b>
+            <ul>
+                <li>AlexNet: It usually isn't framed this way, but I think AlexNet was a bet on scaling. 
+                    We've known that neural networks could classify images since the 80s.
+                    Krizhevsky et al bet that <i>larger</i> could do better. 
+                    The effort required to make this work was mostly
+                    gritty engineering work to distribute training 
+                    across GPUs. This <a href="https://tanishqkumar.github.io/essays/pednprof.html">exemplifies</a> how major breakthroughs 
+                    often come from executing simple "pedestrian" ideas well.
+                </li>
+                <li>Residual connections: ResNets were more than just a big deal because they pushed the vision SOTA. 
+                    Training residuals makes things more stable by allowing better signal propagation. 
+                    This made training more stable and performance as a function 
+                    of depth much easier to quantify. 
+                </li>
+                <li>Transformer architecture</li>
+                <li>μP parameterization</li>
+            </ul>
+        </li>
+        <li><b>Scaling inference-time search</b>
+            <ul>
+                <li>Chain of Thought: Most people (myself included) read the CoT paper as a sort of 
+                    cute and funny way to prompt language models that somehow performs better. 
+
+                </li>
+                <li>Quality of PRMs: An open secret about frontier reasoning systems is that its mostly 
+                    driven by improvements in the quality of process reward models that guide search,
+                     training and tuning which often require 
+                    lots of annotated and manually collected data. 
+                </li>
+            </ul>
+        </li>
+        <li><b>Future avenues for scaling ("bases")</b>
+            <ul>
+                <li>Data quality via synthetic data
+                    <ul>
+                        <li>Synthetic data generation techniques like SCPT</li>
+                        <li>Optimal formats for learning from synthetic data</li>
+                        <li>Balancing real and synthetic data during training</li>
+                    </ul>
+                </li>
+                <li>Heterogeneous multi-agent systems
+                    <ul>
+                        <li>If pretraining ~ an individual evolving, and inference-time search ~ an individual thinking, 
+                            then what is cooperation between individuals toward some goal? 
+                        </li>
+                        <li>The point is that net productivity increases nonlinearly with number of humans, 
+                        partially driven by comparative advantage. I'm very interested in what "comparative advantage"
+                        between heterogenous foundation models will look like. 
+                        </li>
+                        <li>
+                            "Heterogenous" just means they are models made for different things. This could be anything 
+                            from models pretrained differently to just conditioned on very different prompts. 
+                            Heterogeneity is key for a meaningful notion of comparative advantage. 
+                        </li>
+                        <li>The most naive instantiation is to just make a multi-agent system 
+                            debate over rounds, and study how performance scales with rounds or agents, and people like 
+                            <a href="https://arxiv.org/abs/2305.14325">Yilun</a> have taken canonical first steps in this direction.
+                        </li>
+                        <li>    
+                            This is sort of brute force and a great first thing to study. But I really wonder how 
+                            two different models A and B can co-operate to produce things no number of 
+                            copies of A could produce. I don't know quite what is the right primitive to 
+                            "scale" here, but I think there's something there. 
+                        </li>
+                        
+                    </ul>
+                </li>
+                <li>RAG (parametric vs nonparametric knowledge)
+                    <ul>
+                        <li>Retrieval-augmented generation allows models to access external knowledge without storing it in parameters</li>
+                        <li>Trade-offs between parametric knowledge (learned during training) and non-parametric knowledge (retrieved at inference)</li>
+                        <li>Optimal architectures for combining retrieved and parametric knowledge</li>
+                        <li>Scaling properties of retrieval vs parameter count</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+        <li><b>Human ingenuity and compute</b>
+            <ul>
+                <li>Historically, major algorithmic breakthroughs have come from human insight rather than raw compute
+                    <ul>
+                        <li>Examples: Transformers, ResNets, BatchNorm - these were conceptual innovations that enabled better scaling</li>
+                        <li>The most impactful "scaling laws" often come from finding better architectures/training methods rather than just adding compute</li>
+                    </ul>
+                </li>
+                <li>The interplay between human ideas and compute resources
+                    <ul>
+                        <li>Compute enables testing and validation of human hypotheses at scale</li>
+                        <li>Human insights help identify which directions are worth scaling in the first place</li>
+                        <li>Most breakthroughs combine both: clever ideas that become transformative when scaled up</li>
+                    </ul>
+                </li>
+                <li>Future scaling may require similar conceptual leaps
+                    <ul>
+                        <li>Pure compute scaling likely has diminishing returns</li>
+                        <li>Next major advances may come from fundamentally new architectures or training paradigms</li>
+                        <li>The challenge is identifying which human insights are worth betting compute resources on</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+
+</div>
