@@ -49,7 +49,7 @@ li.audited {
 
   <link rel="stylesheet" href="/static/style.css">
   <meta charset="utf-8">
-  <title>Noets on synthetic data· Tanishq Kumar</title>
+  <title>Notes on synthetic data· Tanishq Kumar</title>
 </head>
 <body>
 <div id="menu">
@@ -70,7 +70,7 @@ li.audited {
 <div id="content">
 
 <h3>Notes on synthetic data</h3>
-
+<!-- 
 <h4>Etched Notes</h4>
 <ul>
     <li><strong>Zuck</strong>
@@ -100,7 +100,7 @@ li.audited {
             <li>A friend at X said his synthetic CPT is "very, very relevant to what modern pretraining teams are thinking about."</li>
         </ul>
     </li>
-</ul>
+</ul> -->
 
 <h4>Question</h4>
 <ul>
@@ -359,7 +359,7 @@ li.audited {
 
 <h4>Perplexity-correlations</h4>
 <ul>
-    <li>This was interesting, gives me a flavor of the kind of thing that Tatsu Hashimoto likes to do: observational work on LMs in the wild, but with simple but thorough classical statistics as the motivation for the techniques proposed.</li>
+    <li>This was interesting: observational work on LMs in the wild, but with simple but thorough classical statistics as the motivation for the techniques proposed.</li>
     <li>The main claim is basically that the correlation between low loss on a dataset, and high accuracy on downstream evals, is a good measure of whether it's a good dataset (as measured by downstream evals).
         <ul>
             <li>So they sweep the in-domain losses for a bunch of open models on a bunch of datasets (NLL) and do a bunch of downstream evals on each model, and see which datasets have NLL that strongly predict performance on downstream evals.</li>
