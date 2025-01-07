@@ -215,14 +215,13 @@ LM = language model; FM = foundation model.
       <li>Inference really matters, and constant factor improvements/just making ASICs cannot be the end of the story</li>
       <!-- <li>If O(1) inference is possible, then it feels inevitable, even if only on the order of decades</li> -->
       <li>Even if traditional SSMs (LTI) don't win, I think hybrid models have a real chance. The notion of clamping n-gram heads into an SSM in the ICLL paper was hilarious and brilliant.</li>
-      <li>Inference is the speed of thought for agentic workflows and reasoning with LMs. If inference-time compute gains are loglinear and inference speed goes up by 100x overnight
+      <li>Inference is the speed of thought for agentic workflows and reasoning with LMs. If inference-time compute gains are loglinear and inference speed goes up overnight
          when we switch to SSMs, eval performance within a fixed wall clock inference time will shoot up out of nowhere. 
       </li>
-      <!-- <li>Somewhat unrelated, but are SSMs really the most radical alternative architecture that can reasonably compete with Transformers? As someone who doesn't know 
-        too much about architecture but wants to learn more, how are diffusion models on this front? All-MLP architectures that gate to mix along the channel dimension?
-        Or is the claim that somehow these other architectures are just special cases of either SSMs or attention?
-      </li> -->
-      <!-- <li>When something is quite important, constant factors are optimized (ASICs, etc); when something is really, really important, the asymptotics will win</li> -->
+      <li>
+        Table 8 in <a href="https://arxiv.org/pdf/2406.07887v1">this paper</a> is amazing, hybrid models beat Transformer++ by 3-5 MMLU accuracy points at large scale. It's hard to overstate how big a gap that 
+        is!
+      </li>
     </ul>
   </li>
 
