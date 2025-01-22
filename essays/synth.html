@@ -204,7 +204,7 @@ li.audited {
 
 <h4>Persona Hub</h4>
 <ul>
-    <li>This was a surprisingly cool paper. Synthetic generation at scale essentially reduces to diverse prompt generation, where prompts are often just wrappers on some seeds (topics, words, parapraphs, etc) from an existing corpus. This is how people "bootstrap" synthetic data.</li>
+    <li>This was a surprisingly cool paper. Synthetic generation at scale essentially reduces to diverse prompt generation, where prompts are often just wrappers on some seeds (topics, words, paragraphs, etc) from an existing corpus. This is how people "bootstrap" synthetic data.</li>
     <li>Making synthetic data diverse is hard; people try increasing temperature and all sorts of heuristics, but these only mitigate rather than solve the problem.</li>
     <li>These folks consider an unusual approach: they take internet text and extract from each document in eg C4 a "persona," ie. short paragraph-long description of the kind of person who would read/write that document. They can semdedup these and after going through C4 end up with ~1B fairly distinct personas.
         <ul>
@@ -212,7 +212,7 @@ li.audited {
             <li>The hope is that the library of personas represent the library of possible "archetypes" of people that might engage with (and generating the training data for) a language model, so that prompting in "while wearing the shoes of every possible type of user" ensures you extract "all the diverse perspectives" stored within it.</li>
             <li>Another example of a trick to enforce diversity is from the TS paper: they select random pairs of words from the dictionary and force each prompt to include them so that the generative model has to "work hard around the required words" and so diversity has to be in some sense "deeply baked" into the generations.
                 <ul>
-                    <li>90% of synthetic data papers are just new techniques to eek out more diversity (ie. keep the tails as fat as is the case for natural language) in generations.</li>
+                    <li>90% of synthetic data papers are just new techniques to eke out more diversity (ie. keep the tails as fat as is the case for natural language) in generations.</li>
                 </ul>
             </li>
         </ul>
