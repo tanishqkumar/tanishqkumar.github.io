@@ -92,60 +92,21 @@ li.audited {
 <blockquote><strong>compute does not unlock progress, progress unlocks compute</strong></blockquote>
     </p>
 
-        <h4>Basis Pursuit: The Matrix Multiplication Analogy</h4>
-    <p>
-    I mean "basis" in the sense of linear algebra. Let me make this concrete with matrix multiplication.
-    Consider multiplying matrices \(A\) and \(B\). Via singular value decomposition, we can write:
-    </p>
-
-    <p>
-    \[A = U\Sigma V^* \text{ and } B = W\Lambda Z^*\]
-    </p>
-
-    <p>
-    where \(U\),\(V\),\(W\),\(Z\) are unitary matrices (the basis changes) and \(\Sigma,\Lambda\) are diagonal matrices of singular values.
-    The multiplication \(AB\) then becomes:
-    </p>
-
-    <p>
-    \[AB = (U\Sigma V^*)(W\Lambda Z^*)\]
-    </p>
-
-    <p>
-    If \(V^*\) and \(W\) align well (\(V^*W \approx I\)), this simplifies to:
-    </p>
-
-    <p>
-    \[AB \approx U(\Sigma\Lambda)Z^*\]
-    </p>
-
-    <p>
-    The middle part \(\Sigma\Lambda\) is just scaling -- multiplying diagonal entries. This is the "easy" part, analogous 
-    to throwing compute at training. 
-    The hard part is finding good basis matrices \(\mathbf{U}\),\(\mathbf{V}\),\(\mathbf{W}\),\(\mathbf{Z}\) that make the 
-    multiplication simple.
-    </p>
-
     <p>
     I sense many believe deep learning is about having the biggest clusters. 
-    I think this is necessary but far from sufficient. 
-    In the matrix multiplication analogy, it's just the "rescale singular values" -- the least interesting 
-    or conceptually difficult part! The hard part is finding <i>the right basis transformations</i> -- the architectures and training 
-    methods that make scaling <i>predictable</i>. Just like finding \(U\), \(V\), \(W\), \(Z\) that diagonalize the matrices 
-    is the key to efficient matrix multiplication, finding the right innovations that stabilize training is key to scaling neural networks.
+    I think this is necessary but far from sufficient. The hard part is finding the right innovations that make scaling <i>predictable</i>.
     </p>
 
     <p>
-    Consider how we've built up this "basis" for stable training one clever innovation at a time: Skip connections allow gradients to flow 
+    Consider how we've built up stable training one clever innovation at a time: Skip connections allow gradients to flow 
     cleanly through very deep networks. Batch normalization stabilizes activations by adaptively rescaling them. Layer normalization does the same 
     but without batch dependencies. AdamW combines adaptive learning rates with proper weight decay to prevent models from growing unstable. 
-    Each of these innovations is relatively simple in isolation, but together they form a powerful basis that lets us scale models predictably.
+    Each of these innovations is relatively simple in isolation, but together they form a powerful foundation that lets us scale models predictably.
     </p>
 
     <p>
-    This is exactly like iteratively finding the right basis matrices - each innovation is like finding one more good basis vector that makes 
-    the next step of scaling possible. The capability was always there, waiting to be unlocked. But we needed human ingenuity
-     to find the right "basis transformations" that would let us actually use that compute effectively. 
+    The capability was always there, waiting to be unlocked. But we needed human ingenuity
+     to find the right methods that would let us actually use that compute effectively. 
     Clever ideas unlock compute, not the other way around.
     </p>
 
@@ -229,16 +190,15 @@ li.audited {
 
         <p>
 The art of scaling in deep learning, then, is not about brute-forcing our way through compute barriers, but about finding 
-those elegant basis transformations that tame neural networks and make them predictable. 
-Just as matrix multiplication becomes trivial once you 
-find the right decomposition, AI progress becomes inevitable once you find the right primitive to scale. 
-And if history is any guide, that primitive will probably be 
-sitting right under our noses, waiting for someone to have the clarity (not complexity) of thought to recognize it.
+those elegant innovations that tame neural networks and make them predictable. 
+And if history is any guide, those innovations will probably be 
+sitting right under our noses, waiting for someone to have the clarity (not complexity) of thought to recognize them.
 </p>
 
-<!-- the examples are mostly simple, not clever -->
 
 <h4>Future avenues for scaling ("bases")</h4>
+
+
 
 <p>What does this mean for the future of scaling, and what might be important to work on? 
 
