@@ -1,0 +1,138 @@
+
+<html>
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-153791322-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-153791322-1');
+  </script>
+    <!-- endof Global site tag (gtag.js) - Google Analytics -->
+
+
+
+<style>
+.accordion {
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: 1px solid white;
+  /* border-top: 0.1px solid black; */
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+.active, .accordion:hover {
+  background-color: #000; 
+}
+
+/* panel css and js at bottom */
+
+li.sick {
+  color: rgb(38, 150, 255);
+}
+
+li.audited {
+  color: rgb(52,168,83);
+}
+
+</style>
+
+
+  <link rel="stylesheet" href="/static/style.css">
+  <meta charset="utf-8">
+  <title>Talk is cheap· Tanishq Kumar</title>
+</head>
+<body>
+<div id="menu">
+<span class="title">Tanishq Kumar</span>
+<ul>
+  <li><a href="/index.html">Home</a></li>
+  <li><a href="/about.html">About</a></li>
+  <!-- <li><a href="/culture">Culture</a></li> -->
+  <!-- <li><a href="/books.html">Bookshelf</a></li> -->
+  <li><a href="/essays.html">Writing</a></li>
+    <!-- <li><a href="/notes.html">Notes</a></li> -->
+    <!-- <li><a href="/articles.html">Articles</a></li> -->
+      <li><a href="/courses.html">Courses</a>
+        <li><a href="/papers.html">Research</a>
+</ul>
+</div>
+<div id="left"></div>
+<div id="content">
+
+<h3>Talk is cheap</h3>
+
+<!-- to read: absolute zero, multiplayer worlds, voyager -->
+
+<p>
+    <ul>
+        <li>Starting pretraining on a base model -- is this always compute optimal, or do you want 
+        "less inductive bias" as compute available goes to infinity? E.g., does OAI start new pretraining runs
+        from scratch or using past base models as a starting point? Do models feel "less malleable"
+        during training?</li>
+        <li>Making a notion of inductive bias quantitatively precise to illustrate "optimal inductive bias vanishes as compute → ∞"
+        especially to understand rate of this convergence (in any setting to start with). For instance, one attempt is "relative compute gain"
+        i.e., some algorithmic bias buys you some "effective compute" and you can use loss to measure this, but the effective FLOPs bought may 
+        depend itself on the compute you measure things at, so it gets a little complicated. But clearly a clear and "correct" notion 
+        would be super valuable.</li>
+        <li>See if RL-CR works for humor.
+            <ul>
+                <li>Scrape a database of jokes from online sources, e.g., r/jokes subreddit.</li>
+                <li>For each joke, use a Large Language Model to backtranslate a "joke prompt/context" for which the joke might be a good response.</li>
+                <li>Supervised Fine-Tune Gemma 3 27B to take in a "joke prompt" and output a "joke plan" with a few labels generated from GPT-4o.</li>
+                <li>Use Reinforcement Learning on Gemma to create a "joke planner" where the reward function for each joke is the relative increase in likelihood of the base Gemma-IT model generating the true joke when given both the joke prompt and joke plan.</li>
+                <li>Now that the RL'd version can generate good joke plans, we can feed these plans into the vanilla model along with new joke prompts for the types of jokes we want to generate.</li>
+                <li>Compare the jokes outputted by the RL'd model to Gemma-3-IT in a double-blind human trial (or simply perform a vibe check).</li>
+            </ul>
+        </li>
+        <li>Data-time compute.
+        </li>
+
+        <li>Emergence via BoN</li>
+        <li>Learning semantic boundaries to permute docs at DAG-topsort style. Can be learned like tool calls, or just have an LLM insert them 
+          on one forward pass. 
+        </li>
+        
+        <li>RL toy synthetics: can we find an algorithmic task with multiple solutions (e.g., clock and pizza) s.t. models of 
+          two diff sizes (random init) learn to solve them with two qualitatively different ways? E.g., if 500M discovers clock and 4B discovers 
+        pizza, that'd be fascinating and evince how "more is different" in a compelling way.</li>
+        <li>RL toy synthetics: find a setting where we can vary (ε) and construct ε-hackable reward models. For instance, 
+          unit tests are ε-hackable bc they aren't formal verification of programs but do approach golden rewards as they get more comprehensive 
+          (in the limit of infinite tests they check every input/output pair and thus are equiv). Want to understand how reward hacking behavior varies 
+          (e.g., across scale) as we vary ε. This tells us: when and why do we need golden rewards, will RMs always be hacked and does it only 
+          depend on ε, or on model scale, or both in some interesting way, etc? Sort of a modern "scaling laws for reward hacking" focused on 
+          science of synthetics (see the Gao et al paper from a few years ago). 
+        </li>
+        <li>Relationship between positional embeddings and compositional generalization.</li>
+        <li>Science of MLP-ICL and what that means for all-MLP LLMs (these saturate tensor cores and lead to better 
+          MFU on avg, so would be good candidates to win the hardware lottery)? 
+        </li>
+        <li>Why does MLA outperform MHSA? This baffles me, and I want to know the answer, since MLA is supposed to be in some sense 
+          a strict compression of MHSA into a latent space. I want a scientific/mechanistic answer to this. 
+        </li>
+        <li>Hierarchy/binary tree of speculators. Each token has the "minimal model size" to correctly predict the next token, 
+          can a binary tree of speculators (each a diff size) or some hierarchical data structure allow us to quickly find something close to that 
+          minimal size so that we "don't do any more matmuls than necessary for that token"? This is essentially a learned routing mechanism. 
+        </li>
+        <li>Not a research idea/more a general curiosity that I'm sure has been explored (I just don't know the RAG literature) -- but 
+          to what extent can retrieval be learned end-to-end in an app alongside eg. the parameters of a model. For instance, is it possible 
+          for OAI to RL end to end (model + retrieval system) o3 plugged into Windsurf so that o3 "knows" what information is useful in its own context 
+          specifically to answer queries in Windsurf chat? Motivated by how smart people don't just compute fast, but know what to look for in an approach/to 
+          get more information. Curious to what extent "smart" + "know what to look for to answer this question" are trained in practice end to end. 
+        </li>
+
+
+    </ul>
+</p>
+
+
+
+</div>
