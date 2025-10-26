@@ -14,7 +14,7 @@
   </script>
   <!-- endof Global site tag (gtag.js) - Google Analytics -->
   
-  
+  {% if include_mathjax %}
   <script>
     MathJax = {
       tex: {
@@ -25,42 +25,16 @@
     };
   </script>
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  {% endif %}
   
-  
-  
+  {% if custom_styles %}
   <style>
-.accordion {
-  background-color: #000;
-  color: #fff;
-  cursor: pointer;
-  padding: 18px;
-  width: 100%;
-  border: 1px solid white;
-  /* border-top: 0.1px solid black; */
-  text-align: left;
-  outline: none;
-  font-size: 15px;
-  transition: 0.4s;
-}
-
-.active, .accordion:hover {
-  background-color: #000; 
-}
-
-/* panel css and js at bottom */
-
-li.sick {
-  color: rgb(38, 150, 255);
-}
-
-li.audited {
-  color: rgb(52,168,83);
-}
+{{ custom_styles }}
   </style>
-  
+  {% endif %}
   
   <link rel="stylesheet" href="/static/style.css">
-  <title>Lessons from the trenches · Tanishq Kumar</title>
+  <title>{{ title }} · Tanishq Kumar</title>
 </head>
 <body>
   <div id="menu">
@@ -75,13 +49,10 @@ li.audited {
   </div>
   <div id="left"></div>
   <div id="content">
-    
-<h3>Lessons from the trenches</h3>
-
-
+    {% block content %}{% endblock %}
   </div>
   
-  
+  {% if include_accordion %}
   <script>
 var acc = document.getElementsByClassName("accordion");
 var i;
@@ -99,6 +70,7 @@ for (i = 0; i < acc.length; i++) {
   });
 }
   </script>
-  
+  {% endif %}
 </body>
 </html>
+

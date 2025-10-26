@@ -1,19 +1,23 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-153791322-1"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'UA-153791322-1');
   </script>
-    <!-- endof Global site tag (gtag.js) - Google Analytics -->
-
-
-
-<style>
+  <!-- endof Global site tag (gtag.js) - Google Analytics -->
+  
+  
+  
+  
+  <style>
 .accordion {
   background-color: #000;
   color: #fff;
@@ -41,35 +45,27 @@ li.sick {
 li.audited {
   color: rgb(52,168,83);
 }
-
-</style>
-
-
-
-
+  </style>
+  
+  
   <link rel="stylesheet" href="/static/style.css">
-  <meta charset="utf-8">
   <title>Papers · Tanishq Kumar</title>
 </head>
 <body>
-<div id="menu">
-<span class="title">Tanishq Kumar</span>
-<ul>
-  <li><a href="/index.html">Home</a></li>
-  <li><a href="/about.html">About</a></li>
-  <!-- <li><a href="/culture">Culture</a></li> -->
-  <!-- <li><a href="/books.html">Bookshelf</a></li> -->
-  <li><a href="/essays.html">Writing</a></li>
-    <!-- <li><a href="/notes.html">Notes</a></li> -->
-    <!-- <li><a href="/articles.html">Articles</a></li> -->
-      <li><a href="/courses.html">Courses</a>
-        <li><a href="/papers.html">Research</a>
-</ul>
-</div>
-<div id="left"></div>
-<div id="content">
-
-    <h1>Research</h1>
+  <div id="menu">
+    <span class="title">Tanishq Kumar</span>
+    <ul>
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/essays.html">Writing</a></li>
+      <li><a href="/courses.html">Courses</a></li>
+      <li><a href="/papers.html">Research</a></li>
+    </ul>
+  </div>
+  <div id="left"></div>
+  <div id="content">
+    
+<h1>Research</h1>
     <p>I work on the science of deep learning. 
     </p>
     <button class="accordion" style="width: 200px;">Research Background</button>
@@ -105,7 +101,7 @@ li.audited {
     <ul>
       
         
-       <li><a href="https://tanishqkumar.github.io/papers.html">Overtrained Langued Models are Harder to Finetune</a></li>
+       <li><a href="https://tanishqkumar.github.io/papers.html">Overtrained Language Models are Harder to Finetune</a></li>
        <strong>ICBINB at ICLR 2025. </strong><strong style="color: cyan;">Best Paper.</strong><br>
        <strong>SCOPE at ICLR 2025. </strong><strong style="color: cyan;">Outstanding Paper.</strong><br>
        <strong>ICML 2025. </strong>
@@ -136,16 +132,10 @@ li.audited {
     </ul>
   </div>
 
-
-
-
-
-</div>
-
-</body>
-
-
-<script>
+  </div>
+  
+  
+  <script>
 var acc = document.getElementsByClassName("accordion");
 var i;
 
@@ -153,44 +143,15 @@ for (i = 0; i < acc.length; i++) {
   acc[i].addEventListener("click", function() {
     this.classList.toggle("active");
     var panel = this.nextElementSibling;
-    if (panel.style.display === "block") {
-      panel.style.display = "none";
-    } else {
-      panel.style.display = "block";
-    }
-  });
-}
-</script>
-
-<style>
-.panel {
-  padding: 0 18px;
-  background-color: black;
-  color: white;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
-}
-</style>
-
-<script>
-var acc = document.getElementsByClassName("accordion");
-var i;
-
-for (i = 0; i < acc.length; i++) {
-  acc[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var panel = this.nextElementSibling;
-    if (panel.style.maxHeight) {
+    
+    if (panel.style.maxHeight && panel.style.maxHeight !== "0px") {
       panel.style.maxHeight = null;
     } else {
       panel.style.maxHeight = panel.scrollHeight + "px";
     }
   });
 }
-</script>
-
+  </script>
+  
+</body>
 </html>
-
-
-
