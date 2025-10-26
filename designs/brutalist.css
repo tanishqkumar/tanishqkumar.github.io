@@ -1,23 +1,23 @@
-/* Design 4: Academic - Cream background, serif typography, literary/scholarly */
+/* Design 2: Brutalist - Pure black & white, no color, stark minimal */
 /* Base styles */
 body {
-  background-color: #faf8f3; 
-  color: #2b2b2b; 
-  font-family: "Georgia", "Times New Roman", serif;
+  background-color: #ffffff; 
+  color: #000000; 
+  font-family: "Courier New", Courier, monospace;
   font-size: 14px;
   margin: 0;
   padding: 0;
 }
 
 a {
-  color: #8b4513;
-  text-decoration: none;
-  border-bottom: 1px solid #d4a574;
+  color: #000000;
+  text-decoration: underline;
+  font-weight: bold;
 }
 
 a:hover {
-  color: #5c2e0a;
-  border-bottom-color: #8b4513;
+  background-color: #000000;
+  color: #ffffff;
 }
 
 /* Navigation menu */
@@ -27,15 +27,17 @@ a:hover {
   margin-right: 20px;
   text-align: right;
   width: 150px;
-  font-family: "Georgia", "Times New Roman", serif;
+  font-family: "Courier New", Courier, monospace;
+  border-left: 3px solid #000000;
+  padding-left: 15px;
 }
 
 #menu .title {
   display: block;
-  margin-bottom: 12px;
-  font-variant: small-caps;
-  letter-spacing: 1px;
-  color: #5c2e0a;
+  margin-bottom: 15px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 #menu ul {
@@ -45,13 +47,12 @@ a:hover {
 }
 
 #menu li {
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
 #menu li a {
   display: inline-block;
-  color: #8b4513;
-  font-size: 13px;
+  color: #000000;
 }
 
 /* Left spacer */
@@ -74,47 +75,39 @@ a:hover {
   max-width: 100%;
   padding: 0 15px;
   box-sizing: border-box;
+  border-left: 2px solid #000000;
 }
 
 #content h1, #content h2, #content h3 {
-  font-family: "Georgia", "Times New Roman", serif;
+  font-family: "Courier New", Courier, monospace;
   margin: 1.5em 0 0.5em 0;
-  color: #1a1a1a;
-  font-weight: normal;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 #content h1 {
-  font-size: 2.2em;
-  font-variant: small-caps;
-  letter-spacing: 2px;
-  border-bottom: 2px solid #d4a574;
-  padding-bottom: 0.3em;
+  font-size: 2em;
+  border-bottom: 3px solid #000000;
+  padding-bottom: 0.2em;
 }
 
 #content h2 {
-  font-size: 1.6em;
-  font-style: italic;
+  font-size: 1.5em;
 }
 
 #content h3 {
-  font-size: 1.3em;
-  font-weight: 500;
+  font-size: 1.2em;
 }
 
 #content .byline, #content .byline a, #content .note {
   font-size: 0.875em;
-  color: #777;
-  font-style: italic;
+  color: #666;
 }
 
 #content p, #content ul {
-  color: #2b2b2b;
+  color: #000000;
   line-height: 20px;
-}
-
-#content p {
-  text-align: justify;
-  hyphens: auto;
 }
 
 #content sup.note {
@@ -129,13 +122,13 @@ a:hover {
 #content .thanks {
   margin-top: 2em;
   padding-top: 1em;
-  border-top: 1px solid #d4a574;
+  border-top: 2px solid #000;
   margin-bottom: 4em;
   font-size: smaller;
 }
 
 #content li {
-  margin-bottom: 0.8em;
+  margin-bottom: 0.7em;
 }
 
 .post + .post {
@@ -144,35 +137,36 @@ a:hover {
 
 /* Accordion styles */
 .accordion {
-  background-color: #f5f1e8;
-  color: #2b2b2b;
+  background-color: #000000;
+  color: #ffffff;
   cursor: pointer;
   padding: 18px;
   width: 100%;
-  border: 1px solid #d4a574;
-  border-left: 4px solid #8b4513;
+  border: 3px solid #000000;
   text-align: left;
   outline: none;
   font-size: 15px;
-  font-variant: small-caps;
+  font-weight: bold;
+  text-transform: uppercase;
   letter-spacing: 1px;
-  transition: 0.3s;
+  transition: 0.2s;
   box-sizing: border-box;
 }
 
 .active, .accordion:hover {
-  background-color: #ebe5d9;
-  border-left-width: 6px;
+  background-color: #ffffff;
+  color: #000000;
 }
 
 .panel {
   padding: 0;
-  background-color: #faf8f3;
-  color: #2b2b2b;
+  background-color: #ffffff;
+  color: #000000;
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
-  border-left: 2px solid #d4a574;
+  border-left: 2px solid #000000;
+  border-right: 2px solid #000000;
 }
 
 .panel p,
@@ -183,18 +177,11 @@ a:hover {
 
 /* Special list styles */
 li.sick {
-  color: #8b4513;
-  font-weight: 700;
+  font-weight: bold;
 }
 
 li.audited {
-  color: #8b4513;
   font-style: italic;
-}
-
-/* Paper/course highlighting */
-strong[style*="cyan"] {
-  color: #8b4513 !important;
 }
 
 /* Tablet styles (768px - 1024px) */
@@ -224,10 +211,13 @@ strong[style*="cyan"] {
     width: 100%;
     text-align: center;
     margin: 20px 0;
-    padding: 15px;
+    padding: 0 15px;
     box-sizing: border-box;
-    background-color: #f5f1e8;
-    border-bottom: 2px solid #d4a574;
+    border-left: none;
+    border-top: 3px solid #000000;
+    border-bottom: 3px solid #000000;
+    padding-top: 15px;
+    padding-bottom: 15px;
   }
   
   #menu .title {
@@ -257,12 +247,8 @@ strong[style*="cyan"] {
     padding: 0 20px;
   }
   
-  #content p {
-    text-align: left;
-  }
-  
   #content h1 {
-    font-size: 1.8em;
+    font-size: 1.7em;
   }
   
   #content h2 {
@@ -270,7 +256,7 @@ strong[style*="cyan"] {
   }
   
   #content h3 {
-    font-size: 1.2em;
+    font-size: 1.1em;
   }
   
   .accordion {

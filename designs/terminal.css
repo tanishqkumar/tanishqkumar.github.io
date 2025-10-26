@@ -1,23 +1,24 @@
-/* Design 4: Academic - Cream background, serif typography, literary/scholarly */
+/* Design 3: Terminal - Green on black, monospace, hacker aesthetic */
 /* Base styles */
 body {
-  background-color: #faf8f3; 
-  color: #2b2b2b; 
-  font-family: "Georgia", "Times New Roman", serif;
-  font-size: 14px;
+  background-color: #0a0a0a; 
+  color: #00ff00; 
+  font-family: "Monaco", "Menlo", "Consolas", monospace;
+  font-size: 13px;
   margin: 0;
   padding: 0;
 }
 
 a {
-  color: #8b4513;
+  color: #00ff00;
   text-decoration: none;
-  border-bottom: 1px solid #d4a574;
+  border-bottom: 1px dotted #00ff00;
 }
 
 a:hover {
-  color: #5c2e0a;
-  border-bottom-color: #8b4513;
+  color: #0a0a0a;
+  background-color: #00ff00;
+  border-bottom: none;
 }
 
 /* Navigation menu */
@@ -27,15 +28,18 @@ a:hover {
   margin-right: 20px;
   text-align: right;
   width: 150px;
-  font-family: "Georgia", "Times New Roman", serif;
+  font-family: "Monaco", "Menlo", "Consolas", monospace;
 }
 
 #menu .title {
   display: block;
-  margin-bottom: 12px;
-  font-variant: small-caps;
-  letter-spacing: 1px;
-  color: #5c2e0a;
+  margin-bottom: 10px;
+  color: #00ff00;
+}
+
+#menu .title::before {
+  content: "~/";
+  color: #00aa00;
 }
 
 #menu ul {
@@ -45,13 +49,17 @@ a:hover {
 }
 
 #menu li {
-  margin-bottom: 6px;
+  margin-bottom: 5px;
 }
 
 #menu li a {
   display: inline-block;
-  color: #8b4513;
-  font-size: 13px;
+  color: #00ff00;
+}
+
+#menu li a::before {
+  content: "> ";
+  color: #00aa00;
 }
 
 /* Left spacer */
@@ -77,44 +85,46 @@ a:hover {
 }
 
 #content h1, #content h2, #content h3 {
-  font-family: "Georgia", "Times New Roman", serif;
-  margin: 1.5em 0 0.5em 0;
-  color: #1a1a1a;
-  font-weight: normal;
+  font-family: "Monaco", "Menlo", "Consolas", monospace;
+  margin: 1em 0 0.5em 0;
+  color: #00ff00;
+}
+
+#content h1::before {
+  content: "# ";
+  color: #00aa00;
+}
+
+#content h2::before {
+  content: "## ";
+  color: #00aa00;
+}
+
+#content h3::before {
+  content: "### ";
+  color: #00aa00;
 }
 
 #content h1 {
-  font-size: 2.2em;
-  font-variant: small-caps;
-  letter-spacing: 2px;
-  border-bottom: 2px solid #d4a574;
-  padding-bottom: 0.3em;
+  font-size: 1.8em;
 }
 
 #content h2 {
-  font-size: 1.6em;
-  font-style: italic;
+  font-size: 1.5em;
 }
 
 #content h3 {
   font-size: 1.3em;
-  font-weight: 500;
 }
 
 #content .byline, #content .byline a, #content .note {
   font-size: 0.875em;
-  color: #777;
-  font-style: italic;
+  color: #008800;
 }
 
 #content p, #content ul {
-  color: #2b2b2b;
-  line-height: 20px;
-}
-
-#content p {
-  text-align: justify;
-  hyphens: auto;
+  color: #00ff00;
+  line-height: 18px;
 }
 
 #content sup.note {
@@ -129,13 +139,19 @@ a:hover {
 #content .thanks {
   margin-top: 2em;
   padding-top: 1em;
-  border-top: 1px solid #d4a574;
+  border-top: 1px solid #00aa00;
   margin-bottom: 4em;
   font-size: smaller;
 }
 
 #content li {
-  margin-bottom: 0.8em;
+  margin-bottom: 0.7em;
+}
+
+#content li::before {
+  content: "* ";
+  color: #00aa00;
+  margin-left: -1em;
 }
 
 .post + .post {
@@ -144,35 +160,40 @@ a:hover {
 
 /* Accordion styles */
 .accordion {
-  background-color: #f5f1e8;
-  color: #2b2b2b;
+  background-color: #0a0a0a;
+  color: #00ff00;
   cursor: pointer;
   padding: 18px;
   width: 100%;
-  border: 1px solid #d4a574;
-  border-left: 4px solid #8b4513;
+  border: 1px solid #00aa00;
   text-align: left;
   outline: none;
   font-size: 15px;
-  font-variant: small-caps;
-  letter-spacing: 1px;
-  transition: 0.3s;
+  transition: 0.2s;
   box-sizing: border-box;
 }
 
+.accordion::before {
+  content: "[+] ";
+  color: #00aa00;
+}
+
+.active::before {
+  content: "[-] ";
+}
+
 .active, .accordion:hover {
-  background-color: #ebe5d9;
-  border-left-width: 6px;
+  background-color: #001100;
+  border-color: #00ff00;
 }
 
 .panel {
   padding: 0;
-  background-color: #faf8f3;
-  color: #2b2b2b;
+  background-color: #0a0a0a;
+  color: #00ff00;
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
-  border-left: 2px solid #d4a574;
 }
 
 .panel p,
@@ -183,18 +204,12 @@ a:hover {
 
 /* Special list styles */
 li.sick {
-  color: #8b4513;
-  font-weight: 700;
+  color: #00ff00;
+  font-weight: bold;
 }
 
 li.audited {
-  color: #8b4513;
-  font-style: italic;
-}
-
-/* Paper/course highlighting */
-strong[style*="cyan"] {
-  color: #8b4513 !important;
+  color: #00aa00;
 }
 
 /* Tablet styles (768px - 1024px) */
@@ -216,7 +231,7 @@ strong[style*="cyan"] {
 /* Mobile styles (< 768px) */
 @media screen and (max-width: 767px) {
   body {
-    font-size: 14px;
+    font-size: 13px;
   }
   
   #menu {
@@ -224,14 +239,12 @@ strong[style*="cyan"] {
     width: 100%;
     text-align: center;
     margin: 20px 0;
-    padding: 15px;
+    padding: 0 15px;
     box-sizing: border-box;
-    background-color: #f5f1e8;
-    border-bottom: 2px solid #d4a574;
   }
   
   #menu .title {
-    font-size: 1.3em;
+    font-size: 1.2em;
     margin-bottom: 15px;
   }
   
@@ -257,12 +270,8 @@ strong[style*="cyan"] {
     padding: 0 20px;
   }
   
-  #content p {
-    text-align: left;
-  }
-  
   #content h1 {
-    font-size: 1.8em;
+    font-size: 1.6em;
   }
   
   #content h2 {

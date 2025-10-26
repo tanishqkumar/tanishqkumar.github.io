@@ -1,19 +1,23 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-153791322-1"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'UA-153791322-1');
   </script>
-    <!-- endof Global site tag (gtag.js) - Google Analytics -->
-
-
-
-<style>
+  <!-- endof Global site tag (gtag.js) - Google Analytics -->
+  
+  
+  
+  
+  <style>
 .accordion {
   background-color: #000;
   color: #fff;
@@ -41,35 +45,28 @@ li.sick {
 li.audited {
   color: rgb(52,168,83);
 }
-
-</style>
-
-
+  </style>
+  
+  
   <link rel="stylesheet" href="/static/style.css">
-  <meta charset="utf-8">
   <title>Uniqueness and Leverage · Tanishq Kumar</title>
 </head>
 <body>
-<div id="menu">
-<span class="title">Tanishq Kumar</span>
-<ul>
-  <li><a href="/index.html">Home</a></li>
-  <li><a href="/about.html">About</a></li>
-  <!-- <li><a href="/culture">Culture</a></li> -->
-  <!-- <li><a href="/books.html">Bookshelf</a></li> -->
-  <!-- <li><a href="/essays.html">Writing</a></li> -->
-    <!-- <li><a href="/notes.html">Notes</a></li> -->
-    <!-- <li><a href="/articles.html">Articles</a></li> -->
-      <li><a href="/courses.html">Courses</a>
-        <li><a href="/papers.html">Research</a>
-</ul>
-</div>
-<div id="left"></div>
-<div id="content">
-
-    <h3>Uniqueness and Leverage</h3>
-
-  <p>
+  <div id="menu">
+    <span class="title">Tanishq Kumar</span>
+    <ul>
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/essays.html">Writing</a></li>
+      <li><a href="/courses.html">Courses</a></li>
+      <li><a href="/papers.html">Research</a></li>
+    </ul>
+  </div>
+  <div id="left"></div>
+  <div id="content">
+    
+<h3>Uniqueness and Leverage</h3>
+<p>
     In Silicon Valley, it is common to hear people deliberating making life and career decisions through the framework of leverage. 
     People decide to found company X or work at company Y because "it's the highest leverage choice." That is to say, it's the position from which 
     they can exert the biggest raw impact on the world from their current place in life. High leverage choices have many multipliers between 
@@ -78,10 +75,10 @@ li.audited {
     multiply the effects of their actions (thereby acting as a "lever" on those actions). 
 </p><p>
     One thing that I've found disturbing about this philosophy is that it completely omits the notion of uniqueness in one's work. 
-    Let's caveat this with the fact that everyone share's different worldviews, and this is merely my own, etc etc. When thinking about 
+    Let's caveat this with the fact that everyone shares different worldviews, and this is merely my own, etc. When thinking about 
     what you could do that has a highest leverage, you forget to think about what <i>only</i> you could do. To see how different uniqueness and leverage 
     can be, consider being an engineering lead at Facebook. Your team manages ad placement, which is business critical on the order of billions of dollars. This is 
-    enormous leverage. However, if you weren't doing it, some other commodotized MIT-CS-PhD type (call them Dr Nurd) would be doing it instead of you. Now consider the scope of work for 
+    enormous leverage. However, if you weren't doing it, some other commoditized MIT-CS-PhD type (call them Dr Nurd) would be doing it instead of you. Now consider the scope of work for 
     an engineering lead: choosing a technology stack, architecturing an app or feature, recruiting new engineers onto the team, amongst other things. At most times there 
     exists a clear state of the art and standard practise on doing the first two things, and individual junior engineers you recruit onto the team are unlikely to 
     utterly transform its direction and atmosphere. That is to say, Dr Nurd and yourself have significant decision overlap -- the ad placements on Facebook would look mostly 
@@ -125,6 +122,26 @@ li.audited {
   at all. I think it intuitively does to most people, but I hadn't seen anyone quite articulate it in the way that made sense to me. 
 </p>
 
+  </div>
+  
+  
+  <script>
+var acc = document.getElementsByClassName("accordion");
+var i;
 
-
-</div>
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    
+    if (panel.style.maxHeight && panel.style.maxHeight !== "0px") {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    }
+  });
+}
+  </script>
+  
+</body>
+</html>

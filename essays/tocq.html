@@ -1,20 +1,23 @@
-
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-153791322-1"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'UA-153791322-1');
   </script>
-    <!-- endof Global site tag (gtag.js) - Google Analytics -->
-
-
-
-<style>
+  <!-- endof Global site tag (gtag.js) - Google Analytics -->
+  
+  
+  
+  
+  <style>
 .accordion {
   background-color: #000;
   color: #fff;
@@ -42,34 +45,27 @@ li.sick {
 li.audited {
   color: rgb(52,168,83);
 }
-
-</style>
-
-
+  </style>
+  
+  
   <link rel="stylesheet" href="/static/style.css">
-  <meta charset="utf-8">
-  <title>Tocqueville and the American experiment· Tanishq Kumar</title>
+  <title>Tocqueville and the American experiment · Tanishq Kumar</title>
 </head>
 <body>
-<div id="menu">
-<span class="title">Tanishq Kumar</span>
-<ul>
-  <li><a href="/index.html">Home</a></li>
-  <li><a href="/about.html">About</a></li>
-  <!-- <li><a href="/culture">Culture</a></li> -->
-  <!-- <li><a href="/books.html">Bookshelf</a></li> -->
-  <li><a href="/essays.html">Writing</a></li>
-    <!-- <li><a href="/notes.html">Notes</a></li> -->
-    <!-- <li><a href="/articles.html">Articles</a></li> -->
-      <li><a href="/courses.html">Courses</a>
-        <li><a href="/papers.html">Research</a>
-</ul>
-</div>
-<div id="left"></div>
-<div id="content">
-
+  <div id="menu">
+    <span class="title">Tanishq Kumar</span>
+    <ul>
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/essays.html">Writing</a></li>
+      <li><a href="/courses.html">Courses</a></li>
+      <li><a href="/papers.html">Research</a></li>
+    </ul>
+  </div>
+  <div id="left"></div>
+  <div id="content">
+    
 <h3>Tocqueville and the American experiment</h3>
-
 <p>
   <i>2024 update. I wrote this after reading Tocqueville's Democracy in America over the summer after my freshman year of college. 
     I was young and pompous. Do forgive me. 
@@ -251,20 +247,27 @@ such as how dear the constitution is to everyday Americans, that cause this exce
    which exceptionalism is true is in the fact that the
     founding story can be likened to a social experiment unlike that of almost any other nation in
     human history. </p>
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
 
+  </div>
+  
+  
+  <script>
+var acc = document.getElementsByClassName("accordion");
+var i;
 
-
-</div>
-
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    
+    if (panel.style.maxHeight && panel.style.maxHeight !== "0px") {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    }
+  });
+}
+  </script>
+  
+</body>
+</html>

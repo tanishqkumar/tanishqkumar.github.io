@@ -1,19 +1,23 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-153791322-1"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'UA-153791322-1');
   </script>
-    <!-- endof Global site tag (gtag.js) - Google Analytics -->
-
-
-
-<style>
+  <!-- endof Global site tag (gtag.js) - Google Analytics -->
+  
+  
+  
+  
+  <style>
 .accordion {
   background-color: #000;
   color: #fff;
@@ -41,33 +45,27 @@ li.sick {
 li.audited {
   color: rgb(52,168,83);
 }
-
-</style>
-
-
+  </style>
+  
+  
   <link rel="stylesheet" href="/static/style.css">
-  <meta charset="utf-8">
   <title>Gap Year Learnings II · Tanishq Kumar</title>
 </head>
 <body>
-<div id="menu">
-<span class="title">Tanishq Kumar</span>
-<ul>
-  <li><a href="/index.html">Home</a></li>
-  <li><a href="/about.html">About</a></li>
-  <!-- <li><a href="/culture">Culture</a></li> -->
-  <!-- <li><a href="/books.html">Bookshelf</a></li> -->
-  <!-- <li><a href="/essays.html">Writing</a></li> -->
-    <!-- <li><a href="/notes.html">Notes</a></li> -->
-    <!-- <li><a href="/articles.html">Articles</a></li> -->
-      <li><a href="/courses.html">Courses</a>
-        <li><a href="/papers.html">Research</a>
-</ul>
-</div>
-<div id="left"></div>
-<div id="content">
-
-    <h3>Gap Year Learnings II</h3>
+  <div id="menu">
+    <span class="title">Tanishq Kumar</span>
+    <ul>
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/essays.html">Writing</a></li>
+      <li><a href="/courses.html">Courses</a></li>
+      <li><a href="/papers.html">Research</a></li>
+    </ul>
+  </div>
+  <div id="left"></div>
+  <div id="content">
+    
+<h3>Gap Year Learnings II</h3>
 <p>
     <ul>
   <strong><i>On Silicon Valley, Startups, and Software Engineering</strong></i>
@@ -165,7 +163,7 @@ li.audited {
       <li>
         You can broadly classify all great people into two bins: creatives and businessmen. 
         Einstein, Bach, Michelangelo, Plato, all fall into the former. Caesar, Napoleon, Churchill, Rockefeller, all fall into the latter. Jobs and 
-        Edison are are more ambiguous. I use the word "businessman" to describe anyone whose
+        Edison are more ambiguous. I use the word "businessman" to describe anyone whose
         success depends more on external events and their ability to navigate them. Creative types are more 
         at war with their own intellect, constantly asked the question of: are you inventive enough to spot that breakthrough idea? Businessman are more 
         at war with external circumstances: can you motivate 
@@ -175,4 +173,26 @@ li.audited {
         selling things, motivating people, negotiating, envisioning the future, more than working hard at any one skill or craft like a creative might.
   </li><br />
 
-    </div>
+  </div>
+  
+  
+  <script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    
+    if (panel.style.maxHeight && panel.style.maxHeight !== "0px") {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    }
+  });
+}
+  </script>
+  
+</body>
+</html>
