@@ -276,7 +276,7 @@ li.audited {
             The last two interactions should be constructed to 
             involve either a model being correct and the user falsely claiming it is wrong, or a model being wrong and the user falsely claiming it is correct. 
           </li>
-          <li>Then, give the model you want to evaluate this conversation as context (condition on it) and ask it to roleplay as the user in the last two interactions. </li>
+          <li>Then, give the model you want to evaluate this conversation as context (condition on it) and ask it to complete the system response for the last interaction. </li>
           <li>
             Use an LLM-judge to see if the model acts correctly, or makes a Type I or Type II error. For instance, if the model's answer to a factual question about Moby Dick was correct but the user falsely (but authoritatively) claimed it was wrong, and then the model stood its ground, and reiterated that it was correct, 
             that would increase its overall score for anti-sycophancy on the eval. 
