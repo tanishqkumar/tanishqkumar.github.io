@@ -60,7 +60,7 @@ li.audited {
   
   
   <link rel="stylesheet" href="/static/style.css">
-  <title>Talk is cheap · Tanishq Kumar</title>
+  <title>Laundry list · Tanishq Kumar</title>
 </head>
 <body>
   <div id="menu">
@@ -76,10 +76,10 @@ li.audited {
   <div id="left"></div>
   <div id="content">
     
-<h3>A Laundry List for AI Research</h3>
+<h3>A laundry list for AI research</h3>
 
 <p>
-  This is a miscellany of partially fleshed-out AI research ideas or proposals that someone should work on. 
+  This is a miscellany of partially fleshed-out but promising (in my opinion) AI research ideas that someone should work on. 
   I would like to know the answer to these questions, but don't have the time to run these experiments myself. If you are 
   looking to break into AI research (eg. as an undergraduate, or a software engineer in industry), these could be some low hanging fruit. 
   Feel free to shoot me a 
@@ -110,10 +110,24 @@ li.audited {
           
           
          </li>
-        <li>
-          Environment-Time Compute 
-        </li>
-        <li>Data-time compute.</li>
+        <li>Measuring scaling laws for environment-time compute in LLM RL</li>
+        <ul>
+          <li>Traditional scaling laws fit model performance vs compute required to train or serve the model</li>
+          <li>But LLM RL involves not just a model, but an environment. Recently, it has become common for the environment to 
+            <i>itself</i> to be a foundation models. Examples include LLM-as-a-judge with a rubric, or action-conditioned video 
+            generation models, often called "world models."
+          </li>
+          <li>I'm interested in knowing how the performance of RL improves when the actual model being trained (architecture, hypers, etc) is held fixed, but the compute used to simulate the environment increases.</li>
+          <li>This environment-time compute could be either inference-time compute or pretraining compute for the environment model.</li>
+          <li>Concretely</li>
+          
+          <li>And while I'm proposing fitting such a scaling law in the foundation model setting, it is more general than that. In simple and classic tasks learning robotic control (eg. MuJoCo), the environment is typically just a physics simulation. In other words, 
+            it's often literally just an ODE solver. Such an environment admits a very simple way to simulate compute: just 
+            vary the amount of steps for which you run the solver, which constrains the fidelity of the physics simulation and thus 
+            upper bounds the performance of an oracle agent (on the ground truth environment). 
+
+          </li>
+        </ul>
         <li>Power-law scaling laws are wrong in many ways, and someone needs to understand why.</li>
           <ul>  
 
@@ -127,8 +141,50 @@ li.audited {
               is <a href="https://arxiv.org/abs/2402.01092">these</a> <a href="https://arxiv.org/abs/2409.17858">two papers</a>. But even purely empirical work here would be valuable. 
             </li>
           </ul>
-        <li>New unsupervised objectives, eg. ITC of using $\log[1-(1-p_i)^k]$ as the objective for each token $i$.</li>
-        <li>Overfitting in latent-space.</li>
+        <li>New unsupervised objectives for pretraining that are not just next-token prediction</li>
+        <ul>
+          <li>
+            There have been some cool variants of NTP developed in the literature, and they do work. Examples are 
+            <a href="https://arxiv.org/abs/2404.19737">multi-token prediction</a>, and <a href="https://arxiv.org/pdf/2508.19228">token order prediction</a>. 
+          </li>
+          <li>
+            Here is one I tried a while ago that seemed to work (but was only a small win). I'm sure there are many such variants 
+            waiting to be discovered. I was interested in improving $k$-shot performance on a task, and training a model 
+            directly for that are pretraining/finetuning time. 
+          </li>
+          <li>
+            While ultimately we want to optimize $k$-shot performance on a sequence/generation level at inference-time, I wondered 
+            if one could just optimize a similar objective on a token-level to get a next token prediciton variant that has more 
+            "diverse" generations at inference-time. 
+          </li>
+          <li>
+            Here's an obvious formulation. If the probability of the true next token is $p_i$, then the typical NTP loss 
+            is $-\log p_i$. We can construct an alternative "k-shot" loss as follows. The probability of sampling that true token 
+            is $p_i$, and the probability of sampling it <i>at least once in $k$ samples</i> is $1-(1-p_i)^k$. We can decide then 
+            to optimize <i>this</i> loss instead: $-\log[1-(1-p_i)^k]$.
+          </li>
+          <li>This is not mathematically equivalent to optimizing NTP (it is a nonlinear transformation). And it's also not equivalent 
+            to optimizing NTP but with rescaled (eg. by temperature) logits. So it's a genuinely new objective, and training on this 
+            did improve $k$-shot performance at inference time. I stopped pushing on this because the gains were modest and only appeared at $k \gg 1$. 
+          </li>
+          <li>But I'm sure I did not mine out this line of thought fully, and would love to see someone else try it.</li>
+        </ul>
+        <li>Overfitting in latent space during synthetic pretraining</li>
+        <ul>
+          <li>It's well known you can overfit data by training a language model on it for many epochs. This means train loss will 
+            vanish but test loss will diverge.
+          </li>
+          <li>When training on synthetic data, things get trickier to reason about. I conjecture there exists a notion of "overfitting on concepts" that can have similar effects. The prediction is that if you train on a corpus of real data $D$, you will get loss decreasing in token count as a power law. </li>
+          <li>Suppose instead of you have a subset $D' = 0.1D$ of $D$, and use a rephrasing LLM to amplify it back up to $D$ tokens. This means you have some content, and 9 "rephrases" of this content. Of course, the rephrases differ from the content on a token-to-token level, so you cannot think of loss scaling on the rephrased corpus in purely online vs offline (repeating data) 
+            terms. 
+          </li>
+          <li>
+            Nonetheless, loss on this new corpus will decrease faster than on the real corpus (an empirical fact). I conjecture 
+            this is because there is repetition in some "concept space" where modelling some information is easier once models see 
+            that information in many different ways. This is well-documented in <a href="https://physics.allen-zhu.com">this lovely line of work</a>, of course, but I'm interested 
+            if one can quantify this effect, and I would <i>love</i> to see someone introduce a notion of actual <i>overfitting on concepts</i> where test loss <i>increasese</i> even when no tokens are repeated. 
+          </li>
+        </ul>
 
         <li>Predicting emergence via BoN</li>
         <ul>
@@ -175,13 +231,6 @@ li.audited {
         <li>RL toy synthetics: can we find an algorithmic task with multiple solutions (e.g., clock and pizza) s.t. models of 
           two diff sizes (random init) learn to solve them with two qualitatively different ways? E.g., if 500M discovers clock and 4B discovers 
         pizza, that'd be fascinating and evince how "more is different" in a compelling way.</li>
-        <li>RL toy synthetics: find a setting where we can vary $\epsilon$ and construct $\epsilon$-hackable reward models. For instance, 
-          unit tests are $\epsilon$-hackable bc they aren't formal verification of programs but do approach golden rewards as they get more comprehensive 
-          (in the limit of infinite tests they check every input/output pair and thus are equiv). Want to understand how reward hacking behavior varies 
-          (e.g., across scale) as we vary $\epsilon$. This tells us: when and why do we need golden rewards, will RMs always be hacked and does it only 
-          depend on $\epsilon$, or on model scale, or both in some interesting way, etc? Sort of a modern "scaling laws for reward hacking" focused on 
-          science of synthetics (see the Gao et al paper from a few years ago). 
-        </li>
         <li>I think that one of the most under-rated and surprising empirical results of this year was the fact that <a href="https://arxiv.org/pdf/2405.15618">MLPs can learn in-context</a>. 
         </li>
         <ul>
