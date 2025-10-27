@@ -17,9 +17,39 @@
   
   
   
+  <style>
+.accordion {
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: 1px solid white;
+  /* border-top: 0.1px solid black; */
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+.active, .accordion:hover {
+  background-color: #000; 
+}
+
+/* panel css and js at bottom */
+
+li.sick {
+  color: rgb(38, 150, 255);
+}
+
+li.audited {
+  color: rgb(52,168,83);
+}
+  </style>
+  
   
   <link rel="stylesheet" href="/static/style.css">
-  <title>About · Tanishq Kumar</title>
+  <title>The Parametric Furnace · Tanishq Kumar</title>
 </head>
 <body>
   <div id="menu">
@@ -35,33 +65,31 @@
   <div id="left"></div>
   <div id="content">
     
+<h3>The Parametric Furnace</h3>
 <p>
-        I'm a first-year CS PhD student at Stanford working on the science of deep learning. 
-        I recently graduated from Harvard College, where I studied math. 
-
-        <br><br>
-
-        My youth was spent in transit. I was fortunate to pass childhood years watching skyscrapers
-        emerge from sand dunes in Abu Dhabi, shuffling to and fro between
-         cafes and cathedrals while at boarding school in London,
-        and learning to think clearly as an undergrad in the snowy town of 
-        Cambridge, Massachusetts.
-        
-        <br><br>
-        My research spans language models, scaling laws, and more besides. 
-        
-        
-      </p>
-
-      <p>
-        <a href="mailto:tanishq@stanford.edu">Email</a> · 
-        <a href="https://github.com/tanishqkumar">GitHub</a> · 
-        <a href="https://x.com/tanishqkumar07">Twitter</a> ·
-        <a href="https://scholar.google.com/citations?user=G5VwdO0AAAAJ&hl=en">Scholar</a>
-      </p>
+Write your essay here!
+</p>
 
   </div>
   
+  
+  <script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    
+    if (panel.style.maxHeight && panel.style.maxHeight !== "0px") {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    }
+  });
+}
+  </script>
   
 </body>
 </html>

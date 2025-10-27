@@ -79,7 +79,7 @@ li.audited {
 <h3>A Laundry List for AI Research</h3>
 
 <p>
-  This is a miscellany of partially fleshed-out AI research ideas that someone should work on. 
+  This is a miscellany of partially fleshed-out AI research ideas or proposals that someone should work on. 
   I would like to know the answer to these questions, but don't have the time to run these experiments myself. If you are 
   looking to break into AI research (eg. as an undergraduate, or a software engineer in industry), these could be some low hanging fruit. 
   Feel free to shoot me a 
@@ -88,38 +88,88 @@ li.audited {
 
 <p>
     <ul>
-        <li>When should you start a pretraining run from scratch vs a past checkpoint? Should you lean toward the former over the latter 
-          as available compute goes to infinity? The general question here is how best to use a previous-generation base model $B_T$ when 
+        <li>When should you start a pretraining run from scratch vs from a past checkpoint? Should you lean toward the former over the latter 
+          as available compute goes to infinity? The more general question here is how best to use a previous-generation base model $B_T$ when 
           starting a pretraining run for a new generation of models $B_{T+1}$?
             <ul>
-                <li>Investigate the trade-offs between starting from scratch vs continuing from checkpoints</li>
-                <li>Analyze how model "malleability" changes during pretraining</li>
-                <li>Study the relationship between available compute and optimal initialization strategy</li>
+                <li>Figure 5[d] in <a href="https://arxiv.org/pdf/2401.03048">this paper</a> shows starting from an ImageNet-pretrained checkpoint 
+                  becomes less helpful as compute increases in the setting of latent diffusion models for video generation.</li>
+                <li>At the beginning of training, should you start with a distillation-type objective like logit-matching against $B_T$ but then 
+                  anneal into a pure next-token prediction objective as compute increases or as $L(B_{T+1}) \to L(B_{T})$? Or do you want to 
+                  include gradients from both objectives throughout but just at different mixture ratios? 
+                </li>
+                <li>Obviously, one way $B_T$ is already being used for sure is in data curation and synthetic data generation for the pretraining corpus 
+                  of $B_{T+1}$. But this is not what I'm asking about in this context. 
+                </li>
+                <li>
+                  Do models become "less malleable"
+            during pretraining in some way that can be made precise? <a href="https://arxiv.org/abs/2503.19206">This paper</a> of ours gives one answer. 
+                </li>
+
             </ul>
           
           
-         Do models become "less malleable"
-        during pretraining in some way that can be made precise? <a href="https://arxiv.org/abs/2503.19206">This paper</a> I was a part of is one attempt at an answer.</li>
+         </li>
         <li>
           Environment-Time Compute 
         </li>
-        <li>See if RL-CR works for humor.
-            <ul>
-                <li>Scrape a database of jokes from online sources, e.g., r/jokes subreddit.</li>
-                <li>For each joke, use a Large Language Model to backtranslate a "joke prompt/context" for which the joke might be a good response.</li>
-                <li>Supervised Fine-Tune Gemma 3 27B to take in a "joke prompt" and output a "joke plan" with a few labels generated from GPT-4o.</li>
-                <li>Use Reinforcement Learning on Gemma to create a "joke planner" where the reward function for each joke is the relative increase in likelihood of the base Gemma-IT model generating the true joke when given both the joke prompt and joke plan.</li>
-                <li>Now that the RL'd version can generate good joke plans, we can feed these plans into the vanilla model along with new joke prompts for the types of jokes we want to generate.</li>
-                <li>Compare the jokes outputted by the RL'd model to Gemma-3-IT in a double-blind human trial (or simply perform a vibe check).</li>
-            </ul>
-        </li>
         <li>Data-time compute.</li>
         <li>Power-law scaling laws are wrong in many ways, and someone needs to understand why.</li>
+          <ul>  
+
+            <li>The power-law form comes from the <a href="https://arxiv.org/abs/2203.15556">Chinchilla paper</a>, but if you look at the justification for that functional form in the Appendix, 
+              it's basically a vague gesture to past theory work in small neural networks. Basically it's chosen heuristically. 
+            </li>
+            <li>As the data-to-parameter ratio $D/N$ of pretraining increases, this functional form seems to be a worse and worse fit for $L(N, D)$ as 
+              <a href="https://arxiv.org/html/2403.08540v1">this paper</a> shows. </li>
+            <li>This shows that loss decreases slower than you'd expect at large token budgets. Why is this? Is there some theoretical reason? What is the true 
+              underlying functional form for pretraining loss? The best theoretical work in this direction I've seen (and which is wildly underrated) 
+              is <a href="https://arxiv.org/abs/2402.01092">these</a> <a href="https://arxiv.org/abs/2409.17858">two papers</a>. But even purely empirical work here would be valuable. 
+            </li>
+          </ul>
         <li>New unsupervised objectives, eg. ITC of using $\log[1-(1-p_i)^k]$ as the objective for each token $i$.</li>
+        <li>Overfitting in latent-space.</li>
 
         <li>Predicting emergence via BoN</li>
-        <li>Learning semantic boundaries to permute docs at DAG-topsort style. Can be learned like tool calls, or just have an LLM insert them 
-          on one forward pass. 
+        <ul>
+          <li>
+            This <a href="https://arxiv.org/pdf/2411.16035">fantastic paper</a> shows you can predict emerge of a skill in LLMs in advance by just finetuning on data relevant to that domain. That is to say, 
+            the models for whom that skill will emerge fastest (at highest val loss) are exactly those that are most easily finetuned on that data domain. 
+          </li>
+          <li>
+            The cons of that paper are that finetuning is annoying and the fits are very noisy and not always convincing. I think the same predictive method could be 
+            applied with best-of-N sampling instead of finetuning, ie. my claim is that the pass@k performance for a model for $k \gg 1$ is a good predictor of 
+            the pass@1 performance of that same model as it's trained longer/with more compute. You can predict if a model will have a certain ``emergent" capability 
+            later on by simply measuring whether that ability is <i>ever</i> supported in rollouts. 
+          </li>
+        </ul>
+        <li>
+          Attention-based synthetic data generation.
+          <ul>
+            <li>
+              Current synthetic data generation methods are super compute intensive in the sense of generating trillions of tokens from a language model, usually 
+              rephrasing some (real) seed text or document.
+            </li>
+            <li>
+              Create "synthetic" data by permuting sentences in documents in a way that preserves semantic meaning.
+            </li>
+            <li>
+              "Preserve semantic meaning" = construct a DAG with sentences as vertices with edge A→B iff some token in sentence B attends strongly to some token in A (top-k%).
+            </li>
+            <li>
+              Consider all topological sorts of this DAG as new data points, since sentences are in different orders but semantics (as defined by attention matrix) are preserved.
+            </li>
+            <li>
+              Upshot: can create several permutations of a sequence without decoding, i.e., just one forward pass, so is O(seqlen) faster/cheaper than usual synthetic data generation.
+            </li>
+            <li>
+              I tried this last week: trained a 1B parameter model to 20B tokens with just 1B unique seed text with and without permutation-augmentation. 
+              It kind of works as far as loss is concerned (reaches lower minimum) but does poorly on downstream evals compared to repeated real data baseline.
+            </li>
+            <li>
+              Reason for underwhelming gains: attention matrices are less sparse than expected on average, so most semantic DAGs are "almost linear" where almost all permutations kill meaning.
+            </li>
+          </ul>
         </li>
         
         <li>RL toy synthetics: can we find an algorithmic task with multiple solutions (e.g., clock and pizza) s.t. models of 
@@ -132,21 +182,108 @@ li.audited {
           depend on $\epsilon$, or on model scale, or both in some interesting way, etc? Sort of a modern "scaling laws for reward hacking" focused on 
           science of synthetics (see the Gao et al paper from a few years ago). 
         </li>
-        <li>Science of MLP-ICL and what that means for all-MLP LLMs (these saturate tensor cores and lead to better 
-          MFU on avg, so would be good candidates to win the hardware lottery)? 
+        <li>I think that one of the most under-rated and surprising empirical results of this year was the fact that <a href="https://arxiv.org/pdf/2405.15618">MLPs can learn in-context</a>. 
         </li>
-        <li>Why does MLA outperform MHSA? This baffles me, and I want to know the answer, since MLA is supposed to be in some sense 
-          a strict compression of MHSA into a latent space. I want a scientific/mechanistic answer to this. 
+        <ul>
+          <li>This is surprising because the attention mechanism is usually thought to be the key for this (induction heads in MSHA, etc).</li>
+          <li>I ran some experiments replicating those findings in small MLPs that had just one hidden layer and as few as 32 hidden units, and 
+            found the weight matrices learn a fascinating and structure pattern that matches the nature of the task the authors outline in the paper. 
+          </li>
+          <li>It showed an interesting mechanism for how MLPs learned the in-context classification and regression tasks outlined in the paper, that amounted 
+            roughly to a very clever memorization pattern of the training data. However, I did not go deep enough to formalize the mechanism mathematically and provide a wealth of evidence one might want. But I think there's something interesting here, and someone working on interpretability should definitely 
+            take a look and try to write a paper on this, aiming for <a href="https://arxiv.org/pdf/2301.05217">this kind of style</a>. 
+          </li>
+          <li>MLP-only architectures have the benefit of using hardware much better (high GPU MFU) since matmuls are their only operation. Obviously people have tried 
+            stuff like this before (see gMLP or MLP-Mixers) but find that adding attention really is necessary to get maximal performance in the end. 
+          </li>
+          <li>How does one square these findings with the fact that MLPs can do simple in-context classification and regression tasks? What exactly is then failing in realistic 
+            settings making attention necessary?</li>
+        </ul>
+
+
+        <li>Why does MLA match / outperform full multi-head attention, as shown in Section 2.1.1 of the <a href="https://arxiv.org/pdf/2412.19437v1">DeepSeek V3 paper</a>. Shouldn't attending in latent space be strictly worse or less expressive? I don't believe 
+          "regularization effects" could be at play here, and I want a scientific/mechanistic answer to this. 
         </li>
         <li>
           Context-as-a-Tool / Learning to Forget 
         </li>
+        <ul>
+          <li>
+            We know that model performance on tasks depends on how much context has been used so far (<a href="https://research.trychroma.com/context-rot">context rot</a>), 
+            which is particularly relevant for long-horizon tasks. What if we could RL a model to be aware of when 
+            it's getting confused by irrelevant or even adversarial context?
+          </li>
+          <li>
+            The idea: add a tool that allows the model to modify its own context/prompt (e.g., "delete lines A to B 
+            of your prompt before embarking on this task") before rolling out. This is "Context-as-a-Tool" or 
+            "Learning to Forget."
+          </li>
+          <li>
+            The general paradigm: reasoning is to generating helpful context to condition on as learned forgetting 
+            is to omitting context that makes rollouts worse. Both are forms of meta-cognition about what information 
+            to use.
+          </li>
+          <li>
+            Surprisingly, this seems unexplored despite being a natural extension of tool-use paradigms. Could be 
+            particularly powerful for long-context scenarios where models need to selectively attend to relevant 
+            parts of their input.
+          </li>
+          <li>
+            For the reward signal, several approaches could work: (1) Random context edits followed by measuring 
+            downstream performance differences—e.g., the delta in perplexity on ground truth completions vs. 
+            corrupted ones after the edit. (2) Starting with CoT-based proposals where the model uses reasoning 
+            to suggest edits within <code>&lt;edit&gt;&lt;/edit&gt;</code> tool calls, then measuring task 
+            performance improvements. (3) Direct optimization on task-specific metrics after context modification, 
+            where the model learns which parts of context help vs. hurt performance on the target task.
+          </li>
+        </ul>
         <li>
-          Can you use another model's reasoning trace to give better answers? 
+          What drives improvements in reasoning performance? Semantics of a worked solution or just idiosyncratic inference-time compute usage?
         </li>
+        <ul>
+          <li>
+            What fractions of gains in reasoning come from the reasoning semantics itself vs the idiosyncratic inference-time compute used by a model 
+            doing the reasoning? Put differently, if you conditioned Llama-3-70B on a reasoning trace from GPT-5, or vice-versa, would you still see 
+            the same improvements on performance on reasoning-heavy tasks?
+          </li>
+          <li>
+            If you got most of the gains, that suggests the literal semantics of 
+            working through the problem are the main outcome of reasoning models, and if you don't that means that idiosyncratic inference-time compute usage 
+            is the main reason performance improves.
+          </li>
+          <li>
+            Concrete experiment: Take reasoning traces from o1 on MATH problems and condition GPT-4o on them. Compare performance to GPT-4o's native 
+            reasoning traces and to GPT-4o without any reasoning. Repeat with traces going the other direction. Measure performance on held-out MATH problems.
+          </li>
+          <li>
+            I imagine that the answer is somewhere in between, and also varies with "how similar" two models are 
+            in their pretraining data/architecture, but I would like to see clean plots to this effect.
+          </li>
+        </ul>
         <li>
-          Type I vs Type II eval (measuring "anti-sycophancy")
+          An eval measuring anti-sycophancy.
         </li>
+        <ul>
+          <li>One of the capabilities I think most betrays "big model smell" is the ability for a language model to correctly 
+          stand its ground when it is correct and the user is wrong. Of course, this must be balanced with the ability to admit and change its mind 
+          when it is wrong and the user correctly points that out.</li>
+          <li>One can think of the failure to do either of these as a Type I or Type II error of a certain form.</li>
+          <li>One simple eval for these kinds of capabilities can be constructed as follows: construct a dataset of user-model interactions involve a technical or 
+            factual discussion between a user and a model (so that the correctness of user vs model is verifiable and objective). For instance, a discussion about 
+            plot details in Melville's <i>Moby Dick</i> or a discussion about an obscure mathematical theorem. 
+          </li>
+          <li>
+            The last two interactions should be constructed to 
+            involve either a model being correct and the user falsely claiming it is wrong, or a model being wrong and the user falsely claiming it is correct. 
+          </li>
+          <li>Then, give the model you want to evaluate this conversation as context (condition on it) and ask it to roleplay as the user in the last two interactions. </li>
+          <li>
+            Use an LLM-judge to see if the model acts correctly, or makes a Type I or Type II error. For instance, if the model's answer to a factual question about Moby Dick was correct but the user falsely (but authoritatively) claimed it was wrong, and then the model stood its ground, and reiterated that it was correct, 
+            that would increase its overall score for anti-sycophancy on the eval. 
+          </li>
+          <li>This is closely related to <a href="https://arxiv.org/pdf/2404.00474">linguistic calibration</a> of language models, but I think not quite the same thing.</li>
+        </ul>
+
 
 
 
