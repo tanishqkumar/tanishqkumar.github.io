@@ -79,10 +79,9 @@ li.audited {
 <h3>A laundry list for AI research</h3>
 
 <p>
-  This is a miscellany of partially fleshed-out but promising (in my opinion) AI research ideas that someone should work on. 
-  I would like to know the answer to these questions, but don't have the time to run these experiments myself. If you are 
-  looking to break into AI research (eg. as an undergraduate, or a software engineer in industry), these could be some low hanging fruit. 
-  Feel free to shoot me a 
+  Please steal my AI research ideas. I would like to know the answer to these questions, and have even proposed/run concrete experiments for some of them. If you are 
+  looking to break into AI research (e.g. as an undergraduate, or a software engineer in industry), these could be some low hanging fruit. 
+  Shoot me a 
   <a href="mailto:tanishq@stanford.edu">message</a> with experimental results if you want to collaborate. 
 </p>
 
@@ -113,22 +112,31 @@ li.audited {
         <li>Measuring scaling laws for environment-time compute in LLM RL</li>
         <ul>
           <li>Traditional scaling laws fit model performance vs compute required to train or serve the model</li>
-          <li>But LLM RL involves not just a model, but an environment. Recently, it has become common for the environment to 
-            <i>itself</i> to be a foundation models. Examples include LLM-as-a-judge with a rubric, or action-conditioned video 
+          <li>But LLM RL involves not just a model, but an environment. Recently, it has become common for the environment 
+            <i>itself</i> to be a foundation model. Examples include LLM-as-a-judge with a rubric, or action-conditioned video 
             generation models, often called "world models."
           </li>
           <li>I'm interested in knowing how the performance of RL improves when the actual model being trained (architecture, hypers, etc) is held fixed, but the compute used to simulate the environment increases.</li>
           <li>This environment-time compute could be either inference-time compute or pretraining compute for the environment model.</li>
-          <li>Concretely</li>
+          <li>Concretely, suppose you are training a VLA against an action-conditioned video model
+             as the "environment," like in <a href="https://arxiv.org/pdf/2510.10125">this paper</a> for instance. Repeat their experiments but 
+            with checkpoints of the world model at different points in training (ie. with different amounts of environment-time compute) and/or with different amounts of 
+          inference-time compute (like best-of-N sampling with a judge). Then plot how this affects the performance of the VLA that if RL'd against this environment with a <i>fixed</i> training configuration throughout.
+        </li>
+        <li>
+          This will show how important the fidelity of the environment is to the performance of the VLA being trained against it, as well as the role fo compute (on the world model side) in achieving this. I can imagine 
+            we're at a point where you may want to spend marginal compute on improving the world model instead of training the VLA longer. 
+        </li>
           
-          <li>And while I'm proposing fitting such a scaling law in the foundation model setting, it is more general than that. In simple and classic tasks learning robotic control (eg. MuJoCo), the environment is typically just a physics simulation. In other words, 
+          <li>And while I'm proposing fitting such a scaling law in the foundation model setting, it is more general than that. 
+            In simple and classic tasks learning robotic control (e.g. MuJoCo), the environment is typically just a physics simulation. In other words, 
             it's often literally just an ODE solver. Such an environment admits a very simple way to simulate compute: just 
             vary the amount of steps for which you run the solver, which constrains the fidelity of the physics simulation and thus 
-            upper bounds the performance of an oracle agent (on the ground truth environment). 
+            upper bounds the performance of an oracle agent on the ground truth environment. 
 
           </li>
         </ul>
-        <li>Power-law scaling laws are wrong in many ways, and someone needs to understand why.</li>
+        <li>Power-law scaling laws for pretraining loss $L(N, D)$ are wrong</li>
           <ul>  
 
             <li>The power-law form comes from the <a href="https://arxiv.org/abs/2203.15556">Chinchilla paper</a>, but if you look at the justification for that functional form in the Appendix, 
@@ -150,24 +158,27 @@ li.audited {
           <li>
             Here is one I tried a while ago that seemed to work (but was only a small win). I'm sure there are many such variants 
             waiting to be discovered. I was interested in improving $k$-shot performance on a task, and training a model 
-            directly for that are pretraining/finetuning time. 
+            directly for that at pretraining/finetuning time. 
           </li>
           <li>
             While ultimately we want to optimize $k$-shot performance on a sequence/generation level at inference-time, I wondered 
-            if one could just optimize a similar objective on a token-level to get a next token prediciton variant that has more 
+            if one could just optimize a similar objective on a token-level to get a next token prediction variant that has more 
             "diverse" generations at inference-time. 
           </li>
           <li>
-            Here's an obvious formulation. If the probability of the true next token is $p_i$, then the typical NTP loss 
+            Here's one possible formulation. If the probability of the true next token is $p_i$, then the typical NTP loss 
             is $-\log p_i$. We can construct an alternative "k-shot" loss as follows. The probability of sampling that true token 
-            is $p_i$, and the probability of sampling it <i>at least once in $k$ samples</i> is $1-(1-p_i)^k$. We can decide then 
-            to optimize <i>this</i> loss instead: $-\log[1-(1-p_i)^k]$.
+            is $p_i$, and the probability of sampling it <i>at least once in $k$ samples</i> is $(1-p_i)^k$. We can decide then 
+            to optimize the probability of <i>not</i> doing so instead: $-\log[1-(1-p_i)^k]$.
           </li>
-          <li>This is not mathematically equivalent to optimizing NTP (it is a nonlinear transformation). And it's also not equivalent 
-            to optimizing NTP but with rescaled (eg. by temperature) logits. So it's a genuinely new objective, and training on this 
+          <li>This is not mathematically equivalent to optimizing NTP (it is a nonlinear transformation in $p_i$). And it's also not equivalent 
+            to optimizing NTP but with rescaled (e.g. by temperature) logits. So it's a genuinely new objective, and training on this 
             did improve $k$-shot performance at inference time. I stopped pushing on this because the gains were modest and only appeared at $k \gg 1$. 
           </li>
-          <li>But I'm sure I did not mine out this line of thought fully, and would love to see someone else try it.</li>
+          <li>But I'm sure I did not mine out this line of thought fully, and would love to see someone else try objectives of this flavor, even if not in the 
+            inference-time compute setting. There are also subtleties I haven't considered like whether such an objective is a proper scoring rule or maximum likelihood, or enjoys other properties 
+            that make next-token prediction so popular.  
+          </li>
         </ul>
         <li>Overfitting in latent space during synthetic pretraining</li>
         <ul>
@@ -175,26 +186,26 @@ li.audited {
             vanish but test loss will diverge.
           </li>
           <li>When training on synthetic data, things get trickier to reason about. I conjecture there exists a notion of "overfitting on concepts" that can have similar effects. The prediction is that if you train on a corpus of real data $D$, you will get loss decreasing in token count as a power law. </li>
-          <li>Suppose instead of you have a subset $D' = 0.1D$ of $D$, and use a rephrasing LLM to amplify it back up to $D$ tokens. This means you have some content, and 9 "rephrases" of this content. Of course, the rephrases differ from the content on a token-to-token level, so you cannot think of loss scaling on the rephrased corpus in purely online vs offline (repeating data) 
+          <li>Suppose instead you have a subset $D' = 0.1D$ of $D$, and use a rephrasing LLM to amplify it back up to $D$ tokens. This means you have some content, and 9 "rephrases" of this content. Of course, the rephrases differ from the content on a token-to-token level, so you cannot think of loss scaling on the rephrased corpus in purely online vs offline (repeating data) 
             terms. 
           </li>
           <li>
             Nonetheless, loss on this new corpus will decrease faster than on the real corpus (an empirical fact). I conjecture 
             this is because there is repetition in some "concept space" where modelling some information is easier once models see 
             that information in many different ways. This is well-documented in <a href="https://physics.allen-zhu.com">this lovely line of work</a>, of course, but I'm interested 
-            if one can quantify this effect, and I would <i>love</i> to see someone introduce a notion of actual <i>overfitting on concepts</i> where test loss <i>increasese</i> even when no tokens are repeated. 
+            if one can quantify this effect, and I would <i>love</i> to see someone introduce a notion of actual <i>overfitting on concepts</i> where test loss <i>increases</i> even when no tokens are repeated. 
           </li>
         </ul>
 
         <li>Predicting emergence via BoN</li>
         <ul>
           <li>
-            This <a href="https://arxiv.org/pdf/2411.16035">fantastic paper</a> shows you can predict emerge of a skill in LLMs in advance by just finetuning on data relevant to that domain. That is to say, 
+            This <a href="https://arxiv.org/pdf/2411.16035">fantastic paper</a> shows you can predict emergence of a skill in LLMs in advance by just finetuning on data relevant to that domain. That is to say, 
             the models for whom that skill will emerge fastest (at highest val loss) are exactly those that are most easily finetuned on that data domain. 
           </li>
           <li>
             The cons of that paper are that finetuning is annoying and the fits are very noisy and not always convincing. I think the same predictive method could be 
-            applied with best-of-N sampling instead of finetuning, ie. my claim is that the pass@k performance for a model for $k \gg 1$ is a good predictor of 
+            applied with best-of-N sampling instead of finetuning, i.e. my claim is that the pass@k performance for a model for $k \gg 1$ is a good predictor of 
             the pass@1 performance of that same model as it's trained longer/with more compute. You can predict if a model will have a certain ``emergent" capability 
             later on by simply measuring whether that ability is <i>ever</i> supported in rollouts. 
           </li>
@@ -203,40 +214,56 @@ li.audited {
           Attention-based synthetic data generation.
           <ul>
             <li>
-              Current synthetic data generation methods are super compute intensive in the sense of generating trillions of tokens from a language model, usually 
+              Current synthetic data generation methods are super compute intensive, since they decode trillions of tokens from a language model, usually 
               rephrasing some (real) seed text or document.
             </li>
             <li>
-              Create "synthetic" data by permuting sentences in documents in a way that preserves semantic meaning.
+              I want to create "synthetic" data by permuting sentences in documents in a way that preserves semantic meaning.
+              "Preserve semantic meaning" here means constructing a DAG (directed acyclic graph) with sentences as vertices with an edge between two sentences 
+              A→B iff some token in sentence B attends strongly to some token in A (top-k%). This captures the fact that information flows from A to B.
             </li>
             <li>
-              "Preserve semantic meaning" = construct a DAG with sentences as vertices with edge A→B iff some token in sentence B attends strongly to some token in A (top-k%).
-            </li>
-            <li>
-              Consider all topological sorts of this DAG as new data points, since sentences are in different orders but semantics (as defined by attention matrix) are preserved.
-            </li>
-            <li>
-              Upshot: can create several permutations of a sequence without decoding, i.e., just one forward pass, so is O(seqlen) faster/cheaper than usual synthetic data generation.
+              We can then consider all topological sorts of this DAG as new data points, since sentences are in different orders but semantics (as defined by attention matrix) are preserved.
+              The upshot of this method is that we can create several permutations of a sequence without decoding from the LLM
+              , i.e., with just one forward pass, so this "synthetic data generation method" is O(seqlen) faster/cheaper than usual synthetic data generation.
             </li>
             <li>
               I tried this last week: trained a 1B parameter model to 20B tokens with just 1B unique seed text with and without permutation-augmentation. 
               It kind of works as far as loss is concerned (reaches lower minimum) but does poorly on downstream evals compared to repeated real data baseline.
-            </li>
-            <li>
-              Reason for underwhelming gains: attention matrices are less sparse than expected on average, so most semantic DAGs are "almost linear" where almost all permutations kill meaning.
+              But I think there is a way to make this work properly at scale, and I would love to see someone give it a go. <a href="https://x.com/tanishqkumar07/status/1874474159914336481">Here's a thread</a> with more details.
             </li>
           </ul>
         </li>
         
-        <li>RL toy synthetics: can we find an algorithmic task with multiple solutions (e.g., clock and pizza) s.t. models of 
-          two diff sizes (random init) learn to solve them with two qualitatively different ways? E.g., if 500M discovers clock and 4B discovers 
-        pizza, that'd be fascinating and evince how "more is different" in a compelling way.</li>
+        <li>Finding a clean example of "more is different" in RL</li>
+        <ul>
+          <li>
+            This means finding a (synthetic) task where we can train a small and large LLM (from the same family, e.g. Llama or Qwen) to solve it, using exactly the same data/hypers, and 
+            find that the two learned <i>qualitatively different</i> solutions.
+          </li>
+          <li>
+            It is important that the task is constructed to have 1) multiple solutions that are mathematically distinct (i.e. algorithms with different runtimes), and 2) 
+            an easy way to see which algorithm a given model used, without for instance looking at the model weights. An example of a task that satisfies the first (but not second) criterion is 
+            modular addition, where two different "mechanisms" are for instance studied in <a href="https://arxiv.org/pdf/2306.17844">this paper</a>. 
+          </li>
+          <li>
+            An example task that satisfies both criteria is modular exponentiation, ie. computing $a^b \mod c$ for large integers $a, b, c$. The naive method takes time 
+            $O(b)$ to compute, but a more sophisticated method (binary exponentiation) takes time $O(\log b)$. One could train models to solve this task on a subset of the input space, 
+            test them on held out example, and see how test performance scales with $b$, which tells you which solution the model learned (if high performance persists as $b$ increases, it learned the binary exponentiation solution).
+          </li>
+          <li>
+            The ultimate goal would be clean empirical evidence that a larger model can learn a qualitatively more elegant or sophisticated solution to a task than a smaller model, all else equal, 
+            supporting the idea that scale endows models with emergent capabilities and inductive biases toward "intelligent" behavior.
+          </li>
+        </ul>
+        
+        
         <li>I think that one of the most under-rated and surprising empirical results of this year was the fact that <a href="https://arxiv.org/pdf/2405.15618">MLPs can learn in-context</a>. 
         </li>
         <ul>
           <li>This is surprising because the attention mechanism is usually thought to be the key for this (induction heads in MSHA, etc).</li>
           <li>I ran some experiments replicating those findings in small MLPs that had just one hidden layer and as few as 32 hidden units, and 
-            found the weight matrices learn a fascinating and structure pattern that matches the nature of the task the authors outline in the paper. 
+            found the weight matrices learn a fascinating and structured pattern that matches the nature of the task the authors outline in the paper. 
           </li>
           <li>It showed an interesting mechanism for how MLPs learned the in-context classification and regression tasks outlined in the paper, that amounted 
             roughly to a very clever memorization pattern of the training data. However, I did not go deep enough to formalize the mechanism mathematically and provide a wealth of evidence one might want. But I think there's something interesting here, and someone working on interpretability should definitely 
@@ -286,29 +313,7 @@ li.audited {
             where the model learns which parts of context help vs. hurt performance on the target task.
           </li>
         </ul>
-        <li>
-          What drives improvements in reasoning performance? Semantics of a worked solution or just idiosyncratic inference-time compute usage?
-        </li>
-        <ul>
-          <li>
-            What fractions of gains in reasoning come from the reasoning semantics itself vs the idiosyncratic inference-time compute used by a model 
-            doing the reasoning? Put differently, if you conditioned Llama-3-70B on a reasoning trace from GPT-5, or vice-versa, would you still see 
-            the same improvements on performance on reasoning-heavy tasks?
-          </li>
-          <li>
-            If you got most of the gains, that suggests the literal semantics of 
-            working through the problem are the main outcome of reasoning models, and if you don't that means that idiosyncratic inference-time compute usage 
-            is the main reason performance improves.
-          </li>
-          <li>
-            Concrete experiment: Take reasoning traces from o1 on MATH problems and condition GPT-4o on them. Compare performance to GPT-4o's native 
-            reasoning traces and to GPT-4o without any reasoning. Repeat with traces going the other direction. Measure performance on held-out MATH problems.
-          </li>
-          <li>
-            I imagine that the answer is somewhere in between, and also varies with "how similar" two models are 
-            in their pretraining data/architecture, but I would like to see clean plots to this effect.
-          </li>
-        </ul>
+        
         <li>
           An eval measuring anti-sycophancy.
         </li>
@@ -317,7 +322,7 @@ li.audited {
           stand its ground when it is correct and the user is wrong. Of course, this must be balanced with the ability to admit and change its mind 
           when it is wrong and the user correctly points that out.</li>
           <li>One can think of the failure to do either of these as a Type I or Type II error of a certain form.</li>
-          <li>One simple eval for these kinds of capabilities can be constructed as follows: construct a dataset of user-model interactions involve a technical or 
+          <li>One simple eval for these kinds of capabilities can be constructed as follows: construct a dataset of user-model interactions involving a technical or 
             factual discussion between a user and a model (so that the correctness of user vs model is verifiable and objective). For instance, a discussion about 
             plot details in Melville's <i>Moby Dick</i> or a discussion about an obscure mathematical theorem. 
           </li>
@@ -327,11 +332,34 @@ li.audited {
           </li>
           <li>Then, give the model you want to evaluate this conversation as context (condition on it) and ask it to complete the system response for the last interaction. </li>
           <li>
-            Use an LLM-judge to see if the model acts correctly, or makes a Type I or Type II error. For instance, if the model's answer to a factual question about Moby Dick was correct but the user falsely (but authoritatively) claimed it was wrong, and then the model stood its ground, and reiterated that it was correct, 
-            that would increase its overall score for anti-sycophancy on the eval. 
+            Use an LLM-judge to see if the model acts correctly, or makes a Type I or Type II error. 
+            For instance, if the model's answer to a factual question about <i>Moby Dick</i> was correct but the user 
+            falsely (but authoritatively) claimed it was wrong, the model should stand its ground to do well on the eval. 
           </li>
           <li>This is closely related to <a href="https://arxiv.org/pdf/2404.00474">linguistic calibration</a> of language models, but I think not quite the same thing.</li>
         </ul>
+        
+        <li>
+          What drives improvements in reasoning performance when using a long CoT? Is it the semantics of a worked solution (decomposing the problem) or just idiosyncratic inference-time compute usage?
+        </li>
+        <ul>
+          <li>
+            If you conditioned Llama-3-70B on a reasoning trace from GPT-5, or vice-versa, would you still see 
+            the same improvements on performance on reasoning-heavy tasks? Equivalently, if you rephrased the CoT that helps a model solve a hard reasoning problem in a way that 
+            was semantically equivalent but used different words, would you still see the same improvements?
+          </li>
+          <li>
+            If you got most of the gains, that suggests the literal semantics of 
+            working through the problem are the main lift of reasoning models, and if you don't, that means that idiosyncratic inference-time compute usage 
+            is the main reason performance improves. In the latter case, it suggests the CoT isn't faithful in driving the model performance, and some "encoded computation" is taking place 
+            when the model conditions on that CoT to perform well. 
+          </li>
+          <li>
+            Concrete experiment: Take reasoning traces from GPT5 on MATH problems and condition Llama-3-70B on them. Compare performance to Llama-3-70B's native 
+            reasoning traces and to Llama-3-70B without any reasoning. Repeat with traces going the other direction. Measure performance on held-out MATH problems.
+          </li>
+        </ul>
+        
 
 
 
