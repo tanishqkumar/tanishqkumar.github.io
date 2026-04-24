@@ -92,7 +92,7 @@ LM = language model; FM = foundation model.
   <li>The role of knowledge vs reasoning in LMs</li>
   <ul>
       <li>I used to think the storage of knowledge in model weights (subject-relation-fact) was a bug, not a feature</li>
-      <li>We have databases for keys and values, surely we want FMs to be big-brain reasoning machines instead? My naïve dream was a ~1b model that can reason and plan like GPT4 and just use the internet/RAG for knowledge</li>
+      <li>We have databases for keys and values, surely we want FMs to be big-brain reasoning machines instead? My naïve dream was a ~1b model that can reason and plan like GPT-4 and just use the internet/RAG for knowledge</li>
       <li>Then I started paying attention to how I use LMs myself on a day-to-day basis and realized that I mostly use them as soft interpolants of internet content, i.e. an even softer version of search than keyword/semantic web search</li>
       <li>Also, MMLU (knowledge) seems to be the major axis that determines general capabilities, including reasoning. Knowledge and reasoning seem intertwined in FMs, unlike in humans where for instance people who can memorize a lot may not be the best at hard math problems. 
       </li>
@@ -106,7 +106,7 @@ LM = language model; FM = foundation model.
       <li>Used to think architecture was the first-order concern, now I think it's the data. In some sense this is obvious in hindsight because in an estimation problem, the target function usually affects the 
         learned function more than choice of estimator</li>
       <li>Have started some work on synthetic data; mixtures of real-synthetic usually outperform real on most downstream evals. This means there are some statistical properties the models "want" in their data that web text doesn't fully have</li>
-      <li>What is the platonic data distribution models "want" to learn world representations on? Is there any definition for "quality" and "compute" such that the statement "the quality per token of synthetic data improves predictably with compute used to generate it" is true?</li>
+      <li>What is the platonic data distribution that models "want" to learn world representations on? Is there any definition for "quality" and "compute" such that the statement "the quality per token of synthetic data improves predictably with compute used to generate it" is true?</li>
       <ul><li>In some sense, model distillation is a trivial example where bigger generators are better, but this is less interesting to me because you can't distill your way to a frontier model. 
         I think the most interesting synthetic corpora are those that are "rephrases" or augmentations of real seed text (see e.g. the WRAP paper).</li></ul>
     </ul>
@@ -129,7 +129,7 @@ LM = language model; FM = foundation model.
   <!-- cultures use these models differently. converge on base frntir practices, deploy extremely diffrently -->
   <li>I really want to learn about HCI in the few weeks after grad school apps. 
     <ul>
-      <li>How models are post and thus pretrained -- and thus what is most important scientifically for me to work on in the next few years -- 
+      <li>How models are pre- and post-trained -- and thus what is most important scientifically for me to work on in the next few years -- 
         is determined by how consumers and enterprises find it 
         most intuitive to interact with them. The "GUI moment" for FMs still hasn't happened and I really wonder what it will be. 
       </li>
@@ -234,7 +234,7 @@ LM = language model; FM = foundation model.
 
   <li>I'm starting to believe some of the cool phenomena theorists reason about in toy models may actually sometimes be similar to what is driving similar phenomena in frontier models</li>
   <ul>
-    <li>I wrote my lazy to rich grokking paper last year in part to try to show mech interp people it wasn't that complicated
+    <li>I wrote my lazy-to-rich grokking paper last year in part to try to show mech interp people it wasn't that complicated
     </li>
     <li>In particular, the use of the phrase "phase transition" to describe grokking felt misguided to me, because it has a very specific meaning in math/physics (the free energy of a system, or its derivatives,
         being non-analytic) and I felt it was being abused for ideological reasons to make these toy mathematical models look like sentient beings or what-not. 
