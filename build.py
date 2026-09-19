@@ -261,8 +261,8 @@ def main():
     
     # Generate index page
     index_content = """<p>
-        I'm a first-year CS PhD student at Stanford working on the science of deep learning.
-        I recently graduated from Harvard College, where I studied math. 
+        I'm a computer science PhD student at Stanford working on deep learning.
+        Before this, I studied math as an undergrad at Harvard.
            <p>
         <a href="mailto:tanishq@stanford.edu">Email</a> · 
         <a href="https://github.com/tanishqkumar">GitHub</a> · 
@@ -274,8 +274,8 @@ def main():
     
     # Generate about page
     about_content = """<p>
-        I'm a first-year CS PhD student at Stanford working on the science of deep learning. <br>
-        I recently graduated from Harvard College, where I studied math. 
+        I'm a computer science PhD student at Stanford working on deep learning. <br>
+        Before this, I studied math as an undergrad at Harvard.
 
         <br><br>
 
