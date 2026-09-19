@@ -286,7 +286,7 @@ def main():
         Cambridge, Massachusetts.
         
         <br><br>
-        My research studies the algorithms behind language model pretraining and inference
+        My research studies language model pretraining, inference, and more besides.
         
         
       </p>
